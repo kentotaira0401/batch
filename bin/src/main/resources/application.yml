@@ -5,6 +5,6 @@ spring:
       suffix: .jsp
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/ecommerce201810b
+    url: jdbc:postgresql://localhost:5432/student
     username: postgres
     password: postgres
