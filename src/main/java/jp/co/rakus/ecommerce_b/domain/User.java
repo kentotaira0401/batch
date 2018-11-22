@@ -1,5 +1,11 @@
 package jp.co.rakus.ecommerce_b.domain;
 
+/**
+ * ユーザーを表すドメイン
+ * 
+ * @author kento
+ *
+ */
 public class User {
 
 	/** id(主キー) */
