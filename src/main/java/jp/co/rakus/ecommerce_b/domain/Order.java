@@ -49,11 +49,6 @@ public class Order {
 
 	
 	/**
-	 * 宛先Email
-	 */
-	private String destinationEmail;
-	
-	/**
 	 * 宛先郵便番号
 	 */
 	private String destinationZipcode;
@@ -136,14 +131,6 @@ public class Order {
 		this.destinationName = destinationName;
 	}
 	
-	public String getDestinationEmail() {
-		return destinationEmail;
-	}
-
-	public void setDestinationEmail(String destinationEmail) {
-		this.destinationEmail = destinationEmail;
-	}
-
 	public String getDestinationEmail() {
 		return destinationEmail;
 	}
