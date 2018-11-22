@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="../css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -41,7 +42,7 @@
 		<div class="row">
 			<div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-xs-12">
 				<div class="well">
-					<form method="post" action="item_list.html">
+					<form:form modelAttribute="loginForm" action="${pageContext.request.contextPath}/login">
 						<fieldset>
 							<legend>
 								ログイン
@@ -50,19 +51,17 @@
 									class="control-label" style="color: red" for="inputError">メールアドレス、またはパスワードが間違っています</label>
 							<div class="form-group">
 								<label for="inputEmail">メールアドレス:</label>
-								<input type="text" id="inputEmail" class="form-control"
-									placeholder="Email">
+								<form:input path="email" id="email" class="form-control" placeholder="Email"></form:input>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword">パスワード:</label>
-								<input type="text" id="inputPassword" class="form-control"
-									placeholder="Password">
+								<form:input path="password" id="password" class="form-control" placeholder="Password"></form:input>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">ログイン</button>
 							</div>
 						</fieldset>
-					</form>
+					</form:form>
 				</div>
 			</div>
 		</div>
