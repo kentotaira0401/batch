@@ -10,10 +10,10 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
-import jp.co.rakus.ecommerce_b.domain.Order;
+import jp.co.rakus.ecommerce_b.domain.OrderItem;
 
 @Repository
-public class OrderRepository {
+public class OrderItemRepository {
 
 	@Autowired
 	private NamedParameterJdbcTemplate template;
@@ -23,22 +23,15 @@ public class OrderRepository {
 	@PostConstruct
 	public void init() {
 		SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert((JdbcTemplate) template.getJdbcOperations());
-		SimpleJdbcInsert withTableName = simpleJdbcInsert.withTableName("orders");
+		SimpleJdbcInsert withTableName = simpleJdbcInsert.withTableName("order_items");
 		insert = withTableName.usingGeneratedKeyColumns("id");
 	}
 
-	public Order save(Order order) {
-		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
+	public OrderItem insert(OrderItem orderItem) {
+		SqlParameterSource param = new BeanPropertySqlParameterSource(orderItem);
 
-		if (order.getId() == null) {
-			Number key = insert.executeAndReturnKey(param);
-			order.setId(key.intValue());
-		} else {
-			String upDateSql = "UPDATE orders SET user_id=:userId ,status=:status,total_price=:totalPrice,order_date=:orderDate,destination_name=:destinationName,"
-					+ "destination_email=:destinationEmail,destination_zipcode=:destinationZipcode,destination_address=:destinationAddress,destination_tel=:destinationTel,"
-					+ "delivery_time=:deliverlyTime,payment_method=:paymentMethod where id=:id";
-			template.update(upDateSql, param);
-		}
-		return order;
+		Number key = insert.executeAndReturnKey(param);
+		orderItem.setId(key.intValue());
+		return orderItem;
 	}
 }

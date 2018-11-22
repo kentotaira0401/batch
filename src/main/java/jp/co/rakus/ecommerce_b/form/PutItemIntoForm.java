@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * 
  * 入力された商品の情報を格納するフォーム
+ * 
  * @author wataru.saito
  *
  */
@@ -17,15 +18,23 @@ public class PutItemIntoForm {
 	/**
 	 * ピザのサイズ
 	 */
-	private String size;
+	private Character size;
 	/**
 	 * トッピング
 	 */
-	private List<String> topping;
+	private List<String> toppingList;
 	/**
 	 * 数量
 	 */
 	private String quantity;
+
+	public int getIntValueOfItemId() {
+		return Integer.parseInt(this.itemId);
+	}
+
+	public int getIntValueOfQuantity() {
+		return Integer.parseInt(this.quantity);
+	}
 
 	public String getItemId() {
 		return itemId;
@@ -35,20 +44,20 @@ public class PutItemIntoForm {
 		this.itemId = itemId;
 	}
 
-	public String getSize() {
+	public Character getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
+	public void setSize(Character size) {
 		this.size = size;
 	}
 
-	public List<String> getTopping() {
-		return topping;
+	public List<String> getToppingList() {
+		return toppingList;
 	}
 
-	public void setTopping(List<String> topping) {
-		this.topping = topping;
+	public void setToppingList(List<String> toppingList) {
+		this.toppingList = toppingList;
 	}
 
 	public String getQuantity() {
