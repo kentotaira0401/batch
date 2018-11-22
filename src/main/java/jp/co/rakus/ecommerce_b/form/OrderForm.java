@@ -1,16 +1,19 @@
-package jp.co.rakus.ecommerce_b.domain;
+package jp.co.rakus.ecommerce_b.form;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import jp.co.rakus.ecommerce_b.domain.OrderItem;
+import jp.co.rakus.ecommerce_b.domain.User;
+
 /**
+ * orderを詰めるためのform.
  * 
- * 注文情報を持つドメイン.
- * @author wataru.saito
+ * @author yuya.nishikiori
  *
  */
-public class Order {
+public class OrderForm {
 
 	/**
 	 * 注文ID
@@ -40,13 +43,12 @@ public class Order {
 	/**
 	 * 宛先氏名
 	 */
-	private String destinationName;
+	private String destinationEmail;
 
-	
 	/**
 	 * 宛先Email
 	 */
-	private String destinationEmail;
+	private String destinationName;
 	
 	/**
 	 * 宛先郵便番号
@@ -106,6 +108,7 @@ public class Order {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
+	
 
 	public Integer getTotalPrice() {
 		return totalPrice;
