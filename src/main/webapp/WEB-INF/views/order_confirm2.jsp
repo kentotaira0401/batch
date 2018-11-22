@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +6,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ピザ屋のネット注文</title>
-<link href="../../css/bootstrap.css" rel="stylesheet">
-<link href="../../css/piza.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/piza.css" rel="stylesheet">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
+    <img src="img/header_log.png">
+    
 	<div class="container">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -29,7 +29,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="item_list.html"> <!-- 企業ロゴ --> <img
-						alt="main log" src="../../img/header_logo.png" height="35">
+						alt="main log" src="img/header_logo.png" height="35">
 					</a>
 				</div>
 
