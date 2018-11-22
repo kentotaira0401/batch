@@ -45,18 +45,18 @@ public class UserRepository {
 	 */
 	public User findByMailAndPass(String email, String password) {
 		User user = null;
-		String sql = "SELECT id, name, email, password, zipcode, address, telephone" 
-		+ " FROM users WHERE email=:email AND password=:password";
+		String sql = "SELECT id, name, email, password, zipcode, address, telephone FROM users WHERE email=:email AND password=:password;";
 
 		try {
 			
 			SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password", password);
 
 			user = template.queryForObject(sql, param, USER_ROW_MAPPER);
-
+			//System.out.println("a");
 			return user;
 			
 		} catch (DataAccessException e) {
+			//System.out.println("b");
 			return null;
 		}
 	}
