@@ -9,34 +9,40 @@ import java.util.List;
  *
  */
 public class Item {
-	
-	/**id*/
+
+	/** id */
 	private int id;
-	/**名前*/
-	private String naem;
-	/**Mサイズの価格*/
+	/** 名前 */
+	private String name;
+	/** 名前 */
+	private String description;
+	/** Mサイズの価格 */
 	private int priceM;
-	/**Lサイズの価格*/
+	/** Lサイズの価格 */
 	private int priceL;
-	/**画像パス*/
+	/** 画像パス */
 	private String imagePath;
-	/**削除フラグ*/
+	/** 削除フラグ */
 	private Boolean deleted;
-	/**トッピングリスト*/
+	/** トッピングリスト */
 	private List<Topping> toppingList;
-	
-	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNaem() {
-		return naem;
+	public String getName() {
+		return name;
 	}
-	public void setNaem(String naem) {
-		this.naem = naem;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public int getPriceM() {
 		return priceM;
