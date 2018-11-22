@@ -48,6 +48,7 @@
 			<!-- /.container-fluid -->
 		</nav>
 
+
 		<!-- table -->
 		<div class="row">
 			<div
@@ -167,7 +168,7 @@
 		</div>
 		
 		<!-- table -->
-		<form action="order_finished.html">
+		<form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/orderConfirm" method="POST">
 			<div class="row">
 				<div
 					class="table-responsive col-lg-offset-3 col-lg-6 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
@@ -181,7 +182,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationName"/>
 								</td>
 							</tr>
 							<tr>
@@ -191,7 +192,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationEmail"/>
 								</td>
 							</tr>
 							<tr>
@@ -201,7 +202,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">&nbsp;&nbsp;<button>住所検索</button>
+									<form:input path="destinationZipcode"/>&nbsp;&nbsp;<button>住所検索</button>
 								</td>
 							</tr>
 							<tr>
@@ -211,7 +212,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationAddress"/>
 								</td>
 							</tr>
 							<tr>
@@ -221,7 +222,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationTel"/>
 								</td>
 							</tr>
 							<tr>
@@ -238,56 +239,56 @@
 													class="control-label" style="color: red" for="inputPeriod">配達日時を入力してください</label>
 											</div>
 											<div class="col-sm-5">
-												<input type="date" name="name" id="name"
-													class="form-control input-sm" />
+												<form:input path="orderDate" type="date" name="name" id="name"
+													class="form-control input-sm"/>
 											</div>
 											
 										</div>
 										<div class="row">
 											<div class="col-sm-12">
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany" checked="checked">
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany" checked="checked"/>
 													10時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													11時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													12時
 												</label><br>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													13時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													14時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													15時
 												</label><br>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													16時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													17時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													18時
 												</label><br>
 											</div>
@@ -354,7 +355,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</div>
 	<!-- end container -->
 	<script
