@@ -22,7 +22,7 @@ public class OrderItem {
 	private Character size;
 	/** 商品 */
 	private Item item;
-	/** 注文トッピングリスト */
+	/** 注文トッピングリスト. */
 	private List<Topping> orderToppingList;
 
 	public int getId() {
