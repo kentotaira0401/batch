@@ -23,6 +23,4 @@ public class OrderController {
 		return "order_confirm";
 	}
 	
-	
-	
 }
