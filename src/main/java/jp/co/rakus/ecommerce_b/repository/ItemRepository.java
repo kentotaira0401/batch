@@ -12,8 +12,7 @@ import jp.co.rakus.ecommerce_b.domain.Item;
 @Repository
 public class ItemRepository {
 
-	private static final RowMapper<Item> itemRowMapper = (rs, i) -> {
-
+	private static final RowMapper<Item> itemRowMapper = (rs,i) -> {
 		Item item = new Item();
 
 		item.setId(rs.getInt("id"));
