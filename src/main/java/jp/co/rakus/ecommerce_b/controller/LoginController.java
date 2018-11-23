@@ -15,6 +15,12 @@ import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.form.LoginForm;
 import jp.co.rakus.ecommerce_b.service.LoginService;
 
+/**
+ * ログイン処理をするコントローラー
+ * 
+ * @author kento
+ *
+ */
 @Controller
 @Transactional
 @RequestMapping("/")
@@ -54,13 +60,14 @@ public class LoginController {
 	 * @param model
 	 * @return ログイン後検索画面
 	 */
-	@RequestMapping("/itemlist")
+	@RequestMapping("/item-list")
 	public String itemList(Model model) {
 		return "item-list";
 	}
 	
 	/**
 	 * ログイン処理を行います.
+	 * 
 	 * @param form　フォーム
 	 * @param result　リザルト
 	 * @param model　モデル
@@ -82,7 +89,9 @@ public class LoginController {
 			return index(model);
 		}
 		model.addAttribute("user", user);
-		return "redirect:/itemList(model)";
+        System.out.println("成功");
+
+		return "redirect:/item-list";
 	}
 	
 }
