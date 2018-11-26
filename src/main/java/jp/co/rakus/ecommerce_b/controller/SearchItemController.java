@@ -1,13 +1,17 @@
 package jp.co.rakus.ecommerce_b.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.rakus.ecommerce_b.domain.Item;
+import jp.co.rakus.ecommerce_b.form.PutItemIntoCartForm;
+import jp.co.rakus.ecommerce_b.service.FindAllToppingService;
 import jp.co.rakus.ecommerce_b.service.ItemService;
 
 @Controller
@@ -15,7 +19,15 @@ import jp.co.rakus.ecommerce_b.service.ItemService;
 public class SearchItemController {
 
 	@Autowired
-	ItemService itemService;
+	private ItemService itemService;
+
+	@Autowired
+	private FindAllToppingService findAllToppingService;
+
+	@ModelAttribute
+	public PutItemIntoCartForm setUpPutItemIntoCartForm() {
+		return new PutItemIntoCartForm();
+	}
 
 	/**
 	 * 商品一覧を表示
@@ -69,8 +81,9 @@ public class SearchItemController {
 	@RequestMapping("/detailItem")
 	public String detailItem(int id, Model model) {
 		Item item = itemService.findById(id);
-
-		model.addAttribute("item",item);
+		model.addAttribute("item", item);
+		Map<Integer, String> toppingMap = (Map<Integer, String>) findAllToppingService.findAll();
+		model.addAttribute("toppingMap", toppingMap);
 		return "item-detail";
 	}
 

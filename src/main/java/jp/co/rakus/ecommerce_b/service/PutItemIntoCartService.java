@@ -29,6 +29,7 @@ public class PutItemIntoCartService {
 		
 		Order order = new Order();
 		//セッションから取り出したユーザーIDをorderオブジェクトにセットする
+		order.setStatus(0);
 		order = orderRepository.save(order);
 		
 		OrderItem orderItem = new OrderItem();
