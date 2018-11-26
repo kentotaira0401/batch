@@ -106,88 +106,88 @@
 								</div>
 								<div class="col-sm-12">
 									<label class="checkbox-inline">
-										<input type="checkbox" value="1">オニオン
+										<input type="checkbox" value="1" name="toppingList">オニオン
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="2">ツナマヨ
+										<input type="checkbox" value="2" name="toppingList">ツナマヨ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="3">イタリアンポテト
+										<input type="checkbox" value="3" name="toppingList">イタリアンポテト
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="4">イカ
+										<input type="checkbox" value="4" name="toppingList">イカ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="5">プルコギ
+										<input type="checkbox" value="5" name="toppingList">プルコギ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="6">アンチョビ
+										<input type="checkbox" value="6" name="toppingList">アンチョビ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="7">エビ
+										<input type="checkbox" value="7" name="toppingList">エビ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="8">コーン
+										<input type="checkbox" value="8" name="toppingList">コーン
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="9">ピーマン
+										<input type="checkbox" value="9" name="toppingList">ピーマン
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="10">フレッシュスライストマト
+										<input type="checkbox" value="10" name="toppingList">フレッシュスライストマト
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="11">ベーコン
+										<input type="checkbox" value="11" name="toppingList">ベーコン
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="12">ペパロニ・サラミ
+										<input type="checkbox" value="12" name="toppingList">ペパロニ・サラミ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="13">熟成ベーコン
+										<input type="checkbox" value="13" name="toppingList">熟成ベーコン
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="14">特性マヨソース
+										<input type="checkbox" value="14" name="toppingList">特性マヨソース
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="15">カマンベールチーズ
+										<input type="checkbox" value="15" name="toppingList">カマンベールチーズ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="16">フレッシュモッツアレラチーズ
+										<input type="checkbox" value="16" name="toppingList">フレッシュモッツアレラチーズ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="17">イタリアンソーセージ
+										<input type="checkbox" value="17" name="toppingList">イタリアンソーセージ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="18">ガーリックスライス
+										<input type="checkbox" value="18" name="toppingList">ガーリックスライス
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="19">あらびきスライスソーセージ
+										<input type="checkbox" value="19" name="toppingList">あらびきスライスソーセージ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="20">ブロッコリー
+										<input type="checkbox" value="20" name="toppingList">ブロッコリー
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="21">グリーンアスパラ
+										<input type="checkbox" value="21" name="toppingList">グリーンアスパラ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="22">パルメザンチーズ
+										<input type="checkbox" value="22" name="toppingList">パルメザンチーズ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="23">パイナップル
+										<input type="checkbox" value="23" name="toppingList">パイナップル
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="24">ハラペーニョ
+										<input type="checkbox" value="24" name="toppingList">ハラペーニョ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="25">もち
+										<input type="checkbox" value="25" name="toppingList">もち
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="26">ポテト
+										<input type="checkbox" value="26" name="toppingList">ポテト
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="27">ブラックオリーブ
+										<input type="checkbox" value="27" name="toppingList">ブラックオリーブ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="28">チーズ増量
+										<input type="checkbox" value="28" name="toppingList">チーズ増量
 									</label><br>
 								</div>
 							</div>
@@ -202,7 +202,7 @@
 									<label for="">数量:</label>
 									<label class="control-label"
 										style="color: red" for="inputError">数量を選択してください</label> <select
-										name="area" class="form-control">
+										name="quantity" class="form-control">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
