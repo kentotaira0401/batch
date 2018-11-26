@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,16 +8,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ピザ屋のネット注文</title>
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/piza.css" rel="stylesheet">
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/piza.css" rel="stylesheet">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
-    <img src="img/header_log.png">
-    
 	<div class="container">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -29,7 +29,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="item_list.html"> <!-- 企業ロゴ --> <img
-						alt="main log" src="img/header_logo.png" height="35">
+						alt="main log" src="../../img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -81,7 +81,7 @@
 						<tr>
 							<td>
 								<div class="center">
-									<img src="img/1.jpg"
+									<img src="../../img/1.jpg"
 										class="img-responsive img-rounded" width="100" height="300"><br>
 									じゃがバターベーコン
 								</div>
@@ -106,7 +106,7 @@
 						<tr>
 							<td>
 								<div class="center">
-									<img src="img/1.jpg"
+									<img src="../../img/1.jpg"
 										class="img-responsive img-rounded" width="100" height="300"><br>
 									じゃがバターベーコン
 								</div>
@@ -131,7 +131,7 @@
 						<tr>
 							<td>
 								<div class="center">
-									<img src="img/1.jpg"
+									<img src="../../img/1.jpg"
 										class="img-responsive img-rounded" width="100" height="300"><br>
 									じゃがバターベーコン
 								</div>
@@ -168,7 +168,7 @@
 		</div>
 		
 		<!-- table -->
-		<form action="order_finished.html">
+		<form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/orderConfirm" method="POST">
 			<div class="row">
 				<div
 					class="table-responsive col-lg-offset-3 col-lg-6 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
@@ -182,7 +182,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationName"/>
 								</td>
 							</tr>
 							<tr>
@@ -192,7 +192,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationEmail"/>
 								</td>
 							</tr>
 							<tr>
@@ -202,7 +202,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">&nbsp;&nbsp;<button>住所検索</button>
+									<form:input path="destinationZipcode"/>&nbsp;&nbsp;<button>住所検索</button>
 								</td>
 							</tr>
 							<tr>
@@ -212,7 +212,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationAddress"/>
 								</td>
 							</tr>
 							<tr>
@@ -222,7 +222,7 @@
 									</div>
 								</td>
 								<td>
-									<input type="text">
+									<form:input path="destinationTel"/>
 								</td>
 							</tr>
 							<tr>
@@ -239,56 +239,56 @@
 													class="control-label" style="color: red" for="inputPeriod">配達日時を入力してください</label>
 											</div>
 											<div class="col-sm-5">
-												<input type="date" name="name" id="name"
-													class="form-control input-sm" />
+												<form:input path="orderDate" type="date" name="name" id="name"
+													class="form-control input-sm"/>
 											</div>
 											
 										</div>
 										<div class="row">
 											<div class="col-sm-12">
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany" checked="checked">
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany" checked="checked"/>
 													10時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													11時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													12時
 												</label><br>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													13時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													14時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													15時
 												</label><br>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													16時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													17時
 												</label>
 												<label class="radio-inline"> 
-													<input type="radio"
-														name="responsibleCompany"> 
+													<form:radiobutton path="deliverlyTime"
+														name="responsibleCompany"/> 
 													18時
 												</label><br>
 											</div>
@@ -355,7 +355,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</div>
 	<!-- end container -->
 	<script

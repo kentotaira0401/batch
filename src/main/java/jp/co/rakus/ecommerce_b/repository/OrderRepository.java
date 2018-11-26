@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -19,6 +20,23 @@ public class OrderRepository {
 	private NamedParameterJdbcTemplate template;
 
 	private SimpleJdbcInsert insert;
+	
+	private static final RowMapper<Order> ORDER_ROW_MAPPER = (rs, i) -> {
+		Order order = new Order();
+		order.setId(Integer.parseInt(rs.getString("id")));
+		order.setUserId(Integer.parseInt(rs.getString("user_id")));
+		order.setTotalPrice(Integer.parseInt(rs.getString("total_price ")));
+		order.setOrderDate(rs.getDate("order_date "));
+		order.setDestinationName(rs.getString("destination_name "));
+		order.setDestinationEmail(rs.getString("destination_email "));
+		order.setDestinationZipcode(rs.getString("destination_zipcode "));
+		order.setDestinationAddress(rs.getString("destination_address"));
+		order.setDestinationTel(rs.getString("destination_tel"));
+		order.setDeliverlyTime(rs.getTimestamp("delivery_time"));// timestap型
+		order.setPaymentMethod(Integer.parseInt("payment_method "));
+		return order;
+	};
+	
 
 	@PostConstruct
 	public void init() {
