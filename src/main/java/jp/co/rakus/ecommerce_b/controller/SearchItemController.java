@@ -87,7 +87,7 @@ public class SearchItemController {
 		System.out.println("222");
 		Item item = itemService.findById(id);
 		model.addAttribute("item", item);
-		Map<Integer, String> toppingMap = (Map<Integer, String>) findAllToppingService.findAll();
+		Map<Integer, String> toppingMap = findAllToppingService.findAll();
 		model.addAttribute("toppingMap", toppingMap);
 		return "item-detail";
 	}

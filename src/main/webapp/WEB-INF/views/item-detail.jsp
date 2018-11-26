@@ -104,9 +104,7 @@
 										</label>
 									</div>
 									<div class="col-sm-12">
-										<label class="checkbox-inline">
 									<form:checkboxes items="${toppingMap}" path="toppingList"/>
-										</label><br>
 									</div>
 				<div class="row">
 					<div class="col-xs-offset-2 col-xs-8">
