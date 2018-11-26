@@ -17,10 +17,11 @@ public class RegisterUserInfoService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@Bean
+	//↓SecurityConfig.javaにてすでに設定済み
+	/*@Bean  
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
-	}
+	}*/
 	// public List<Member> findAll(){
 	// return memberRepository.findAll();
 	// }
@@ -64,8 +65,8 @@ public class RegisterUserInfoService {
 		return userRepository.insert(user);
 	}
 
-	public User findByMailAddress(String email) {
-		return userRepository.findByMailAddress(email);
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
 	}
 
 	/**

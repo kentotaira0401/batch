@@ -62,7 +62,7 @@ public class RegisterUserInfoController {
 		}
 
 		// メールアドレスが重複している場合の処理
-		User valUser = registerService.findByMailAddress(form.getEmail());
+		User valUser = registerService.findByEmail(form.getEmail());
 		if(valUser != null){
 			result.rejectValue("email", "", "すでにメールアドレスが登録されています");
 		}

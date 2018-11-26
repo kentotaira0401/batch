@@ -72,7 +72,7 @@ public class UserRepository {
 	 *            メールアドレス
 	 * @return Userオブジェクト.該当するデータがなければnullを返す
 	 */
-	public User findByMailAddress(String email) {
+	public User findByEmail(String email) {
 		String sql = "SELECT id, name, email, password, zipcode, address, telephone FROM users WHERE email=:email";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
 		
