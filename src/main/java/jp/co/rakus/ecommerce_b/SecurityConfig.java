@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated(); // それ以外のパスは認証が必要	*/		
 		//↑↑↑↑↑を参照
 		http.authorizeRequests() 
-			.antMatchers("/",/*"/login",*/"/item-list","/register/**").permitAll() 
+			.antMatchers("/",/*"/login",*/"/item-list","/register/**","/SearchItem/FuzzySearch").permitAll() 
 			.anyRequest().authenticated(); 
 		//--------------------------------------------------------------------
 
@@ -81,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.loginPage("/") // ログイン画面に遷移させるパス(ログイン認証が必要なパスを指定してかつログインされていないとこのパスに遷移される)
 			.loginProcessingUrl("/login") // ログインボタンを押した際に遷移させるパス(ここに遷移させれば自動的にログインが行われる)
 			.failureUrl("/?error=true") //ログイン失敗に遷移させるパス
-			.defaultSuccessUrl("/item-list", false) // 第1引数:デフォルトでログイン成功時に遷移させるパス
+			.defaultSuccessUrl("/SearchItem/Search", false) // 第1引数:デフォルトでログイン成功時に遷移させるパス
 			                                        // 第2引数: true :認証後常に第1引数のパスに遷移 
 			                                        //         false:認証されてなくて一度ログイン画面に飛ばされてもログインしたら指定したURLに遷移
 			.usernameParameter("email") // 認証時に使用するユーザ名のリクエストパラメータ名(今回はメールアドレスを使用)
