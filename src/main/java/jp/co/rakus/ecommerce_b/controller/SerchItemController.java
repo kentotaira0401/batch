@@ -17,12 +17,33 @@ public class SerchItemController {
 	@Autowired
 	ItemService itemService;
 
+	/**
+	 * 商品一覧を表示
+	 * 
+	 * @param model
+	 *            モデル
+	 * @return 商品リスト
+	 */
 	@RequestMapping("/Serch")
 	public String Serch(Model model) {
 		List<Item> itemList = itemService.findAll();
 		model.addAttribute("itemList", itemList);
 		return "item-list";
+	}
 
+	@RequestMapping("/FuzzySerch")
+	public String FuzzySerch(Model model, String name) {
+		List<Item> itemList = itemService.findByName(name);
+		model.addAttribute("itemList", itemList);
+		
+		return "item-list";
+
+	}
+	@RequestMapping("/detailItem")
+	public String detailItem(int id,Model model) {
+		Item item = itemService.findById(id);
+		model.addAttribute("item",item);
+		return "item-detail";
 	}
 
 }

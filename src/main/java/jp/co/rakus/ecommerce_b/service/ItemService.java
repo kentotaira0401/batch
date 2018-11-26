@@ -23,5 +23,25 @@ public class ItemService {
 		return itemRepository.findAll();	
 	}
 	
+	/**
+	 * 商品名の曖昧検索をする.
+	 * 
+	 * @param name　商品名
+	 * @return 検索された商品一覧を表示
+	 */
+	public List<Item> findByName(String name) {
+		return itemRepository.findByName(name);
+	}
+	
+	/**
+	 * 商品の詳細を表示する.
+	 * 
+	 * @param id
+	 * @return Item
+	 */
+	public Item findById(int id) {
+		return itemRepository.findById(id);
+		
+	}
 
 }
