@@ -4,13 +4,12 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -44,8 +43,15 @@ public class OrderController {
 	 */
 	@RequestMapping("/order")
 	public String order(Model model) {
-		Order order = service.findByUserIdAndStatus(); //未入金の order を使用
-		model.addAttribute("order",order); //未入金の order を　confirm画面で使用
+		List<Order> orderList = (List<Order>) service.findByUserIdAndStatus(); //未入金の order を使用
+		
+		System.out.println("orderList"+orderList.toString());
+		
+		for(Order order:orderList) {
+			System.out.println("order"+order.toString());
+		}
+		
+		model.addAttribute("orderList",orderList); //未入金の order を　confirm画面で使用
 		return "order_confirm2";
 	}
 	

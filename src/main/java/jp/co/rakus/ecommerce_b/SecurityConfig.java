@@ -110,8 +110,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 http.exceptionHandling()
 		 	.accessDeniedPage("/403.jsp"); // 不正なリクエストを検知しました
 		//--------------------------------------------------------------------
-
-	
 	}
 
 	/**

@@ -86,7 +86,7 @@
 						<tr>
 							<td>
 								<div class="center">
-									<img src="<c:out value="${orderItem.imagePath}""/>
+									<img src=<c:out value="${orderItem.imagePath}"/>
 										class="img-responsive img-rounded" width="100" height="300"><br>
 									  <c:out value="${order.name}"/>
 								</div>
