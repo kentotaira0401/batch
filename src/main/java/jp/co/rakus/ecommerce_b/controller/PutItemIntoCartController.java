@@ -29,6 +29,6 @@ public class PutItemIntoCartController {
 			return "";
 		}
 		putItemIntoCartService.putItemIntoCart(form);
-		return "item-list";
+		return "redirect:/showCartItem/showCart";
 	}
 }

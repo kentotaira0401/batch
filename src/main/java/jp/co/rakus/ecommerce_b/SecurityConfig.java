@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated(); // それ以外のパスは認証が必要	*/		
 		//↑↑↑↑↑を参照
 		http.authorizeRequests() 
-			.antMatchers("/",/*"/login",*/"/item-list","/register/**","/SearchItem/FuzzySearch").permitAll() 
+			.antMatchers("/",/*"/login",*/"/item-list","/register/**","/SearchItem/**").permitAll() 
 			.anyRequest().authenticated(); 
 		//--------------------------------------------------------------------
 
@@ -108,7 +108,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//--------------------------------------------------------------------
 		// Exceptionハンドラ
 		 http.exceptionHandling()
-		 	.accessDeniedPage("/403.jsp"); // 不正なリクエストを検知しました
+		 	.accessDeniedPage("/403"); // 不正なリクエストを検知しました
 		//--------------------------------------------------------------------
 	}
 

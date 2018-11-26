@@ -86,9 +86,10 @@
 						<tr>
 							<td>
 								<div class="center">
-									<img src=<c:out value="${orderItem.imagePath}"/>
-										class="img-responsive img-rounded" width="100" height="300"><br>
-									  <c:out value="${order.name}"/>
+
+										<img src="<c:out value="${orderItem.item.imagePath}"/>" />
+										<class="img-responsive img-rounded" width="100" height="300"><br>
+									  <c:out value="${orderItem.item.name}"/>
 								</div>
 							</td>
 							<td>
@@ -97,8 +98,8 @@
 							</td>
 							<td>
 								<ul>
-									<c:forEach var="topping" items="${orderItem.orderToppingList}">
-									<li><c:out value="${topping.name}"/><c:out value="${topping.priceM}"/></li>
+									<c:forEach var="ordertopping" items="${orderItem.orderToppingList}">
+									<li><c:out value="${ordertopping.topping.name}"/><c:out value="${topping.priceM}"/></li>
 								    </c:forEach>
 								</ul>
 							</td>
