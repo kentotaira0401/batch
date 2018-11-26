@@ -26,9 +26,9 @@ public class PutItemIntoCartController {
 	@RequestMapping("/putItem")
 	public String putItemIntoCart(@Validated PutItemIntoCartForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			return "cart-list";
+			return "";
 		}
 		putItemIntoCartService.putItemIntoCart(form);
-		return "cart-list";
+		return "item-list";
 	}
 }
