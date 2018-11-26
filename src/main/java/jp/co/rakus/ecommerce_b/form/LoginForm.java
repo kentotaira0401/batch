@@ -1,19 +1,19 @@
 package jp.co.rakus.ecommerce_b.form;
 
-import javax.validation.constraints.NotEmpty;
+/*import javax.validation.constraints.NotEmpty;
 
-/**
+*//**
  * ログインフォーム
  * 
  * @author kento
  *
- */
+ *//*
 public class LoginForm {
 
-	/** Eメール */
+	*//** Eメール *//*
 	@NotEmpty( message = "値を入力してください")
 	private String email;
-	/** パスワード */
+	*//** パスワード *//*
 	@NotEmpty( message = "値を入力してください")
 	private String password;
 	
@@ -45,3 +45,4 @@ public class LoginForm {
 	
 	
 }
+*/
