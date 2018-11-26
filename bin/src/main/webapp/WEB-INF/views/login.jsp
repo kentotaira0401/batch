@@ -42,23 +42,20 @@
 		<div class="row">
 			<div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-xs-12">
 				<div class="well">
-					<div class="error"><c:out value="${loginerror}" /></div>
-					<form:errors path="loginForm.*" />
 					<form:form modelAttribute="loginForm" action="${pageContext.request.contextPath}/login">
 						<fieldset>
 							<legend>
 								ログイン
 							</legend>
-							<!-- <label class="control-label" style="color: red" for="inputError">メールアドレス、またはパスワードが間違っています</label> -->
+							<label
+									class="control-label" style="color: red" for="inputError">メールアドレス、またはパスワードが間違っています</label>
 							<div class="form-group">
 								<label for="inputEmail">メールアドレス:</label>
 								<form:input path="email" id="email" class="form-control" placeholder="Email"></form:input>
-								<form:errors path="email" cssStyle="color:red" />
 							</div>
 							<div class="form-group">
 								<label for="inputPassword">パスワード:</label>
 								<form:input path="password" id="password" class="form-control" placeholder="Password"></form:input>
-								<form:errors path="password" cssStyle="color:red" />
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">ログイン</button>
@@ -71,8 +68,7 @@
 
 		<div class="row">
 			<div class="text-center">
-				<!-- <a href="register_user.jsp">ユーザ登録はこちら</a> -->
-				<a href="${pageContext.request.contextPath}/register/registerForm">ユーザ登録はこちら</a>
+				<a href="register_user.html">ユーザ登録はこちら</a>
 			</div>
 		</div>
 		
