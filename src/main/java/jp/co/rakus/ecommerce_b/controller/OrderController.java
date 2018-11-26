@@ -43,7 +43,7 @@ public class OrderController {
 	 * @return 注文確認画面にreturn.
 	 */
 	@RequestMapping("/order")
-	public String order(@Validated OrderForm orderForm,BindingResult result,Model model) {
+	public String order(Model model) {
 		Order order = service.findByUserIdAndStatus(); //未入金の order を使用
 		model.addAttribute("order",order); //未入金の order を　confirm画面で使用
 		return "order_confirm2";
@@ -56,7 +56,7 @@ public class OrderController {
 	 * @throws ParseException 
 	 */
 	@RequestMapping("/orderConfirm")
-	public String orderConfirm(OrderForm form) throws ParseException {
+	public String orderConfirm(OrderForm form,Model model) throws ParseException {
 	    
 		 System.out.println("orderform"+form.toString());		
 		
@@ -72,12 +72,20 @@ public class OrderController {
 		 //** string を　timestamp へ変換
 		 Timestamp deliverlyTime = new Timestamp(new SimpleDateFormat("yyyy-MM-dd hh").parse(form.getOrderDate()+ " " + form.getDeliverlyTime()).getTime() );
 		  
+		 /*
+		 Order notPaymentOrder = service.findByUserIdAndStatus();
+		 order.setId(notPaymentOrder.getId());
+		 order.setUserId(notPaymentOrder.getUserId());
+		 order.setStatus(notPaymentOrder.getStatus());
+		 order.setTotalPrice(notPaymentOrder.getStatus());
+		 
 		 order.setOrderDate(OrderDate);
 		 order.setDeliverlyTime(deliverlyTime);
+		 */
 		 
 		 System.out.println("order"+order.toString());
 		 
-		 //service.save(order); // order情報をupdateする
+		 service.save(order); // order情報をupdateする
 		 return "order_finished";
 	}
 	
