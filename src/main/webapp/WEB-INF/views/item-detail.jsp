@@ -30,7 +30,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="Serch"> <!-- 企業ロゴ -->
+					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ -->
 						<img alt="main log" src="../img/header_logo.png" height="35">
 					</a>
 				</div>
@@ -106,29 +106,89 @@
 								</div>
 								<div class="col-sm-12">
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">オニオン
+										<input type="checkbox" value="1">オニオン
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">チーズ
+										<input type="checkbox" value="2">ツナマヨ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">ピーマン
+										<input type="checkbox" value="3">イタリアンポテト
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">ロースハム
+										<input type="checkbox" value="4">イカ
 									</label><br>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">ほうれん草
+										<input type="checkbox" value="5">プルコギ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">ぺパロに
+										<input type="checkbox" value="6">アンチョビ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">グリルナス
+										<input type="checkbox" value="7">エビ
 									</label>
 									<label class="checkbox-inline">
-										<input type="checkbox" value="">あらびきソーセージ
+										<input type="checkbox" value="8">コーン
 									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="9">ピーマン
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="10">フレッシュスライストマト
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="11">ベーコン
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="12">ペパロニ・サラミ
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="13">熟成ベーコン
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="14">特性マヨソース
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="15">カマンベールチーズ
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="16">フレッシュモッツアレラチーズ
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="17">イタリアンソーセージ
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="18">ガーリックスライス
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="19">あらびきスライスソーセージ
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="20">ブロッコリー
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="21">グリーンアスパラ
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="22">パルメザンチーズ
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="23">パイナップル
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="24">ハラペーニョ
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="25">もち
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="26">ポテト
+									</label><br>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="27">ブラックオリーブ
+									</label>
+									<label class="checkbox-inline">
+										<input type="checkbox" value="28">チーズ増量
+									</label><br>
 								</div>
 							</div>
 						</div>
@@ -165,7 +225,7 @@
 				<div class="row">
 					<div class="col-xs-offset-2 col-xs-10">
 						<div class="form-group">
-							<span id="total-price">この商品金額：38,000 円(税抜)</span>
+							<span id="total-price">この商品金額："後でやる"(税抜)</span>
 						</div>
 					</div>
 				</div>

@@ -29,7 +29,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="Serch"> <!-- 企業ロゴ -->
+					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ -->
 						<img alt="main log" src="../img/header_logo.png" height="35">
 					</a>
 				</div>
@@ -58,7 +58,7 @@
 						<div class="panel-title">商品を検索する</div>
 					</div>
 					<div class="panel-body">
-						<form method="post" action="${pageContext.request.contextPath}/SerchItem/FuzzySerch" class="form-horizontal">
+						<form method="post" action="${pageContext.request.contextPath}/SearchItem/FuzzySearch" class="form-horizontal">
 							<div class="form-group">
 								<label for="code" class="control-label col-sm-2">商品名</label>
 								<div class="col-sm-9">
@@ -96,7 +96,7 @@
 							
 								<th><img src="<c:out value="${item.imagePath}"/>" /><br>
 									<a
-									href="${pageContext.request.contextPath}/SerchItem/detailItem?id=<c:out value="${item.id}"/>">
+									href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${item.id}"/>">
 										<c:out value="${item.name}" /><br>
 								</a> <span class="price">&nbsp;М&nbsp;</span>
 								 <fmt:formatNumber value="${item.priceM}" pattern="###,###"/>円(税抜き)<br> <span class="price">&nbsp;Ｌ&nbsp;</span>
