@@ -30,8 +30,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ -->
-						<img alt="main log" src="../img/header_logo.png" height="35">
+					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ --> <img
+						alt="main log" src="../img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -41,8 +41,8 @@
 					<p class="navbar-text navbar-right">
 						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-						<a href="item_list.html" class="navbar-link">ログアウト</a>
+						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp; <a
+							href="item_list.html" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -50,199 +50,115 @@
 			<!-- /.container-fluid -->
 		</nav>
 
-		<form action="cart_list.html">
-		<div class="row">
-			<div class="col-xs-offset-2 col-xs-8">
+		<form:form modelAttribute="putItemIntoCartForm"
+			action="${pageContext.request.contextPath}/putItemIntoCart/putItem">
+			<div class="row">
+				<div class="col-xs-offset-2 col-xs-8">
+				<input type="hidden" value="${item.id}" name="itemId"/>
+					<h3 class="text-center">商品詳細</h3>
+					<div class="row">
+						<div class="col-xs-5">
+							<img src="<c:out value="${item.imagePath}"/>" />
+						</div>
 
-				<h3 class="text-center">商品詳細</h3>
-				<div class="row">
-					<div class="col-xs-5">
-						<img src="<c:out value="${item.imagePath}"/>" />
+						<div class="col-xs-8">
+							<div class="bs-component">
+								<c:out value="${item.name}" />
+								<br> <br>
+								<p>
+									<c:out value="${item.description}" />
+								</p>
+							</div>
+						</div>
 					</div>
+					<br>
+					<div class="row">
+						<div class="col-xs-offset-2 col-xs-8">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-12">
+										<label for="inputResponsibleCompany">サイズ</label>
+									</div>
+									<div class="col-sm-12">
+										<label class="radio-inline"> <form:radiobutton
+												path="size" /><span class="price">&nbsp;М&nbsp;</span> <fmt:formatNumber
+												value="${item.priceM}" pattern="###,###" />円(税抜き)<br>
+										</label> <label class="radio-inline"> <form:radiobutton
+												path="size" /> <span class="price">&nbsp;Ｌ&nbsp;</span> <fmt:formatNumber
+												value="${item.priceL}" pattern="###,###" />円(税抜き)<br>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-xs-offset-2 col-xs-8">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-12">
+										<label for="inputResponsibleCompany">
+											トッピング：&nbsp;1つにつき <span>&nbsp;М&nbsp;</span>&nbsp;&nbsp;200円(税抜)
+											<span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
+										</label>
+									</div>
+									<div class="col-sm-12">
+										<label class="checkbox-inline"> <form:checkboxes items="${toppingMap}" path="toppingList"/>
+										</label><br>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-offset-2 col-xs-8">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-5 col-sm-5">
+										<label for="">数量:</label> <label class="control-label"
+											style="color: red" for="inputError">数量を選択してください</label> <select
+											name="area" class="form-control">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="form-group">
+								<span id="total-price">この商品金額："後でやる"(税抜)</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-offset-2 col-xs-3">
+							<div class="form-group">
+								<p>
+									<input class="form-control btn btn-warning btn-block"
+										type="submit" value="カートに入れる">
+								</p>
 
-					<div class="col-xs-8">
-						<div class="bs-component">
-							<c:out value="${item.name}" /><br>
-							<br>
-							<p><c:out value="${item.description}" /></p>
-						</div>
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col-xs-offset-2 col-xs-8">
-						<div class="form-group">
-							<div class="row">
-								<div class="col-sm-12">
-									<label for="inputResponsibleCompany">サイズ</label>
-								</div>
-								<div class="col-sm-12">
-									<label class="radio-inline"> 
-										<input type="radio"
-											name="responsibleCompany" checked="checked">
-									<span class="price">&nbsp;М&nbsp;</span>
-								 <fmt:formatNumber value="${item.priceM}" pattern="###,###"/>円(税抜き)<br> 
-									</label>
-									<label class="radio-inline"> 
-										<input type="radio"
-											name="responsibleCompany"> 
-								<span class="price">&nbsp;Ｌ&nbsp;</span>
-										<fmt:formatNumber value="${item.priceL}" pattern="###,###"/>円(税抜き)<br>
-									</label>
-								</div>
 							</div>
-						</div>
-					</div>
-				</div><br>
-				<div class="row">
-					<div class="col-xs-offset-2 col-xs-8">
-						<div class="form-group">
-							<div class="row">
-								<div class="col-sm-12">
-									<label for="inputResponsibleCompany">
-										トッピング：&nbsp;1つにつき
-										<span>&nbsp;М&nbsp;</span>&nbsp;&nbsp;200円(税抜)
-										<span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
-									</label>
-								</div>
-								<div class="col-sm-12">
-									<label class="checkbox-inline">
-										<input type="checkbox" value="1">オニオン
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="2">ツナマヨ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="3">イタリアンポテト
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="4">イカ
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="5">プルコギ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="6">アンチョビ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="7">エビ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="8">コーン
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="9">ピーマン
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="10">フレッシュスライストマト
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="11">ベーコン
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="12">ペパロニ・サラミ
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="13">熟成ベーコン
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="14">特性マヨソース
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="15">カマンベールチーズ
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="16">フレッシュモッツアレラチーズ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="17">イタリアンソーセージ
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="18">ガーリックスライス
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="19">あらびきスライスソーセージ
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="20">ブロッコリー
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="21">グリーンアスパラ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="22">パルメザンチーズ
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="23">パイナップル
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="24">ハラペーニョ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="25">もち
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="26">ポテト
-									</label><br>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="27">ブラックオリーブ
-									</label>
-									<label class="checkbox-inline">
-										<input type="checkbox" value="28">チーズ増量
-									</label><br>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-offset-2 col-xs-8">
-						<div class="form-group">
-							<div class="row">
-								<div class="col-xs-5 col-sm-5">
-									<label for="">数量:</label>
-									<label class="control-label"
-										style="color: red" for="inputError">数量を選択してください</label> <select
-										name="area" class="form-control">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-										<option value="11">11</option>
-										<option value="12">12</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-xs-offset-2 col-xs-10">
-						<div class="form-group">
-							<span id="total-price">この商品金額："後でやる"(税抜)</span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-offset-2 col-xs-3">
-						<div class="form-group">
-							<p>
-								<input class="form-control btn btn-warning btn-block"
-									type="submit" value="カートに入れる">
-							</p>
-							
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		</form>
+		</form:form>
 
 	</div>
 	<!-- end container -->

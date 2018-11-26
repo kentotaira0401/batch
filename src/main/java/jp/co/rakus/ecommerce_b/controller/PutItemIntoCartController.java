@@ -25,10 +25,10 @@ public class PutItemIntoCartController {
 	}
 	
 	
-	@RequestMapping("/putItemIntoCart")
+	@RequestMapping("/putItem")
 	public String putItemIntoCart(@Validated PutItemIntoCartForm form, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			return "";
+			return "cart-list";
 		}
 		putItemIntoCartService.putItemIntoCart(form);
 		return "cart-list";

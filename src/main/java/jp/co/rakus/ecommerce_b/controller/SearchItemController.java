@@ -43,6 +43,8 @@ public class SearchItemController {
 	public String detailItem(int id,Model model) {
 		Item item = itemService.findById(id);
 		model.addAttribute("item",item);
+		
+		
 		return "item-detail";
 	}
 
