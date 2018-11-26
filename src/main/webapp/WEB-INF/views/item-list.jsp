@@ -64,7 +64,7 @@
 						<div class="panel-title">商品を検索する</div>
 					</div>
 					<div class="panel-body">
-						<form method="post" action="${pageContext.request.contextPath}/SearchItem/FuzzySearch" class="form-horizontal">
+						<form:form method="post" action="${pageContext.request.contextPath}/SearchItem/FuzzySearch" class="form-horizontal">
 							<div class="form-group">
 								<label for="code" class="control-label col-sm-2">商品名</label>
 								<div class="col-sm-9">
@@ -83,7 +83,7 @@
 							
 						
 							</div>
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>
@@ -108,8 +108,7 @@
 							</c:if>
 							
 								<th><img src="<c:out value="${item.imagePath}"/>" /><br>
-									<a
-									href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${item.id}"/>">
+									<a href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${item.id}"/>">
 										<c:out value="${item.name}" /><br>
 								</a> <span class="price">&nbsp;М&nbsp;</span>
 								 <fmt:formatNumber value="${item.priceM}" pattern="###,###"/>円(税抜き)<br> <span class="price">&nbsp;Ｌ&nbsp;</span>

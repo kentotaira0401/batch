@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated(); // それ以外のパスは認証が必要	*/		
 		//↑↑↑↑↑を参照
 		http.authorizeRequests() 
-			.antMatchers("/",/*"/login",*/"/item-list","/register/**","/SearchItem/**").permitAll() 
+			.antMatchers("/",/*"/login",*/"/item-list","/register/**","/SearchItem/**","/putItemIntoCart/**").permitAll() 
 			.anyRequest().authenticated(); 
 		//--------------------------------------------------------------------
 
