@@ -11,8 +11,8 @@ import jp.co.rakus.ecommerce_b.domain.Item;
 import jp.co.rakus.ecommerce_b.service.ItemService;
 
 @Controller
-@RequestMapping("/SerchItem")
-public class SerchItemController {
+@RequestMapping("/SearchItem")
+public class SearchItemController {
 
 	@Autowired
 	ItemService itemService;
@@ -24,14 +24,14 @@ public class SerchItemController {
 	 *            モデル
 	 * @return 商品リスト
 	 */
-	@RequestMapping("/Serch")
-	public String Serch(Model model) {
+	@RequestMapping("/Search")
+	public String Search(Model model) {
 		List<Item> itemList = itemService.findAll();
 		model.addAttribute("itemList", itemList);
 		return "item-list";
 	}
 
-	@RequestMapping("/FuzzySerch")
+	@RequestMapping("/FuzzySearch")
 	public String FuzzySerch(Model model, String name) {
 		List<Item> itemList = itemService.findByName(name);
 		model.addAttribute("itemList", itemList);
