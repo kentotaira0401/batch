@@ -81,14 +81,11 @@
 							</th>
 						</tr>
 
-						
 						<c:forEach var="orderItem" items="${order.orderItemList}">
 						<tr>
 							<td>
 								<div class="center">
-
-										<img src="<c:out value="${orderItem.item.imagePath}"/>" />
-										<class="img-responsive img-rounded" width="100" height="300"><br>
+									  <div class="img-responsive img-rounded" width="50" height="100"><img src="<c:out value="${orderItem.item.imagePath}"/>"></div><br>
 									  <c:out value="${orderItem.item.name}"/>
 								</div>
 							</td>
@@ -100,7 +97,7 @@
 								<ul>
 									<c:forEach var="ordertopping" items="${orderItem.orderToppingList}">
 									<li><c:out value="${ordertopping.topping.name}"/><c:out value="${topping.priceM}"/></li>
-								    </c:forEach>
+								  </c:forEach>
 								</ul>
 							</td>
 							<td>
@@ -108,9 +105,9 @@
 									3,280円
 								</div>
 							</td>
-							
 						</tr>
-						</c:forEach>
+						</c:forEach>				
+		
 					</tbody>
 				</table>
 			</div>

@@ -45,13 +45,10 @@ public class OrderController {
 	public String order(Model model) {
 		List<Order> orderList = (List<Order>) service.findByUserIdAndStatus(); //未入金の order を使用
 		
-		System.out.println("orderList"+orderList.toString());
+		Order order = orderList.get(0);
 		
-		for(Order order:orderList) {
-			System.out.println("order"+order.toString());
-		}
 		
-		model.addAttribute("orderList",orderList); //未入金の order を　confirm画面で使用
+		model.addAttribute("order",order); //未入金の order を　confirm画面で使用
 		return "order_confirm2";
 	}
 	
