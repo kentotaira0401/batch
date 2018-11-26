@@ -1,16 +1,11 @@
 package jp.co.rakus.ecommerce_b.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import jp.co.rakus.ecommerce_b.form.LoginForm;
-import jp.co.rakus.ecommerce_b.service.LoginService;
-import jp.co.rakus.ecommerce_b.service.RegisterUserInfoService;
 
 /**
  * ログイン処理をするコントローラー
@@ -23,23 +18,24 @@ import jp.co.rakus.ecommerce_b.service.RegisterUserInfoService;
 @RequestMapping("/")
 public class LoginController {
 
-	@Autowired
+	//※ログイン認証フィルターが機能するためいらなくなりました。
+	/*@Autowired
 	private LoginService userService;
 	
 	@Autowired
 	private RegisterUserInfoService registerService;
-	
-	// ※ログインフィルターが機能するためいらなくなる予定？？
+	*/
+	//※ログイン認証フィルターが機能するためいらなくなりました。
 	/**
 	 * フォームを初期化します.
 	 * 
 	 * @return フォーム
 	 */
-	@ModelAttribute
+	/*@ModelAttribute
 	public LoginForm setUpForm() {
 		return new LoginForm();
 	}
-
+*/
 	/**
 	 * ログイン画面を表示します.
 	 * 
@@ -70,6 +66,7 @@ public class LoginController {
 		return "item-list";
 	}
 
+	//※ログイン認証フィルターが機能するためいらなくなりました。
 	/**
 	 * ログイン処理を行います.
 	 * 

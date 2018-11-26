@@ -25,6 +25,7 @@ import org.springframework.security.core.GrantedAuthority;
 		 */
 		public LoginUser(User user, Collection<GrantedAuthority> authorityList) {
 			super(user.getEmail(), user.getPassword(), authorityList);
+			//System.out.println(user.getId());
 			this.user = user;
 		}
 

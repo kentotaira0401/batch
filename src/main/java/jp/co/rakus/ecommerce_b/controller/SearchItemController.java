@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.rakus.ecommerce_b.domain.Item;
+import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.form.PutItemIntoCartForm;
 import jp.co.rakus.ecommerce_b.service.FindAllToppingService;
 import jp.co.rakus.ecommerce_b.service.ItemService;
@@ -79,7 +81,10 @@ public class SearchItemController {
 	 * @return 商品詳細画面
 	 */
 	@RequestMapping("/detailItem")
-	public String detailItem(int id, Model model) {
+	public String detailItem(int id, Model model,@AuthenticationPrincipal LoginUser loginUser) {
+		System.out.println("111");
+		System.out.println(loginUser.getUser().getId());
+		System.out.println("222");
 		Item item = itemService.findById(id);
 		model.addAttribute("item", item);
 		Map<Integer, String> toppingMap = (Map<Integer, String>) findAllToppingService.findAll();
