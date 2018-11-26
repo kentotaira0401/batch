@@ -23,7 +23,7 @@ public class OrderItem {
 	/** 商品 */
 	private Item item;
 	/** 注文トッピングリスト. */
-	private List<Topping> orderToppingList;
+	private List<OrderTopping> orderToppingList;
 
 	public int getId() {
 		return id;
@@ -73,11 +73,11 @@ public class OrderItem {
 		this.item = item;
 	}
 
-	public List<Topping> getOrderToppingList() {
+	public List<OrderTopping> getOrderToppingList() {
 		return orderToppingList;
 	}
 
-	public void setOrderToppingList(List<Topping> orderToppingList) {
+	public void setOrderToppingList(List<OrderTopping> orderToppingList) {
 		this.orderToppingList = orderToppingList;
 	}
 

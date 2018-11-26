@@ -9,7 +9,7 @@ import java.util.List;
  * @author wataru.saito
  *
  */
-public class PutItemIntoForm {
+public class PutItemIntoCartForm {
 
 	/**
 	 * アイテムID

@@ -247,47 +247,47 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="10"
 														name="responsibleCompany" checked="checked"/>
 													10時
 												</label>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="11"
 														name="responsibleCompany"/> 
 													11時
 												</label>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="12"
 														name="responsibleCompany"/> 
 													12時
 												</label><br>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="13"
 														name="responsibleCompany"/> 
 													13時
 												</label>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="14"
 														name="responsibleCompany"/> 
 													14時
 												</label>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="15"
 														name="responsibleCompany"/> 
 													15時
 												</label><br>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="16"
 														name="responsibleCompany"/> 
 													16時
 												</label>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="17"
 														name="responsibleCompany"/> 
 													17時
 												</label>
 												<label class="radio-inline"> 
-													<form:radiobutton path="deliverlyTime"
+													<form:radiobutton path="deliverlyTime" value="18"
 														name="responsibleCompany"/> 
 													18時
 												</label><br>
@@ -318,8 +318,8 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<label class="radio-inline"> 
-												<input type="radio"
-													name="responsibleCompany" checked="checked">
+												<form:radiobutton value="1" path="paymentMethod"
+													name="responsibleCompany" checked="checked"/>
 												代金引換
 											</label>
 										</div>
@@ -336,8 +336,8 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<label class="radio-inline"> 
-												<input type="radio"
-													name="responsibleCompany" checked="checked">
+												<form:radiobutton value="2" path="paymentMethod"
+													name="responsibleCompany" checked="checked"/>
 												クレジットカード
 											</label><br><br>
 										</div>

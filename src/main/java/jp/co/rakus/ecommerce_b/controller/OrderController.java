@@ -1,5 +1,11 @@
 package jp.co.rakus.ecommerce_b.controller;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,11 +53,32 @@ public class OrderController {
 	 * 注文をDBに保存.
 	 * 
 	 * @return 注文完了画面にreturn.
+	 * @throws ParseException 
 	 */
 	@RequestMapping("/orderConfirm")
-	public String orderConfirm(Order order) {
-	    service.save(order); // order情報をupdateする
-		return "order_finished";
+	public String orderConfirm(OrderForm form) throws ParseException {
+	    
+		 System.out.println("orderform"+form.toString());		
+		
+		 //formをコピー
+		 Order order = new Order();
+		 BeanUtils.copyProperties(form, order);
+		 
+		 //**  orderされた日付のstring を　date　へ変換する処理 **//
+		 String date = form.getOrderDate();
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		 Date OrderDate = sdf.parse(date);
+		
+		 //** string を　timestamp へ変換
+		 Timestamp deliverlyTime = new Timestamp(new SimpleDateFormat("yyyy-MM-dd hh").parse(form.getOrderDate()+ " " + form.getDeliverlyTime()).getTime() );
+		  
+		 order.setOrderDate(OrderDate);
+		 order.setDeliverlyTime(deliverlyTime);
+		 
+		 System.out.println("order"+order.toString());
+		 
+		 //service.save(order); // order情報をupdateする
+		 return "order_finished";
 	}
 	
 }
