@@ -16,6 +16,7 @@
     <![endif]-->
 </head>
 <body>
+
 	<div class="container">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -48,12 +49,13 @@
 			<!-- /.container-fluid -->
 		</nav>
 
-
 		<!-- table -->
+	
 		<div class="row">
 			<div
 				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
 				<h3 class="text-center">注文内容確認</h3>
+					
 				<table class="table table-striped">
 					<tbody>
 						<tr>
@@ -78,23 +80,26 @@
 								</div>
 							</th>
 						</tr>
+
+						
+						<c:forEach var="orderItem" items="${order.orderItemList}">
 						<tr>
 							<td>
 								<div class="center">
-									<img src="../../img/1.jpg"
+									<img src="<c:out value="${orderItem.imagePath}""/>
 										class="img-responsive img-rounded" width="100" height="300"><br>
-									じゃがバターベーコン
+									  <c:out value="${order.name}"/>
 								</div>
 							</td>
 							<td>
-								<span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円
-								&nbsp;&nbsp;1個
+								<span class="price">&nbsp;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
+								&nbsp;&nbsp;<c:out value="${orderItem.quantity}"/>
 							</td>
 							<td>
 								<ul>
-									<li>ピーマン300円</li>
-									<li>オニオン300円</li>
-									<li>あらびきソーセージ300円</li>
+									<c:forEach var="topping" items="${orderItem.orderToppingList}">
+									<li><c:out value="${topping.name}"/><c:out value="${topping.priceM}"/></li>
+								    </c:forEach>
 								</ul>
 							</td>
 							<td>
@@ -102,57 +107,9 @@
 									3,280円
 								</div>
 							</td>
+							
 						</tr>
-						<tr>
-							<td>
-								<div class="center">
-									<img src="../../img/1.jpg"
-										class="img-responsive img-rounded" width="100" height="300"><br>
-									じゃがバターベーコン
-								</div>
-							</td>
-							<td>
-								<span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円
-								&nbsp;&nbsp;1個
-							</td>
-							<td>
-								<ul>
-									<li>ピーマン300円</li>
-									<li>オニオン300円</li>
-									<li>あらびきソーセージ300円</li>
-								</ul>
-							</td>
-							<td>
-								<div class="text-center">
-									3,280円
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div class="center">
-									<img src="../../img/1.jpg"
-										class="img-responsive img-rounded" width="100" height="300"><br>
-									じゃがバターベーコン
-								</div>
-							</td>
-							<td>
-								<span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円
-								&nbsp;&nbsp;1個
-							</td>
-							<td>
-								<ul>
-									<li>ピーマン300円</li>
-									<li>オニオン300円</li>
-									<li>あらびきソーセージ300円</li>
-								</ul>
-							</td>
-							<td>
-								<div class="text-center">
-									3,280円
-								</div>
-							</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -162,10 +119,11 @@
 			<div class="col-xs-offset-2 col-xs-8">
 				<div class="form-group text-center">
 					<span id="total-price">消費税：8,000円</span><br>
-					<span id="total-price">ご注文金額合計：38,000 (税込)</span>
+					<span id="total-price">ご注文金額合計：</span><span><c:out value="${order.totalPrice}"></c:out>(税込)</span>
 				</div>
 			</div>
 		</div>
+		
 		
 		<!-- table -->
 		<form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/orderConfirm" method="POST">

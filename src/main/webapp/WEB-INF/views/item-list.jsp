@@ -22,7 +22,7 @@
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
-					<button type="button" class="../navbar-toggle collapsed"
+					<button type="button" class="navbar-toggle collapsed"
 						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 						aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span> <span
@@ -69,6 +69,13 @@
 							<div class="text-center">
 								<button type="submit" value="検索" class="btn btn-primary">検索</button>
 								<button type="reset" value="クリア" class="btn btn-default">クリア</button>
+								
+							   <c:if test="${isEmpty == true}">
+							　　<label class="control-label"
+										style="color: red" for="inputError">該当する商品はありません</label>　
+							　　 </c:if>
+							
+						
 							</div>
 						</form>
 					</div>

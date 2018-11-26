@@ -22,6 +22,7 @@ public class SearchItemController {
 	 * 
 	 * @param model
 	 *            モデル
+	 * 
 	 * @return 商品リスト
 	 */
 	@RequestMapping("/Search")
@@ -31,20 +32,45 @@ public class SearchItemController {
 		return "item-list";
 	}
 
+	/**
+	 * 検索結果を表示
+	 * 
+	 * @param model
+	 * @param name
+	 *            商品名
+	 * @return 検索された商品リスト（リストが空の場合は全てのアイテムを表示）
+	 */
 	@RequestMapping("/FuzzySearch")
 	public String FuzzySerch(Model model, String name) {
 		List<Item> itemList = itemService.findByName(name);
+
+		if ((itemList.size() == 0) || (name == "")) {
+			itemList = itemService.findAll();
+			boolean isEmpty = true;
+			model.addAttribute("isEmpty", isEmpty);
+			System.out.println("テストisEmpty呼ばれた");
+		}
+
 		model.addAttribute("itemList", itemList);
-		
+
 		return "item-list";
 
 	}
+
+	/**
+	 * 
+	 * 商品詳細画面を表示.
+	 * 
+	 * @param id
+	 * @param model
+	 *            モデル
+	 * @return 商品詳細画面
+	 */
 	@RequestMapping("/detailItem")
-	public String detailItem(int id,Model model) {
+	public String detailItem(int id, Model model) {
 		Item item = itemService.findById(id);
+
 		model.addAttribute("item",item);
-		
-		
 		return "item-detail";
 	}
 

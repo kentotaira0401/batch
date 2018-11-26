@@ -107,10 +107,6 @@
 										<label class="checkbox-inline"> <form:checkboxes items="${toppingMap}" path="toppingList"/>
 										</label><br>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="row">
 						<div class="col-xs-offset-2 col-xs-8">
 							<div class="form-group">
@@ -133,6 +129,29 @@
 											<option value="12">12</option>
 										</select>
 									</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-offset-2 col-xs-8">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-5 col-sm-5">
+									<label for="">数量:</label>
+									<label class="control-label"
+										style="color: red" for="inputError">数量を選択してください</label> <select
+										name="quantity" class="form-control">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
 								</div>
 							</div>
 						</div>

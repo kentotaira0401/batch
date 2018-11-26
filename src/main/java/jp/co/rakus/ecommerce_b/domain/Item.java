@@ -2,6 +2,10 @@ package jp.co.rakus.ecommerce_b.domain;
 
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+
+
+
 /**
  * 商品を表すドメイン.
  * 
