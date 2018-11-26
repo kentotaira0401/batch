@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import jp.co.rakus.ecommerce_b.domain.Order;
 import jp.co.rakus.ecommerce_b.domain.OrderItem;
 import jp.co.rakus.ecommerce_b.domain.OrderTopping;
-import jp.co.rakus.ecommerce_b.form.PutItemIntoForm;
+import jp.co.rakus.ecommerce_b.form.PutItemIntoCartForm;
 import jp.co.rakus.ecommerce_b.repository.OrderItemRepository;
 import jp.co.rakus.ecommerce_b.repository.OrderRepository;
 import jp.co.rakus.ecommerce_b.repository.OrderToppingRepository;
@@ -24,7 +24,7 @@ public class PutItemIntoCartService {
 	@Autowired
 	private OrderToppingRepository orderToppingRepository;
 	
-	public void putItemIntoCart(PutItemIntoForm form) {
+	public void putItemIntoCart(PutItemIntoCartForm form) {
 		
 		
 		Order order = new Order();
@@ -47,11 +47,5 @@ public class PutItemIntoCartService {
 			ordertopping.setOrderItemId(orderItem.getId());
 			ordertopping = orderToppingRepository.insert(ordertopping);
 		}
-		
-		
 	}
-	
-	
-	
-	
 }
