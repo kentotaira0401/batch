@@ -1,6 +1,8 @@
 package jp.co.rakus.ecommerce_b.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +23,16 @@ public class FindAllToppingService {
 	 * 
 	 * @return List<Topping> トッピング一覧
 	 */
-	public List<Topping> findAll() {
-		return toppingRepository.findAll();	
+	public Map<Integer,String> findAll() {
+		List<Topping> toppingList =  toppingRepository.findAll();
+		Map<Integer, String> toppingMap = new LinkedHashMap<>();
+		for (Topping topping : toppingList) {
+			toppingMap.put(topping.getId(), topping.getName());
+		}
+		
+		
+		
+		return toppingMap;	
 	}
 	
 }
