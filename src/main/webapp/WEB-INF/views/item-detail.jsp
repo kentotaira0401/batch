@@ -86,10 +86,14 @@
 									</div>
 									<div class="col-sm-12">
 										<label class="radio-inline"> <form:radiobutton
-												path="size" value="M" class="size"/><span class="price">&nbsp;М&nbsp;</span> <fmt:formatNumber
+												path="size" value="M" class="size"/><span class="price">&nbsp;М&nbsp;</span>
+									<input type="hidden" id="mPrice" value="${item.priceM}">
+									<fmt:formatNumber
+									
 												value="${item.priceM}" pattern="###,###" />円(税抜き)<br>
 										</label> <label class="radio-inline"> <form:radiobutton
-												path="size" value="L" class="size"/> <span class="price">&nbsp;Ｌ&nbsp;</span> <fmt:formatNumber
+												path="size" value="L" class="size"/> <span class="price">&nbsp;Ｌ&nbsp;</span> 
+												<input type="hidden" id="lPrice" value="${item.priceL}"><fmt:formatNumber
 												value="${item.priceL}" pattern="###,###" />円(税抜き)<br>
 										</label>
 									</div>
@@ -142,7 +146,7 @@
 										<div class="row">
 											<div class="col-xs-offset-2 col-xs-10">
 												<div class="form-group">
-													<span id="total-price">この商品金額："後でやる"(税抜)</span>
+													<span id="totalPrice"></span>円
 												</div>
 											</div>
 										</div>
