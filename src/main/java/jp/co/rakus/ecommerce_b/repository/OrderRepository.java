@@ -116,6 +116,7 @@ public class OrderRepository {
 
 			}
 			
+			if (!(rs.getInt("ot_id") == 0)) {
 				if (rs.getInt("ot_id") != beforeOrderToppingId) {
 					OrderTopping orderTopping = new OrderTopping();
 					orderTopping.setId(rs.getInt("ot_id"));
@@ -132,6 +133,7 @@ public class OrderRepository {
 
 					beforeOrderToppingId = orderTopping.getId(); // pizzaが次の種類に行った時
 				}
+			}
 		}
 		return order;
 	};
