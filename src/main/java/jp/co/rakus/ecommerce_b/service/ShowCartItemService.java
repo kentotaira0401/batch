@@ -11,15 +11,13 @@ import jp.co.rakus.ecommerce_b.repository.OrderRepository;
 @Service
 public class ShowCartItemService {
 
-	
 	@Autowired
 	private OrderRepository orderRepository;
-	
-	
-	
-	public List<Order>findByUserIdAndStatus(int userId,int status){
-		
+
+	public List<Order> findByUserIdAndStatus(int userId, int status) {
+
 		List<Order> orderList = orderRepository.findByUserIdAndStatus(userId, status);
 		return orderList;
 	}
+
 }
