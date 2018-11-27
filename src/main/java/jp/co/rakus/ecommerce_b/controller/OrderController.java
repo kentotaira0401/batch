@@ -32,13 +32,14 @@ public class OrderController {
 	@Autowired
 	public OrderService service;
 	
+<<<<<<< HEAD
+=======
 	@ModelAttribute
 	public OrderForm setUpForm() {
 		return new OrderForm();
 	}
+>>>>>>> 429ea38e7021d2002ac3b9a5d2d26cfe287e53f3
 
-	
-	
 	/**
 	 * 注文画面を表示.
 	 * 

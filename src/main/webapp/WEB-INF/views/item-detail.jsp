@@ -111,7 +111,7 @@
 									</div>
 									<div class="col-sm-12">
 
-									<form:checkboxes items="${toppingMap}" path="toppingList"/>
+									<form:checkboxes items="${toppingMap}" path="toppingList" class="toppingList"/>
 									</div>
 									<div class="row">
 										<div class="col-xs-offset-2 col-xs-8">
@@ -119,8 +119,8 @@
 												<div class="row">
 													<div class="col-xs-5 col-sm-5">
 														<label for="">数量:</label> <label class="control-label"
-															style="color: red" for="inputError">数量を選択してください</label> <select
-															name="quantity" class="form-control">
+															style="color: red" for="inputError">数量を選択してください</label>
+															 <select name="quantity" class="form-control">
 															<option value="1">1</option>
 															<option value="2">2</option>
 															<option value="3">3</option>
