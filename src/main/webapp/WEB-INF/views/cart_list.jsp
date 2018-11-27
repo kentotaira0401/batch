@@ -82,6 +82,8 @@
 							<th>
 							</th>
 						</tr>
+						
+						
 						<c:forEach var="orderItem" items="${order.orderItemList}">
 						<tr>
 							<td>
@@ -116,9 +118,11 @@
 								</form:form>
 							</td>
 						</tr>
-						
-					</tbody>
+
 					</c:forEach>
+
+					</tbody>
+			
 				</table>
 			</div>
 		</div>

@@ -75,9 +75,8 @@
 							</th>
 						</tr>
 
-						
+						<c:forEach var="orderItem" items="${order.orderItemList}">
 							<tr>
-							  <c:forEach var="orderItem" items="${order.orderItemList}">
 								<td>
 									<div class="center">
 										<div class="img-responsive img-rounded" width="50"
@@ -104,10 +103,8 @@
 								<td>
 									<div class="text-center"><c:out value="${orderItem.subTotal}"/></div>
 								</td>
-								</c:forEach>
 							</tr>
-						
-
+							</c:forEach>
 					</tbody>
 				</table>
 			</div>
