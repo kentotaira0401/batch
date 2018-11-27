@@ -28,6 +28,7 @@ public class OrderItem {
 	
 	public int getSubTotal() {
 		int total = 0;
+		System.out.println("total"+total);
 		if('M'== size) {
 			int pizzaPrice = item.getPriceM();
 			total = pizzaPrice + orderToppingList.size() * 200;
@@ -35,6 +36,8 @@ public class OrderItem {
 			int pizzaPrice = item.getPriceL();
 			total = pizzaPrice + orderToppingList.size() * 300;
 		}
+
+		System.out.println("total"+total);
 		return total;
 	}
 	
