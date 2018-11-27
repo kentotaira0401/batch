@@ -32,10 +32,11 @@ public class OrderController {
 	@Autowired
 	public OrderService service;
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> edab20f231f14fb926d0cc7a2960621a387a5f69
+	@ModelAttribute
+	public OrderForm setUpForm() {
+		return new OrderForm();
+	}
+
 	
 	
 	/**
@@ -46,8 +47,6 @@ public class OrderController {
 	
 	@RequestMapping("/order")
 	public String order(Model model,@AuthenticationPrincipal LoginUser loginUser) {
-		
-		
 		
 		Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 		System.out.println(loginUserId);
