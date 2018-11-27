@@ -30,10 +30,6 @@ public class OrderController {
 	@Autowired
 	public OrderService service;
 	
-	@ModelAttribute
-	public OrderForm SetUpForm() {
-		return new OrderForm();
-	}
 	
 	
 	/**
