@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.domain.Order;
@@ -32,13 +35,13 @@ public class OrderController {
 	@Autowired
 	public OrderService service;
 	
+
 	@ModelAttribute
 	public OrderForm setUpForm() {
 		return new OrderForm();
 	}
 
-	
-	
+
 	/**
 	 * 注文画面を表示.
 	 * 
@@ -46,14 +49,23 @@ public class OrderController {
 	 */
 	
 	@RequestMapping("/order")
-	public String order(Model model,@AuthenticationPrincipal LoginUser loginUser) {
+	
+	public String order(
+			//6行北野作成
+			@Validated OrderForm form,
+			BindingResult result,
+			RedirectAttributes redirectAttributes,
+			Model model,@AuthenticationPrincipal LoginUser loginUser) {
+		
+		if(result.hasErrors()) {
+			return "order_confirm2";
+		}
 		
 		Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 		System.out.println(loginUserId);
 		Integer paymentNumber = 0;//未入金番号
-		List<Order> orderList = (List<Order>) service.findByUserIdAndStatus(loginUserId,0);
+		Order order = service.findByUserIdAndStatus(loginUserId,paymentNumber);
 		
-		Order order = orderList.get(0);
 		
 		System.out.println("order"+order.toString());
 		
@@ -90,8 +102,7 @@ public class OrderController {
 	     Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 	     Integer paymentNumber = 0;//未入金番号
 		 
-		 List<Order> notPaymentOrderList = service.findByUserIdAndStatus(loginUserId,paymentNumber);
-		 Order notPaymentOrder = notPaymentOrderList.get(0);
+		 Order notPaymentOrder = service.findByUserIdAndStatus(loginUserId,paymentNumber);
 		 order.setId(notPaymentOrder.getId());
 		 order.setUserId(notPaymentOrder.getUserId());
 		 order.setStatus(notPaymentOrder.getStatus());

@@ -138,6 +138,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationName" cssStyle="color:red" element="div"/>
 									<form:input path="destinationName"/>
 								</td>
 							</tr>
@@ -148,6 +149,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationEmail" cssStyle="color:red" element="div"/>
 									<form:input path="destinationEmail"/>
 								</td>
 							</tr>
@@ -158,6 +160,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationZipcode" cssStyle="color:red" element="div"/>
 									<form:input path="destinationZipcode"/>&nbsp;&nbsp;<button>住所検索</button>
 								</td>
 							</tr>
@@ -168,6 +171,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationAddress" cssStyle="color:red" element="div"/>
 									<form:input path="destinationAddress"/>
 								</td>
 							</tr>
@@ -178,6 +182,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationTel" cssStyle="color:red" element="div"/>
 									<form:input path="destinationTel"/>
 								</td>
 							</tr>
@@ -188,6 +193,7 @@
 									</div>
 								</td>
 								<td>
+								
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-12">
@@ -274,6 +280,7 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<label class="radio-inline"> 
+											<form:errors path="paymentMethod" cssStyle="color:red" element="div"/>
 												<form:radiobutton value="1" path="paymentMethod"
 													name="responsibleCompany" checked="checked"/>
 												代金引換

@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * 
  * 注文情報を持つドメイン.
+ * 
  * @author wataru.saito
  *
  */
@@ -41,13 +42,12 @@ public class Order {
 	 * 宛先氏名
 	 */
 	private String destinationName;
-	
+
 	/**
 	 * 宛先メールアドレス
 	 */
 	private String destinationEmail;
 
-	
 	/**
 	 * 宛先郵便番号
 	 */
@@ -83,22 +83,43 @@ public class Order {
 	 */
 	private List<OrderItem> orderItemList;
 
-	
 	public int getCalcTotalPrice() {
 		int totalPrice = 0;
 		for (OrderItem orderItem : orderItemList) {
-			if(orderItem.getSize()=='M') {
+			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceM();
 				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 200;
-			}else if(orderItem.getSize()=='L'){
+			} else if (orderItem.getSize() == 'L') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceL();
 				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 300;
 			}
 		}
-			return totalPrice;
+		int totalPriceIncludeTax = (int) (totalPrice * 1.08);
+
+		return totalPriceIncludeTax;
 	}
+
+	public int getTax() {
+		int totalPrice = 0;
+		for (OrderItem orderItem : orderItemList) {
+			if (orderItem.getSize() == 'M') {
+				Item item = orderItem.getItem();
+				int pizzaPrice = item.getPriceM();
+				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 200;
+			} else if (orderItem.getSize() == 'L') {
+				Item item = orderItem.getItem();
+				int pizzaPrice = item.getPriceL();
+				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 300;
+			}
+		}
+		int Tax = (int) (totalPrice * 0.08);
+
+		return Tax;
+
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -146,7 +167,7 @@ public class Order {
 	public void setDestinationName(String destinationName) {
 		this.destinationName = destinationName;
 	}
-	
+
 	public String getDestinationEmail() {
 		return destinationEmail;
 	}
@@ -219,7 +240,5 @@ public class Order {
 				+ destinationAddress + ", destinationTel=" + destinationTel + ", deliverlyTime=" + deliverlyTime
 				+ ", paymentMethod=" + paymentMethod + ", user=" + user + ", orderItemList=" + orderItemList + "]";
 	}
-	
-	
-	
+
 }

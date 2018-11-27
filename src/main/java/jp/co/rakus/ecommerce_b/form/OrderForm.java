@@ -1,5 +1,7 @@
 package jp.co.rakus.ecommerce_b.form;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 /**
  * orderを詰めるためのform.
@@ -17,6 +19,7 @@ public class OrderForm {
 	/**
 	 * ユーザーID
 	 */
+	
 	private Integer userId;
 
 	/**
@@ -37,26 +40,32 @@ public class OrderForm {
 	/**
 	 * 宛先氏名
 	 */
+	@Email(message="Eメールの形式が不正です")
+	@NotBlank(message="メールアドレスは必須です")
 	private String destinationEmail;
 
 	/**
 	 * 宛先Email
 	 */
+	@NotBlank(message="氏名は必須です")
 	private String destinationName;
 	
 	/**
 	 * 宛先郵便番号
 	 */
+	@NotBlank(message="郵便番号は必須です")
 	private String destinationZipcode;
 
 	/**
 	 * 宛先住所
 	 */
+	@NotBlank(message="住所は必須です")
 	private String destinationAddress;
 
 	/**
 	 * 宛先TEL
 	 */
+	@NotBlank(message="電話番号は必須です")
 	private String destinationTel;
 
 	/**
@@ -67,6 +76,7 @@ public class OrderForm {
 	/**
 	 * 支払方法
 	 */
+	@NotBlank(message="支払方法の選択は必須です")
 	private Integer paymentMethod;
 
 
