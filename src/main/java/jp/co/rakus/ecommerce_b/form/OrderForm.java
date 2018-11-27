@@ -76,7 +76,7 @@ public class OrderForm {
 	/**
 	 * 支払方法
 	 */
-	@NotBlank(message="支払方法の選択は必須です")
+
 	private Integer paymentMethod;
 
 

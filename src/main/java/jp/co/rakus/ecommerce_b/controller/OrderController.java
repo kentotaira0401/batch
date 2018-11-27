@@ -57,9 +57,9 @@ public class OrderController {
 			RedirectAttributes redirectAttributes,
 			Model model,@AuthenticationPrincipal LoginUser loginUser) {
 		
-		if(result.hasErrors()) {
-			return "order_confirm2";
-		}
+//		if(result.hasErrors()) {
+//			return "order_confirm2";
+//		}
 		
 		Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 		System.out.println(loginUserId);
