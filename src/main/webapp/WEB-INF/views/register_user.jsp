@@ -22,8 +22,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="item_list.html"> <!-- 企業ロゴ --> <img
-						alt="main log" src="img/header_logo.png" height="35">
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/SearchItem/Search"> <!-- 企業ロゴ --> <img
+						alt="main log" src="/img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -61,8 +61,12 @@
 							<div class="form-group">
 								<label for="inputZipcode">郵便番号:</label>
 								<!-- <label class="control-label" style="color: red" for="inputError">郵便番号を入力してください</label> -->
-									<input type="button" value="住所検索">
-								<form:input type="text" path="zipcode" id="inputZipcode" class="form-control" placeholder="Zipcode"/>
+									<!-- <input type="button" value="住所検索"> -->
+									
+								<form:input path="zipcode" id="inputZipcode" class="form-control" placeholder="Zipcode"></form:input>
+								<button type="button" id="btn">住所検索</button>
+									<!-- <input type="text" id="zip" name="zip" size="8" maxlength="8">&nbsp;&nbsp;
+									<button type="button" id="btn">住所検索</button> -->
 								<form:errors path="zipcode" cssStyle="color:red" />
 								
 							</div>
@@ -102,8 +106,10 @@
 
 	</div>
 	<!-- end container -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/ajax-address.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
+	<script src="/js/jquery-3.3.1.min.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
+	<script src="/js/zip-code.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
 </body>
 </html>
