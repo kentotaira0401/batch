@@ -56,18 +56,20 @@ public class OrderController {
 			BindingResult result,
 			RedirectAttributes redirectAttributes,
 			Model model,@AuthenticationPrincipal LoginUser loginUser) {
-		
 
-		if(result.hasErrors()) {
-			return "order_confirm2";
-        }
 
 		Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 		
 		Integer paymentNumber = 0;//未入金番号
 		Order order = service.findByUserIdAndStatus(loginUserId,paymentNumber);
+
 		
 		model.addAttribute("order",order); //未入金の order を　confirm画面で使用
+		
+		if(result.hasErrors()) {
+			return "order_confirm2";
+        }
+		
 		return "order_confirm2";
 	}
 	
