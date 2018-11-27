@@ -32,10 +32,7 @@ public class OrderController {
 	@Autowired
 	public OrderService service;
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> edab20f231f14fb926d0cc7a2960621a387a5f69
+
 	
 	
 	/**
