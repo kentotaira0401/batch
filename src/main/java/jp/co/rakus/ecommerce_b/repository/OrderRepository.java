@@ -75,6 +75,7 @@ public class OrderRepository {
 				order.setTotalPrice(rs.getInt("ord_total_price"));
 
 				String stringValueOfOrderDate = rs.getString("ord_order_date");
+				if(!(stringValueOfOrderDate == null)) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 				Date formatOrderDate = null;
 				try {
@@ -83,6 +84,7 @@ public class OrderRepository {
 					e.printStackTrace();
 				}
 				order.setOrderDate(formatOrderDate);
+				}
 
 				order.setDestinationName(rs.getString("ord_destination_name"));
 				order.setDestinationEmail(rs.getString("ord_destination_email"));
@@ -106,9 +108,10 @@ public class OrderRepository {
 				orderItem.setQuantity(rs.getInt("ordI_quantity"));
 
 				String stringValueOfsize = rs.getString("ordI_size");
+				if(!(stringValueOfsize == null)) {
 				char charValueOfSize[] = stringValueOfsize.toCharArray();
 				orderItem.setSize(charValueOfSize[0]);
-
+				}
 				Item item = new Item();
 				item.setId(rs.getInt("i_id"));
 				item.setName(rs.getString("i_name"));
@@ -180,7 +183,7 @@ public class OrderRepository {
 				+ "ord.id = ordI.order_id \r\n" + "inner join\r\n" + "items as i\r\n" + "on\r\n"
 				+ "ordI.item_id = i.id \r\n" + "inner join\r\n" + "order_toppings as ot\r\n" + "on\r\n"
 				+ "ordI.id = ot.order_item_id \r\n" + "inner join\r\n" + "toppings as t\r\n" + "on\r\n"
-				+ "ot.topping_id = t.id\r\n" + "where ord.user_id = :user_id and status =:status;";
+				+ "ot.topping_id = t.id\r\n" + "where ord.user_id = :user_id and status =:status order by ord.id;";
 
 		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId).addValue("status", status);
 		

@@ -46,8 +46,8 @@
 					<p class="navbar-text navbar-right">
 						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp; <a
-							href="item_list.html" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
+						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -110,9 +110,8 @@
 										</label>
 									</div>
 									<div class="col-sm-12">
-										<label class="checkbox-inline"> <form:checkboxes
-												items="${toppingMap}" path="toppingList" />
-										</label><br>
+
+									<form:checkboxes items="${toppingMap}" path="toppingList"/>
 									</div>
 									<div class="row">
 										<div class="col-xs-offset-2 col-xs-8">

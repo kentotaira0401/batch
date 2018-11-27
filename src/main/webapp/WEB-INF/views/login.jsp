@@ -44,7 +44,7 @@
 				<div class="well">
 					<div class="error"><c:out value="${loginError}"  /></div>
 					<form:errors path="loginForm.*" />
-					<form:form modelAttribute="loginForm" action="${pageContext.request.contextPath}/login">
+					<form:form  action="${pageContext.request.contextPath}/login">
 						<fieldset>
 							<legend>
 								ログイン
@@ -52,13 +52,13 @@
 							<!-- <label class="control-label" style="color: red" for="inputError">メールアドレス、またはパスワードが間違っています</label> -->
 							<div class="form-group">
 								<label for="inputEmail">メールアドレス:</label>
-								<form:input path="email" id="email" class="form-control" placeholder="Email"></form:input>
-								<form:errors path="email" cssStyle="color:red" />
+								<input type="text" name="email" id="email" class="form-control" placeholder="Email">
+								<%-- <form:errors path="email" cssStyle="color:red" /> --%>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword">パスワード:</label>
-								<form:input path="password" id="password" class="form-control" placeholder="Password"></form:input>
-								<form:errors path="password" cssStyle="color:red" />
+								<input type="text" name="password" id="password" class="form-control" placeholder="Password">
+								<%-- <form:errors path="password" cssStyle="color:red" /> --%>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">ログイン</button>

@@ -1,8 +1,6 @@
 package jp.co.rakus.ecommerce_b.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +19,8 @@ public class OrderService {
 	 * 未入金の order を取得する.
 	 * @return 未入金の orderを返す.
 	 */
-	public Order findByUserIdAndStatus() {
-		return null;
+	public List<Order> findByUserIdAndStatus() {
+		return repository.findByUserIdAndStatus(1,0);
 	}
 	
 	/*
