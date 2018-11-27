@@ -104,7 +104,7 @@
 							</td>
 							<td>
 								<div class="text-center">
-							
+									<c:out value="${orderItem}"/>
 								</div>
 							</td>
 							<td>
