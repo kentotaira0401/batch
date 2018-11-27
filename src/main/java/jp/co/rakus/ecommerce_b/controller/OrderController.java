@@ -32,6 +32,11 @@ public class OrderController {
 	@Autowired
 	public OrderService service;
 	
+	@ModelAttribute
+	public OrderForm setUpForm() {
+		return new OrderForm();
+	}
+
 	/**
 	 * 注文画面を表示.
 	 * 
@@ -40,8 +45,6 @@ public class OrderController {
 	
 	@RequestMapping("/order")
 	public String order(Model model,@AuthenticationPrincipal LoginUser loginUser) {
-		
-		
 		
 		Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 		System.out.println(loginUserId);

@@ -3,8 +3,10 @@ package jp.co.rakus.ecommerce_b.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
+import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.domain.Order;
 import jp.co.rakus.ecommerce_b.domain.OrderItem;
 import jp.co.rakus.ecommerce_b.domain.OrderTopping;
@@ -23,9 +25,9 @@ public class PutItemIntoCartService {
 	@Autowired
 	private OrderToppingRepository orderToppingRepository;
 
-	public void putItemIntoCart(PutItemIntoCartForm form) {
-
-		int userId = 3;
+	public void putItemIntoCart(PutItemIntoCartForm form,LoginUser loginUser) {
+		int userId = loginUser.getUser().getId();//ログインユーザid;
+		System.out.println("userId"+userId);
 		int status = 0;
 		Order order = null;
 		List<Order> orderList = orderRepository.findByUserIdAndStatus(userId, status);
