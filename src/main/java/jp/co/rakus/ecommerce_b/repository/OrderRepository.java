@@ -55,10 +55,10 @@ public class OrderRepository {
 		return order;
 	};
 
-	private final static ResultSetExtractor<List<Order>> ORDER_RESULTSETEXTRACTOR = (rs) -> {
+	private final static ResultSetExtractor<Order> ORDER_RESULTSETEXTRACTOR = (rs) -> {
 
 		Order order = null; // 注文情報が入る箱を nullに。
-		List<Order> orderList = new ArrayList<>();
+	
 		OrderItem orderItem = null; // pizza１種類の情報が入るものをnull に。
 		List<OrderItem> orderItemList = null;
 		List<OrderTopping> orderToppingList = null; // topping が複数入る箱を用意。
@@ -96,7 +96,6 @@ public class OrderRepository {
 
 				orderItemList = new ArrayList<OrderItem>();
 				order.setOrderItemList(orderItemList);
-				orderList.add(order);
 				beforOrderId = rs.getInt("ord_id");
 			}
 
@@ -147,7 +146,7 @@ public class OrderRepository {
 				beforeOrderToppingId = orderTopping.getId(); // pizzaが次の種類に行った時
 			}
 		}
-		return orderList;
+		return order;
 	};
 
 	public Order save(Order order) {
@@ -165,7 +164,7 @@ public class OrderRepository {
 		return order;
 	}
 
-	public List<Order> findByUserIdAndStatus(int userId,int status) {
+	public Order findByUserIdAndStatus(int userId,int status) {
 		String sql = "select\r\n" + " ord.id ord_id\r\n" + ",ord.user_id ord_user_id\r\n" + ",ord.status ord_status\r\n"
 				+ ",ord.total_price ord_total_price\r\n" + ",ord.order_date ord_order_date\r\n"
 				+ ",ord.destination_name ord_destination_name\r\n" + ",ord.destination_email ord_destination_email\r\n"
@@ -187,8 +186,8 @@ public class OrderRepository {
 
 		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId).addValue("status", status);
 		
-		List<Order> orderList =template.query(sql, sqlParam, ORDER_RESULTSETEXTRACTOR);
+		Order order =template.query(sql, sqlParam, ORDER_RESULTSETEXTRACTOR);
 		
-		return orderList;
+		return order;
 	}
 }

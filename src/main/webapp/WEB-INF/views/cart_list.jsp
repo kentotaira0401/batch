@@ -121,9 +121,9 @@
 
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center">
-					<span id="total-price"></span><br>
-					<span id="total-price">ご注文金額合計：38,000 (税込)</span>
+				<div class="form-group text-center"></div>
+					<span id="total-price">税<c:out value="${order.tax}"/>円</span><br>
+					<span id="total-price"><c:out value="${order.calcTotalPrice}"/>円（税込み）</span>
 				</div>
 			</div>
 		</div>
@@ -131,10 +131,10 @@
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
-					<form:form action="${pageContext.request.contextPath}/order/order">
+					<form action="order_confirm.html">
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="注文に進む">
-					</form:form>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,5 @@
 package jp.co.rakus.ecommerce_b.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,9 @@ public class ShowCartItemService {
 	
 	
 	
-	public List<Order>findByUserIdAndStatus(int userId,int status){
+	public Order findByUserIdAndStatus(int userId,int status){
 		
-		List<Order> orderList = orderRepository.findByUserIdAndStatus(userId, status);
-		return orderList;
+		Order order = orderRepository.findByUserIdAndStatus(userId, status);
+		return order;
 	}
 }

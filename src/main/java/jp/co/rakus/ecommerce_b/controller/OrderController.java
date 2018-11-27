@@ -51,9 +51,8 @@ public class OrderController {
 		Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 		System.out.println(loginUserId);
 		Integer paymentNumber = 0;//未入金番号
-		List<Order> orderList = (List<Order>) service.findByUserIdAndStatus(loginUserId,0);
+		Order order = service.findByUserIdAndStatus(loginUserId,paymentNumber);
 		
-		Order order = orderList.get(0);
 		
 		System.out.println("order"+order.toString());
 		
@@ -90,8 +89,7 @@ public class OrderController {
 	     Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
 	     Integer paymentNumber = 0;//未入金番号
 		 
-		 List<Order> notPaymentOrderList = service.findByUserIdAndStatus(loginUserId,paymentNumber);
-		 Order notPaymentOrder = notPaymentOrderList.get(0);
+		 Order notPaymentOrder = service.findByUserIdAndStatus(loginUserId,paymentNumber);
 		 order.setId(notPaymentOrder.getId());
 		 order.setUserId(notPaymentOrder.getUserId());
 		 order.setStatus(notPaymentOrder.getStatus());
