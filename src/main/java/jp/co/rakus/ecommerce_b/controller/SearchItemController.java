@@ -83,7 +83,7 @@ public class SearchItemController {
 	 */
 	@RequestMapping("/detailItem")
 	public String detailItem(int id, Model model,@AuthenticationPrincipal LoginUser loginUser) {
-		//
+		//System.out.println(loginUser.getUser().getId());
 		Item item = itemService.findById(id);
 		model.addAttribute("item", item);
 		Map<Integer, String> toppingMap = findAllToppingService.findAll();
