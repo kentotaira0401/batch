@@ -91,7 +91,7 @@
 								</div>
 							</td>
 							<td>
-								<span class="price">&nbsp;;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
+								<span class="price">&nbsp;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
 								&nbsp;&nbsp;<c:out value="${orderItem.quantity}"/>
 								&nbsp;&nbsp;
 							</td>
@@ -108,9 +108,12 @@
 								</div>
 							</td>
 							<td>
-								<div class="text-center">
-									<button type="submit" class="btn btn-primary">削除</button>
-								</div>
+								<form:form  method="post" action="${pageContext.request.contextPath}/delete/item">
+									<div class="text-center">
+										<input type="hidden" name="orderItemId" value="${orderItem.id}" >
+										<button type="submit" class="btn btn-primary">削除</button>
+									</div>
+								</form:form>
 							</td>
 						</tr>
 						</c:forEach>
