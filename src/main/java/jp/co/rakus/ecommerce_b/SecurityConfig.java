@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated(); // それ以外のパスは認証が必要	*/		
 		//↑↑↑↑↑を参照
 		http.authorizeRequests() 
-			.antMatchers("/",/*"/login",*/"/item-list","/register/**","/SearchItem/**","/putItemIntoCart/**").permitAll() 
+			.antMatchers("/","/logout2","/item-list","/register/**","/SearchItem/**","/putItemIntoCart/**","/showCartItem/**").permitAll() 
 			.anyRequest().authenticated(); 
 		//--------------------------------------------------------------------
 
@@ -92,14 +92,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		//--------------------------------------------------------------------
 		/*http.logout() // ログアウトに関する設定
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**")) // ログアウトさせる際に遷移させるパス
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**")) // ログアウトリンクをクリックした際に遷移させるパス(ここに遷移させれば自動的にログアウトが行われる)
 			.logoutSuccessUrl("/") // ログアウト後に遷移させるパス(ここではログイン画面を設定)
 			.deleteCookies("JSESSIONID") // ログアウト後、Cookieに保存されているセッションIDを削除
 			.invalidateHttpSession(true); // true:ログアウト後、セッションを無効にする false:セッションを無効にしない*/
 		//↑↑↑↑↑を参照
 		http.logout() // ログアウトに関する設定
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout**")) // ログアウトさせる際に遷移させるパス
-			.logoutSuccessUrl("/") // ログアウト後に遷移させるパス(ここではログイン画面を設定)
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // ログアウトさせる際に遷移させるパス
+			.logoutSuccessUrl("/logout2") // ログアウト後に遷移させるパス(ここではログイン画面を設定)
 			.deleteCookies("JSESSIONID") // ログアウト後、Cookieに保存されているセッションIDを削除
 			.invalidateHttpSession(true); // true:ログアウト後、セッションを無効にする false:セッションを無効にしない
 		//--------------------------------------------------------------------

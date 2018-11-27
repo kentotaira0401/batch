@@ -83,6 +83,22 @@ public class Order {
 	 */
 	private List<OrderItem> orderItemList;
 
+	
+	public int getCalcTotalPrice() {
+		int totalPrice = 0;
+		for (OrderItem orderItem : orderItemList) {
+			if(orderItem.getSize()=='M') {
+				Item item = orderItem.getItem();
+				int pizzaPrice = item.getPriceM();
+				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 200;
+			}else if(orderItem.getSize()=='L'){
+				Item item = orderItem.getItem();
+				int pizzaPrice = item.getPriceL();
+				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 300;
+			}
+		}
+			return totalPrice;
+	}
 	public Integer getId() {
 		return id;
 	}

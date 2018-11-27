@@ -51,7 +51,7 @@ public class LoginController {
 		  System.err.println("User: login failed"); 
 		  //result.addError(new ObjectError("loginError", "メールアドレスまたはパスワードが不正です。"));
 		  model.addAttribute("loginError", "メールアドレスまたはパスワードが不正です。"); }
-		 
+		 System.out.println("2222");
 		return "login";
 	}
 
@@ -66,6 +66,17 @@ public class LoginController {
 		return "item-list";
 	}
 
+	/**
+	 * ログアウト画面を表示します
+	 * 
+	 * @return ログアウト画面
+	 */
+	@RequestMapping("/logout2")
+	public String logout(Model model) {
+		System.out.println("111");
+		return "logout";
+	}
+	
 	//※ログイン認証フィルターが機能するためいらなくなりました。
 	/**
 	 * ログイン処理を行います.
