@@ -58,6 +58,7 @@ public class SearchItemController {
 	public String FuzzySerch(Model model, String name) {
 		List<Item> itemList = itemService.findByName(name);
 
+		//System.out.println("1111");
 		if ((itemList.size() == 0) || (name == "")) {
 			itemList = itemService.findAll();
 			boolean isEmpty = true;
@@ -82,9 +83,7 @@ public class SearchItemController {
 	 */
 	@RequestMapping("/detailItem")
 	public String detailItem(int id, Model model,@AuthenticationPrincipal LoginUser loginUser) {
-		System.out.println("111");
-		System.out.println(loginUser.getUser().getId());
-		System.out.println("222");
+		//
 		Item item = itemService.findById(id);
 		model.addAttribute("item", item);
 		Map<Integer, String> toppingMap = findAllToppingService.findAll();
