@@ -1,21 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-	<!DOCTYPE html>
-<html lang="ja">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ピザ屋のネット注文</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link href="../../css/bootstrap.css" rel="stylesheet">
 <link href="../../css/piza.css" rel="stylesheet">
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 	<div class="container">
@@ -40,7 +35,8 @@
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/showOrderHistory/notPaymentOrderHistory" class="navbar-link">未入金注文履歴</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/showOrderHistory/alreadySentOrderHistory" class="navbar-link">配送済み注文履歴</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
 						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
 					</p>
@@ -51,14 +47,18 @@
 		</nav>
 
 
-		<!-- table -->
-		<div class="row">
+<div class="row">
 			<div
 				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
-				<h3 class="text-center">ショッピングカート</h3>
+				<h3 class="text-center">入金済み</h3>
 				<table class="table table-striped">
 					<tbody>
 						<tr>
+						    <th>
+								<div class="text-center">
+									注文日
+								</div>
+							</th>
 							<th>
 								<div class="text-center">
 									商品名
@@ -82,10 +82,12 @@
 							<th>
 							</th>
 						</tr>
-						
-						
-						<c:forEach var="orderItem" items="${order.orderItemList}">
+						<c:forEach var="paid-order" items="${paidOrderList}">
 						<tr>
+							<td>
+								<span class="price">&nbsp;<c:out value="${paid-order.orderDate}"/></span>
+							</td>
+							<c:forEach var="orderItem" items="${paid-order.orderItemList}">
 							<td>
 								<div class="center">
 									<div class="img-responsive img-rounded" width="100" height="300"><img src="<c:out value="${orderItem.item.imagePath}"/>"></div><br>
@@ -106,50 +108,15 @@
 							</td>
 							<td>
 								<div class="text-center">
-									<c:out value="${orderItem.subTotal}"/>
+							
 								</div>
 							</td>
-							<td>
-								<form:form  method="post" action="${pageContext.request.contextPath}/delete/item">
-									<div class="text-center">
-										<input type="hidden" name="orderItemId" value="${orderItem.id}" >
-										<button type="submit" class="btn btn-primary">削除</button>
-									</div>
-								</form:form>
-							</td>
+						</c:forEach>
 						</tr>
-
-					</c:forEach>
-
+						</c:forEach>
 					</tbody>
-			
 				</table>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center"></div>
-					<span id="total-price">税<c:out value="${order.tax}"/>円</span><br>
-					<span id="total-price"><c:out value="${order.calcTotalPrice}"/>円（税込み）</span>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-offset-5 col-xs-3">
-				<div class="form-group">
-					<form action="${pageContext.request.contextPath}/order/order">
-						<input class="form-control btn btn-warning btn-block"
-							type="submit" value="注文に進む">
-					</form>
-				</div>
-			</div>
-		</div>
-
-	<!-- end container -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

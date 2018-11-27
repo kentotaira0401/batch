@@ -25,36 +25,36 @@ public class PutItemIntoCartService {
 	@Autowired
 	private OrderToppingRepository orderToppingRepository;
 
-	public void putItemIntoCart(PutItemIntoCartForm form,LoginUser loginUser) {
-		int userId = loginUser.getUser().getId();//ログインユーザid;
-		System.out.println("userId"+userId);
+	public void putItemIntoCart(PutItemIntoCartForm form, LoginUser loginUser) {
+		int userId = loginUser.getUser().getId();// ログインユーザid;
+		System.out.println("userId" + userId);
 		int status = 0;
 
 		Order order = orderRepository.findByUserIdAndStatus(userId, status);
 		if (order == null) {
-		    order = new Order();
+			order = new Order();
 
 			order.setUserId(userId);
 			order.setStatus(0);
 			order.setTotalPrice(0);
 			order = orderRepository.save(order);
 		}
-		
+
 		OrderItem orderItem = new OrderItem();
 		orderItem.setItemId(form.getIntValueOfItemId());
 		orderItem.setQuantity(form.getIntValueOfQuantity());
 		orderItem.setOrderId(order.getId());
 		orderItem.setSize(form.getSize());
-		System.out.println(form.getSize());
-		System.out.println("おーーーーーい");
 		orderItem = orderItemRepository.insert(orderItem);
 		List<String> toppings = form.getToppingList();
-		for (String topping : toppings) {
-			OrderTopping ordertopping = new OrderTopping();
-			int toppingId = Integer.parseInt(topping);
-			ordertopping.setToppingId(toppingId);
-			ordertopping.setOrderItemId(orderItem.getId());
-			ordertopping = orderToppingRepository.insert(ordertopping);
+		if ((!toppings.isEmpty())) {
+			for (String topping : toppings) {
+				OrderTopping ordertopping = new OrderTopping();
+				int toppingId = Integer.parseInt(topping);
+				ordertopping.setToppingId(toppingId);
+				ordertopping.setOrderItemId(orderItem.getId());
+				ordertopping = orderToppingRepository.insert(ordertopping);
+			}
 		}
 	}
 

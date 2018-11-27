@@ -38,10 +38,12 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
-						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/showCartItem/showCart"
+							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/logout"
+							class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -50,64 +52,59 @@
 		</nav>
 
 		<!-- table -->
-	
+
 		<div class="row">
 			<div
 				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
 				<h3 class="text-center">注文内容確認</h3>
-					
+
 				<table class="table table-striped">
 					<tbody>
 						<tr>
 							<th>
-								<div class="text-center">
-									商品名
-								</div>
+								<div class="text-center">商品名</div>
 							</th>
 							<th>
-								<div class="text-center">
-									サイズ、価格(税抜)、数量
-								</div>
+								<div class="text-center">サイズ、価格(税抜)、数量</div>
 							</th>
 							<th>
-								<div class="text-center">
-									トッピング、価格(税抜)
-								</div>
+								<div class="text-center">トッピング、価格(税抜)</div>
 							</th>
 							<th>
-								<div class="text-center">
-									小計
-								</div>
+								<div class="text-center">小計</div>
 							</th>
 						</tr>
 
 						<c:forEach var="orderItem" items="${order.orderItemList}">
-						<tr>
-							<td>
-								<div class="center">
-									  <div class="img-responsive img-rounded" width="50" height="100"><img src="<c:out value="${orderItem.item.imagePath}"/>"></div><br>
-									  <c:out value="${orderItem.item.name}"/>
-								</div>
-							</td>
-							<td>
-								<span class="price">&nbsp;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
-								&nbsp;&nbsp;<c:out value="${orderItem.quantity}"/>
-							</td>
-							<td>
-								<ul>
-									<c:forEach var="ordertopping" items="${orderItem.orderToppingList}">
-									<li><c:out value="${ordertopping.topping.name}"/><c:out value="${topping.priceM}"/></li>
-								  </c:forEach>
-								</ul>
-							</td>
-							<td>
-								<div class="text-center">
-									3,280円
-								</div>
-							</td>
-						</tr>
-						</c:forEach>				
-		
+							<tr>
+								<td>
+									<div class="center">
+										<div class="img-responsive img-rounded" width="50"
+											height="100">
+											<img src="<c:out value="${orderItem.item.imagePath}"/>">
+										</div>
+										<br>
+										<c:out value="${orderItem.item.name}" />
+									</div>
+								</td>
+								<td><span class="price">&nbsp;<c:out
+											value="${orderItem.size}" /></span>&nbsp;&nbsp;<c:out
+										value="${orderItem.item.priceM}" /> &nbsp;&nbsp;<c:out
+										value="${orderItem.quantity}" /></td>
+								<td>
+									<ul>
+										<c:forEach var="ordertopping"
+											items="${orderItem.orderToppingList}">
+											<li><c:out value="${ordertopping.topping.name}" />
+												<c:out value="${topping.priceM}" /></li>
+										</c:forEach>
+									</ul>
+								</td>
+								<td>
+									<div class="text-center"><c:out value="${orderItem.subTotal}"/></div>
+								</td>
+							</tr>
+							</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -115,15 +112,15 @@
 
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center">
-					<span id="total-price">消費税：8,000円</span><br>
-					<span id="total-price">ご注文金額合計：</span><span><c:out value="${order.totalPrice}"></c:out>円(税込)</span>
-				</div>
+				<div class="form-group text-center"></div>
+				<span id="total-price">税<c:out value="${order.tax}" />円
+				</span><br> <span id="total-price"><c:out
+						value="${order.calcTotalPrice}" />円（税込み）</span>
 			</div>
 		</div>
-		
-		
-		<!-- table -->
+	    </div>
+
+	<!-- table -->
 		<form:form modelAttribute="orderForm" action="${pageContext.request.contextPath}/order/orderConfirm" method="POST">
 			<div class="row">
 				<div
