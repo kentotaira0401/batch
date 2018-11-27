@@ -44,7 +44,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
 						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
@@ -86,10 +86,14 @@
 									</div>
 									<div class="col-sm-12">
 										<label class="radio-inline"> <form:radiobutton
-												path="size" value="M" class="size"/><span class="price">&nbsp;М&nbsp;</span> <fmt:formatNumber
+
+												path="size" value="M" class="size" checked="checked"/><span class="price">&nbsp;М&nbsp;</span>
+									<input type="hidden" id="mPrice" value="${item.priceM}">
+									<fmt:formatNumber
 												value="${item.priceM}" pattern="###,###" />円(税抜き)<br>
 										</label> <label class="radio-inline"> <form:radiobutton
-												path="size" value="L" class="size"/> <span class="price">&nbsp;Ｌ&nbsp;</span> <fmt:formatNumber
+												path="size" value="L" class="size"/> <span class="price">&nbsp;Ｌ&nbsp;</span> 
+												<input type="hidden" id="lPrice" value="${item.priceL}"><fmt:formatNumber
 												value="${item.priceL}" pattern="###,###" />円(税抜き)<br>
 										</label>
 									</div>
@@ -111,7 +115,7 @@
 									</div>
 									<div class="col-sm-12">
 
-									<form:checkboxes items="${toppingMap}" path="toppingList"/>
+									<form:checkboxes items="${toppingMap}" path="toppingList" class="toppingList"/>
 									</div>
 									<div class="row">
 										<div class="col-xs-offset-2 col-xs-8">
@@ -119,8 +123,8 @@
 												<div class="row">
 													<div class="col-xs-5 col-sm-5">
 														<label for="">数量:</label> <label class="control-label"
-															style="color: red" for="inputError">数量を選択してください</label> <select
-															name="quantity" class="form-control">
+															style="color: red" for="inputError">数量を選択してください</label>
+															 <select name="quantity" class="form-control">
 															<option value="1">1</option>
 															<option value="2">2</option>
 															<option value="3">3</option>
@@ -142,7 +146,7 @@
 										<div class="row">
 											<div class="col-xs-offset-2 col-xs-10">
 												<div class="form-group">
-													<span id="total-price">この商品金額："後でやる"(税抜)</span>
+													<span id="totalPrice"></span>円
 												</div>
 											</div>
 										</div>

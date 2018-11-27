@@ -29,24 +29,24 @@ public class PutItemIntoCartService {
 		int userId = loginUser.getUser().getId();//ログインユーザid;
 		System.out.println("userId"+userId);
 		int status = 0;
-		Order order = null;
-		List<Order> orderList = orderRepository.findByUserIdAndStatus(userId, status);
-		if (orderList.isEmpty()) {
+
+		Order order = orderRepository.findByUserIdAndStatus(userId, status);
+		if (order == null) {
 		    order = new Order();
 
 			order.setUserId(userId);
 			order.setStatus(0);
 			order.setTotalPrice(0);
 			order = orderRepository.save(order);
-		}else {
-		
-		order = orderList.get(0);
 		}
+		
 		OrderItem orderItem = new OrderItem();
 		orderItem.setItemId(form.getIntValueOfItemId());
 		orderItem.setQuantity(form.getIntValueOfQuantity());
 		orderItem.setOrderId(order.getId());
 		orderItem.setSize(form.getSize());
+		System.out.println(form.getSize());
+		System.out.println("おーーーーーい");
 		orderItem = orderItemRepository.insert(orderItem);
 		List<String> toppings = form.getToppingList();
 		for (String topping : toppings) {

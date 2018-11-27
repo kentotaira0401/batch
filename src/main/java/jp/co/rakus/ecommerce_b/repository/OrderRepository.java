@@ -1,9 +1,8 @@
 package jp.co.rakus.ecommerce_b.repository;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -55,10 +54,10 @@ public class OrderRepository {
 		return order;
 	};
 
-	private final static ResultSetExtractor<List<Order>> ORDER_RESULTSETEXTRACTOR = (rs) -> {
+	private final static ResultSetExtractor<Order> ORDER_RESULTSETEXTRACTOR = (rs) -> {
 
 		Order order = null; // 注文情報が入る箱を nullに。
-		List<Order> orderList = new ArrayList<>();
+	
 		OrderItem orderItem = null; // pizza１種類の情報が入るものをnull に。
 		List<OrderItem> orderItemList = null;
 		List<OrderTopping> orderToppingList = null; // topping が複数入る箱を用意。
@@ -73,19 +72,7 @@ public class OrderRepository {
 				order.setUserId(rs.getInt("ord_user_id"));
 				order.setStatus(rs.getInt("ord_status"));
 				order.setTotalPrice(rs.getInt("ord_total_price"));
-
-				String stringValueOfOrderDate = rs.getString("ord_order_date");
-				if(!(stringValueOfOrderDate == null)) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-				Date formatOrderDate = null;
-				try {
-					formatOrderDate = sdf.parse(stringValueOfOrderDate);
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				order.setOrderDate(formatOrderDate);
-				}
-
+				order.setOrderDate(rs.getDate("ord_order_date"));
 				order.setDestinationName(rs.getString("ord_destination_name"));
 				order.setDestinationEmail(rs.getString("ord_destination_email"));
 				order.setDestinationZipcode(rs.getString("ord_destination_zipcode"));
@@ -96,7 +83,6 @@ public class OrderRepository {
 
 				orderItemList = new ArrayList<OrderItem>();
 				order.setOrderItemList(orderItemList);
-				orderList.add(order);
 				beforOrderId = rs.getInt("ord_id");
 			}
 
@@ -147,7 +133,7 @@ public class OrderRepository {
 				beforeOrderToppingId = orderTopping.getId(); // pizzaが次の種類に行った時
 			}
 		}
-		return orderList;
+		return order;
 	};
 
 	public Order save(Order order) {
@@ -165,30 +151,31 @@ public class OrderRepository {
 		return order;
 	}
 
-	public List<Order> findByUserIdAndStatus(int userId,int status) {
-		String sql = "select\r\n" + " ord.id ord_id\r\n" + ",ord.user_id ord_user_id\r\n" + ",ord.status ord_status\r\n"
-				+ ",ord.total_price ord_total_price\r\n" + ",ord.order_date ord_order_date\r\n"
-				+ ",ord.destination_name ord_destination_name\r\n" + ",ord.destination_email ord_destination_email\r\n"
-				+ ",ord.destination_zipcode ord_destination_zipcode\r\n"
-				+ ",ord.destination_address ord_destination_address\r\n"
-				+ ",ord.destination_tel ord_destination_tel\r\n" + ",ord.delivery_time ord_deliverly_time\r\n"
-				+ ",ord.payment_method ord_payment_method\r\n" + ",ordI.id ordI_id\r\n"
-				+ ",ordI.item_id ordI_item_id\r\n" + ",ordI.order_id ordI_order_id\r\n"
-				+ ",ordI.quantity ordI_quantity\r\n" + ",ordI.size ordI_size\r\n" + ",i.id i_id\r\n"
-				+ ",i.name i_name\r\n" + ",i.description i_description\r\n" + ",i.price_m i_priceM\r\n"
-				+ ",i.price_l i_priceL\r\n" + ",i.image_path i_imagePath\r\n" + ",i.deleted i_deleted\r\n"
-				+ ",ot.id ot_id\r\n" + ",ot.topping_id ot_topping_id\r\n" + ",ot.order_item_id ot_order_item_id\r\n"
-				+ ",t.id t_id\r\n" + ",t.name t_name\r\n" + ",t.price_m t_priceM\r\n" + ",t.price_l t_priceL\r\n"
-				+ "from\r\n" + "orders as ord\r\n" + "inner join\r\n" + "order_Items as ordI\r\n" + "on\r\n"
-				+ "ord.id = ordI.order_id \r\n" + "inner join\r\n" + "items as i\r\n" + "on\r\n"
-				+ "ordI.item_id = i.id \r\n" + "inner join\r\n" + "order_toppings as ot\r\n" + "on\r\n"
-				+ "ordI.id = ot.order_item_id \r\n" + "inner join\r\n" + "toppings as t\r\n" + "on\r\n"
-				+ "ot.topping_id = t.id\r\n" + "where ord.user_id = :user_id and status =:status order by ord.id;";
+	public Order findByUserIdAndStatus(int userId,int status) {
+		String sql ="select ord.id ord_id ,ord.user_id ord_user_id ,ord.status ord_status " +
+				 ",ord.total_price ord_total_price ,ord.order_date ord_order_date " + 
+				 ",ord.destination_name ord_destination_name " + 
+				 ",ord.destination_email ord_destination_email " + 
+				",ord.destination_zipcode ord_destination_zipcode " + 
+				",ord.destination_address ord_destination_address " + 
+				",ord.destination_tel ord_destination_tel,ord.delivery_time ord_deliverly_time " + 
+				",ord.payment_method ord_payment_method ,ordI.id ordI_id " + 
+				" ,ordI.item_id ordI_item_id ,ordI.order_id ordI_order_id " +
+				",ordI.quantity ordI_quantity ,ordI.size ordI_size ,i.id i_id " +
+				",i.name i_name ,i.description i_description ,i.price_m i_priceM " + 
+				",i.price_l i_priceL ,i.image_path i_imagePath ,i.deleted i_deleted " + 
+				",ot.id ot_id ,ot.topping_id ot_topping_id ,ot.order_item_id ot_order_item_id " +
+				" ,t.id t_id ,t.name t_name ,t.price_m t_priceM ,t.price_l t_priceL " + 
+				"from orders as ord inner join order_Items as ordI on " +
+				"ord.id = ordI.order_id inner join items as i on " +
+				"ordI.item_id = i.id inner join order_toppings as ot on " +
+				"ordI.id = ot.order_item_id inner join toppings as t on "+				
+				"ot.topping_id = t.id where ord.user_id = :user_id and status =:status order by ord.id;";
 
 		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId).addValue("status", status);
 		
-		List<Order> orderList =template.query(sql, sqlParam, ORDER_RESULTSETEXTRACTOR);
+		Order order =template.query(sql, sqlParam, ORDER_RESULTSETEXTRACTOR);
 		
-		return orderList;
+		return order;
 	}
 }

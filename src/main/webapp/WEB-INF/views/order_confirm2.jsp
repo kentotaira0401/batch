@@ -38,10 +38,10 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-						<a href="item_list.html" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
+						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -138,6 +138,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationName" cssStyle="color:red" element="div"/>
 									<form:input path="destinationName"/>
 								</td>
 							</tr>
@@ -148,6 +149,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationEmail" cssStyle="color:red" element="div"/>
 									<form:input path="destinationEmail"/>
 								</td>
 							</tr>
@@ -158,6 +160,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationZipcode" cssStyle="color:red" element="div"/>
 									<form:input path="destinationZipcode"/>&nbsp;&nbsp;<button>住所検索</button>
 								</td>
 							</tr>
@@ -168,6 +171,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationAddress" cssStyle="color:red" element="div"/>
 									<form:input path="destinationAddress"/>
 								</td>
 							</tr>
@@ -178,6 +182,7 @@
 									</div>
 								</td>
 								<td>
+								<form:errors path="destinationTel" cssStyle="color:red" element="div"/>
 									<form:input path="destinationTel"/>
 								</td>
 							</tr>
@@ -188,6 +193,7 @@
 									</div>
 								</td>
 								<td>
+								
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-12">
@@ -274,6 +280,7 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<label class="radio-inline"> 
+											<form:errors path="paymentMethod" cssStyle="color:red" element="div"/>
 												<form:radiobutton value="1" path="paymentMethod"
 													name="responsibleCompany" checked="checked"/>
 												代金引換

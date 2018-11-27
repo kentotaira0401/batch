@@ -39,10 +39,10 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-						<a href="item_list.html" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
+						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -91,7 +91,7 @@
 								</div>
 							</td>
 							<td>
-								<span class="price">&nbsp;;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
+								<span class="price">&nbsp;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
 								&nbsp;&nbsp;<c:out value="${orderItem.quantity}"/>
 								&nbsp;&nbsp;
 							</td>
@@ -104,13 +104,16 @@
 							</td>
 							<td>
 								<div class="text-center">
-									3,280円
+							
 								</div>
 							</td>
 							<td>
-								<div class="text-center">
-									<button type="submit" class="btn btn-primary">削除</button>
-								</div>
+								<form:form  method="post" action="${pageContext.request.contextPath}/delete/item">
+									<div class="text-center">
+										<input type="hidden" name="orderItemId" value="${orderItem.id}" >
+										<button type="submit" class="btn btn-primary">削除</button>
+									</div>
+								</form:form>
 							</td>
 						</tr>
 						</c:forEach>
@@ -121,9 +124,9 @@
 
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center">
-					<span id="total-price"></span><br>
-					<span id="total-price">ご注文金額合計：38,000 (税込)</span>
+				<div class="form-group text-center"></div>
+					<span id="total-price">税<c:out value="${order.tax}"/>円</span><br>
+					<span id="total-price"><c:out value="${order.calcTotalPrice}"/>円（税込み）</span>
 				</div>
 			</div>
 		</div>
@@ -131,14 +134,14 @@
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-3">
 				<div class="form-group">
-					<form:form action="${pageContext.request.contextPath}/order/order">
+					<form action="${pageContext.request.contextPath}/order/order">
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="注文に進む">
-					</form:form>
+					</form>
 				</div>
 			</div>
 		</div>
-	</div>
+
 	<!-- end container -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

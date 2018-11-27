@@ -31,14 +31,10 @@ public class ShowCartItemController {
 		
 		int userId = loginUser.getUser().getId();//ログインユーザid;;
 		int status = 0;
-		List<Order> orderList = showCartItemService.findByUserIdAndStatus(userId, status);
-		
-		if(!(orderList.isEmpty())) {
-		Order order = orderList.get(0);
+		Order order = showCartItemService.findByUserIdAndStatus(userId, status);
 		model.addAttribute("order",order);
-		}		
+
 		return "cart_list";
-		
 	}
 		
 		
