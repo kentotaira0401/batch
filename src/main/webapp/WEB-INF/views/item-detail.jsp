@@ -87,7 +87,7 @@
 									<div class="col-sm-12">
 										<label class="radio-inline"> <form:radiobutton
 
-												path="size" value="M" class="size"/><span class="price">&nbsp;М&nbsp;</span>
+												path="size" value="M" class="size" checked="checked"/><span class="price">&nbsp;М&nbsp;</span>
 									<input type="hidden" id="mPrice" value="${item.priceM}">
 									<fmt:formatNumber
 												value="${item.priceM}" pattern="###,###" />円(税抜き)<br>
