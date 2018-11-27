@@ -39,10 +39,10 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="cart_list.html" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
 						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="login.html" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-						<a href="item_list.html" class="navbar-link">ログアウト</a>
+						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
+						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -91,7 +91,7 @@
 								</div>
 							</td>
 							<td>
-								<span class="price">&nbsp;;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
+								<span class="price">&nbsp;<c:out value="${orderItem.size}"/></span>&nbsp;&nbsp;<c:out value="${orderItem.item.priceM}"/>
 								&nbsp;&nbsp;<c:out value="${orderItem.quantity}"/>
 								&nbsp;&nbsp;
 							</td>
@@ -108,9 +108,12 @@
 								</div>
 							</td>
 							<td>
-								<div class="text-center">
-									<button type="submit" class="btn btn-primary">削除</button>
-								</div>
+								<form:form  method="post" action="${pageContext.request.contextPath}/delete/item">
+									<div class="text-center">
+										<input type="hidden" name="orderItemId" value="${orderItem.id}" >
+										<button type="submit" class="btn btn-primary">削除</button>
+									</div>
+								</form:form>
 							</td>
 						</tr>
 						</c:forEach>

@@ -3,20 +3,14 @@ $(function(){
 	
 	$('.size').change(function(){
 		calc();
-	//	var str = $('.size:checked').val();
-	//	console.log(str);
 	});
 	
 	$('.toppingList').change(function() {
 		calc();
-	//        var cnt = $('.toppingList:checkbox:checked').length;
-	 //       console.log(cnt);
 	});
 	
     $('.form-control').change(function() {
     	calc();
-  //      var quantity = $(this).val();
-  //     console.log(quantity);
     });
 
     function calc() {
