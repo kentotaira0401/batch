@@ -104,7 +104,7 @@
 							</td>
 							<td>
 								<div class="text-center">
-									<c:out value="${orderItem}"/>
+									<c:out value="${orderItem.subTotal}"/>
 								</div>
 							</td>
 							<td>
@@ -116,7 +116,7 @@
 								</form:form>
 							</td>
 						</tr>
-						</c:forEach>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>

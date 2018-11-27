@@ -60,11 +60,12 @@ public class OrderRepository {
 		OrderItem orderItem = null; // pizza１種類の情報が入るものをnull に。
 		List<OrderItem> orderItemList = null;
 		List<OrderTopping> orderToppingList = null; // topping が複数入る箱を用意。
+		int beforOrderId =0;
 		int beforeorderItemId = 0; // pizza1種類が切り替わったら変更
 		int beforeOrderToppingId = 0;
 		while (rs.next()) {
 
-
+			if (rs.getInt("ord_id") != beforOrderId) {
 				order = new Order();
 				order.setId(rs.getInt("ord_id"));
 				order.setUserId(rs.getInt("ord_user_id"));
@@ -81,7 +82,8 @@ public class OrderRepository {
 
 				orderItemList = new ArrayList<OrderItem>();
 				order.setOrderItemList(orderItemList);
-			
+				beforOrderId = rs.getInt("ord_id");
+			}
 	
 
 			if (rs.getInt("ordI_id") != beforeorderItemId) { // pizza1種類の情報が変われば処理を行う。
@@ -113,7 +115,7 @@ public class OrderRepository {
 				beforeorderItemId = orderItem.getId();
 
 			}
-			if (!(rs.getInt("ot_id") == 0)) {
+			
 				if (rs.getInt("ot_id") != beforeOrderToppingId) {
 					OrderTopping orderTopping = new OrderTopping();
 					orderTopping.setId(rs.getInt("ot_id"));
@@ -130,7 +132,6 @@ public class OrderRepository {
 
 					beforeOrderToppingId = orderTopping.getId(); // pizzaが次の種類に行った時
 				}
-			}
 		}
 		return order;
 	};
