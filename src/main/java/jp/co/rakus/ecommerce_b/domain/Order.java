@@ -104,6 +104,7 @@ public class Order {
 	public int getTax() {
 		int totalPrice = 0;
 		for (OrderItem orderItem : orderItemList) {
+			System.out.println(orderItem.getItem().getName());
 			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceM();
@@ -241,4 +242,5 @@ public class Order {
 				+ ", paymentMethod=" + paymentMethod + ", user=" + user + ", orderItemList=" + orderItemList + "]";
 	}
 
+	
 }
