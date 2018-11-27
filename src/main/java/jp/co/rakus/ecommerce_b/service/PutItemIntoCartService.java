@@ -45,6 +45,8 @@ public class PutItemIntoCartService {
 		orderItem.setQuantity(form.getIntValueOfQuantity());
 		orderItem.setOrderId(order.getId());
 		orderItem.setSize(form.getSize());
+		System.out.println(form.getSize());
+		System.out.println("おーーーーーい");
 		orderItem = orderItemRepository.insert(orderItem);
 		List<String> toppings = form.getToppingList();
 		for (String topping : toppings) {
