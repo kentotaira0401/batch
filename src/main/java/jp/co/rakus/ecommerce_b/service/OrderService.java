@@ -19,8 +19,8 @@ public class OrderService {
 	 * 未入金の order を取得する.
 	 * @return 未入金の orderを返す.
 	 */
-	public List<Order> findByUserIdAndStatus() {
-		return repository.findByUserIdAndStatus(1,0);
+	public List<Order> findByUserIdAndStatus(Integer userId,Integer paymentNumber) {
+		return repository.findByUserIdAndStatus(userId,paymentNumber);
 	}
 	
 	/*
