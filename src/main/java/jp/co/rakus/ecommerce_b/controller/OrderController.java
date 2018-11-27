@@ -108,6 +108,14 @@ public class OrderController {
 		 order.setStatus(notPaymentOrder.getStatus());
 		 order.setTotalPrice(notPaymentOrder.getStatus());
 		 
+		 Integer paymentMethod = order.getPaymentMethod();
+		 
+		 if(paymentMethod == 1) {
+			 order.setStatus(1);
+		 }else {
+			 order .setStatus(2);
+		 }
+		 
 		 order.setOrderDate(todayDate);
 		 order.setDeliverlyTime(deliverlyTime);
 		 
