@@ -92,7 +92,7 @@
 									<fmt:formatNumber
 												value="${item.priceM}" pattern="###,###" />円(税抜き)<br>
 										</label> <label class="radio-inline"> <form:radiobutton
-												path="size" value="L" class="size"/> <span class="price">&nbsp;Ｌ&nbsp;</span> 
+												path="size" value="L" class="size" checked="checked"/> <span class="price">&nbsp;Ｌ&nbsp;</span> 
 												<input type="hidden" id="lPrice" value="${item.priceL}"><fmt:formatNumber
 												value="${item.priceL}" pattern="###,###" />円(税抜き)<br>
 										</label>
@@ -146,7 +146,7 @@
 										<div class="row">
 											<div class="col-xs-offset-2 col-xs-10">
 												<div class="form-group">
-													<span id="totalPrice"></span>円
+													<span id="totalPrice"></span>円(税抜き)
 												</div>
 											</div>
 										</div>
