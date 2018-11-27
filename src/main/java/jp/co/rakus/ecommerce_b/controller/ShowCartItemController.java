@@ -36,8 +36,7 @@ public class ShowCartItemController {
 		if(!(orderList.isEmpty())) {
 		Order order = orderList.get(0);
 		model.addAttribute("order",order);
-		}
-		
+		}		
 		return "cart_list";
 		
 	}
