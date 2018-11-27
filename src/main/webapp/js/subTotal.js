@@ -1,18 +1,16 @@
+
 $(function(){
 	
 	$('.size').change(function(){
 		calc();
-
 	});
 	
 	$('.toppingList').change(function() {
 		calc();
-
 	});
 	
     $('.form-control').change(function() {
     	calc();
-  
     });
 
     function calc() {
@@ -33,6 +31,7 @@ $(function(){
 	
 	
 	
+
 
 
 
