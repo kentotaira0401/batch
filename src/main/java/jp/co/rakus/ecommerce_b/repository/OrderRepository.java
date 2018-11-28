@@ -305,7 +305,6 @@ public class OrderRepository {
 				+ "ot.topping_id = t.id where ord.user_id = :user_id and status in ("+ statuses + ") order by ord.status,ord.id,ord.order_date;";
 
 		
-		System.out.println("最終表示" + statuses);
 		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId);
 
 		List<Order> orderList = template.query(sql, sqlParam, ORDERHISTORY_RESULTSETEXTRACTOR);
