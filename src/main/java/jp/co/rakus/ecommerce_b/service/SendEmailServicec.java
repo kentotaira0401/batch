@@ -22,9 +22,8 @@ public class SendEmailServicec {
         msg.setFrom("kento.taira.0401@gmail.com");
         msg.setTo(order.getDestinationEmail());
         msg.setSubject("要注意！！"); //タイトルの設定
-        msg.setText(/*"Spring Boot より本文送信"
-        		+ "やったー"*/
-        		String.valueOf(order.getOrderItemList())); //本文の設定
+        msg.setText("注文が完了しました！ありがとうございました！"
+        		/*String.valueOf(order.getOrderItemList())*/); //本文の設定
 
         this.sender.send(msg);
     }

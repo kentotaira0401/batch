@@ -2,6 +2,7 @@ package jp.co.rakus.ecommerce_b.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 /**
  * orderを詰めるためのform.
@@ -19,7 +20,7 @@ public class OrderForm {
 	/**
 	 * ユーザーID
 	 */
-	
+
 	private Integer userId;
 
 	/**
@@ -33,52 +34,58 @@ public class OrderForm {
 	private Integer totalPrice;
 
 	/**
-	 * 注文
+	 * 注文日
 	 */
 	private String orderDate;
 
 	/**
 	 * 宛先氏名
 	 */
-	@Email(message="Eメールの形式が不正です")
-	@NotBlank(message="メールアドレスは必須です")
+	@Email(message = "Eメールの形式が不正です")
+	@NotBlank(message = "メールアドレスは必須です")
 	private String destinationEmail;
 
 	/**
 	 * 宛先Email
 	 */
-	@NotBlank(message="氏名は必須です")
+	@NotBlank(message = "氏名は必須です")
 	private String destinationName;
-	
+
 	/**
 	 * 宛先郵便番号
 	 */
-	@NotBlank(message="郵便番号は必須です")
+	@NotBlank(message = "郵便番号は必須です")
 	private String destinationZipcode;
 
 	/**
 	 * 宛先住所
 	 */
-	@NotBlank(message="住所は必須です")
+	@NotBlank(message = "住所は必須です")
 	private String destinationAddress;
 
 	/**
 	 * 宛先TEL
 	 */
-	@NotBlank(message="電話番号は必須です")
+	@NotBlank(message = "電話番号は必須です")
 	private String destinationTel;
 
 	/**
 	 * 配達時間
 	 */
+
 	private String deliverlyTime;
+
+	/**
+	 * 配達日
+	 */
+	@Pattern(regexp = "\\d{4}-\\d{1,2}-\\d{1,2}", message = "配送希望日を入力してください")
+	private String deliverlyDate;
 
 	/**
 	 * 支払方法
 	 */
 
 	private Integer paymentMethod;
-
 
 	public Integer getId() {
 		return id;
@@ -103,7 +110,6 @@ public class OrderForm {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
 
 	public Integer getTotalPrice() {
 		return totalPrice;
@@ -113,6 +119,21 @@ public class OrderForm {
 		this.totalPrice = totalPrice;
 	}
 
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public String getDestinationEmail() {
+		return destinationEmail;
+	}
+
+	public void setDestinationEmail(String destinationEmail) {
+		this.destinationEmail = destinationEmail;
+	}
 
 	public String getDestinationName() {
 		return destinationName;
@@ -120,14 +141,6 @@ public class OrderForm {
 
 	public void setDestinationName(String destinationName) {
 		this.destinationName = destinationName;
-	}
-	
-	public String getDestinationEmail() {
-		return destinationEmail;
-	}
-
-	public void setDestinationEmail(String destinationEmail) {
-		this.destinationEmail = destinationEmail;
 	}
 
 	public String getDestinationZipcode() {
@@ -154,6 +167,21 @@ public class OrderForm {
 		this.destinationTel = destinationTel;
 	}
 
+	public String getDeliverlyTime() {
+		return deliverlyTime;
+	}
+
+	public void setDeliverlyTime(String deliverlyTime) {
+		this.deliverlyTime = deliverlyTime;
+	}
+
+	public String getDeliverlyDate() {
+		return deliverlyDate;
+	}
+
+	public void setDeliverlyDate(String deliverlyDate) {
+		this.deliverlyDate = deliverlyDate;
+	}
 
 	public Integer getPaymentMethod() {
 		return paymentMethod;
@@ -163,34 +191,13 @@ public class OrderForm {
 		this.paymentMethod = paymentMethod;
 	}
 
-	public String getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
-	}
-
-	public String getDeliverlyTime() {
-		return deliverlyTime;
-	}
-
-	public void setDeliverlyTime(String deliverlyTime) {
-		this.deliverlyTime = deliverlyTime;
-	}
-	
-
 	@Override
 	public String toString() {
 		return "OrderForm [id=" + id + ", userId=" + userId + ", status=" + status + ", totalPrice=" + totalPrice
 				+ ", orderDate=" + orderDate + ", destinationEmail=" + destinationEmail + ", destinationName="
 				+ destinationName + ", destinationZipcode=" + destinationZipcode + ", destinationAddress="
 				+ destinationAddress + ", destinationTel=" + destinationTel + ", deliverlyTime=" + deliverlyTime
-				+ ", paymentMethod=" + paymentMethod + "]";
+				+ ", deliverlyDate=" + deliverlyDate + ", paymentMethod=" + paymentMethod + "]";
 	}
 
-	
-	
-	
-	
 }
