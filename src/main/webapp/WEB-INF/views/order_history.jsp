@@ -37,10 +37,6 @@
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/showCartItem/showCart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
-							href="${pageContext.request.contextPath}/showOrderHistory/notPaymentOrderHistory"
-							class="navbar-link">未入金注文履歴</a>&nbsp;&nbsp; <a
-							href="${pageContext.request.contextPath}/showOrderHistory/paidOrderHistory"
-							class="navbar-link">入金済み注文履歴</a>&nbsp;&nbsp; <a
 							href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath}/logout"
 							class="navbar-link">ログアウト</a>
@@ -55,34 +51,41 @@
 		<div class="row">
 			<div
 				class="table-responsive col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-10 col-xs-12">
-				<h3 class="text-center">配送済み</h3>
-				<table class="table table-striped">
-					<tbody>
-						<tr>
-							<th>
-								<div class="text-center">注文日</div>
-							</th>
-							<th>
-								<div class="text-center">商品名</div>
-							</th>
-							<th>
-								<div class="text-center">サイズ、価格(税抜)、数量</div>
-							</th>
-							<th>
-								<div class="text-center">トッピング、価格(税抜)</div>
-							</th>
-							<th>
-								<div class="text-center">小計</div>
-							</th>
-							<th></th>
-						</tr>
-						<c:forEach var="already-sent-order"
-							items="${alreadySentOrderList}">
-							<tr>
-								<td><span class="price">&nbsp;<c:out
-											value="${already-sent-order.orderDate}" /></span></td>
-								<c:forEach var="orderItem"
-									items="${already-sent-order.orderItemList}">
+				<c:forEach var="order" items="${orderList}">
+					<h3 class="text-center">注文履歴</h3>
+					<table class="table table-striped">
+						<tbody>
+							<c:forEach var="orderItem" items="${order.orderItemList}">
+								<tr>
+									<th>
+										<div class="text-center">注文日</div>
+									</th>
+									<th>
+										<div class="text-center">注文状況</div>
+									</th>
+									<th>
+										<div class="text-center">商品名</div>
+									</th>
+									<th>
+										<div class="text-center">サイズ、価格(税抜)、数量</div>
+									</th>
+									<th>
+										<div class="text-center">トッピング、価格(税抜)</div>
+									</th>
+									<th>
+										<div class="text-center">小計</div>
+									</th>
+								</tr>
+								<tr>
+									<td><span class="center">&nbsp;<c:out
+												value="${order.orderDate}" /></span> &nbsp;&nbsp;</td>
+									<td><c:if test="${order.status==1}">
+											<div class="character-color1">未入金</div>
+										</c:if> <c:if test="${order.status==2}">
+											<div class="character-color2">入金済み</div>
+										</c:if> <c:if test="${order.status==3}">
+											<div class="character-color3">配送済み</div>
+										</c:if></td>
 									<td>
 										<div class="center">
 											<div class="img-responsive img-rounded" width="100"
@@ -94,26 +97,43 @@
 										</div>
 									</td>
 									<td><span class="price">&nbsp;<c:out
-												value="${orderItem.size}" /></span>&nbsp;&nbsp;<c:out
-											value="${orderItem.item.priceM}" /> &nbsp;&nbsp;<c:out
-											value="${orderItem.quantity}" /> &nbsp;&nbsp;</td>
+												value="${orderItem.size}" /></span>&nbsp;&nbsp; <c:choose>
+											<c:when test="${orderItem.size == 'M'.charAt(0)}">
+												<c:out value="${orderItem.item.priceM}" /> &nbsp;&nbsp;
+											</c:when>
+											<c:otherwise>
+												<c:out value="${orderItem.item.priceL}" /> &nbsp;&nbsp;
+											</c:otherwise>
+										</c:choose> <c:out value="${orderItem.quantity}" /> &nbsp;&nbsp;</td>
 									<td>
 										<ul>
 											<c:forEach var="ordertopping"
 												items="${orderItem.orderToppingList}">
-												<li><c:out value="${ordertopping.topping.name}" />
-													<c:out value="${topping.priceM}" /></li>
+												<c:if test="${orderItem.size=='M'.charAt(0)}">
+													<li><c:out value="${ordertopping.topping.name}" /> <c:out
+															value="${topping.priceM}" /></li>
+												</c:if>
+												<c:if test="${orderItem.size=='L'.charAt(0)}">
+													<li><c:out value="${ordertopping.topping.name}" /> <c:out
+															value="${topping.priceL}" /></li>
+												</c:if>
 											</c:forEach>
 										</ul>
 									</td>
 									<td>
-										<div class="text-center"></div>
+										<div class="text-center">
+											<c:out value="${orderItem.subTotal}" />
+										</div>
 									</td>
-								</c:forEach>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<p>
+					合計金額
+					<c:out value="${order.calcTotalPrice}" />円
+					</p>
+				</c:forEach>
 			</div>
 		</div>
 </body>

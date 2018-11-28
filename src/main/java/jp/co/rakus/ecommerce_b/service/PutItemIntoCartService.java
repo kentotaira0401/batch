@@ -35,6 +35,8 @@ public class PutItemIntoCartService {
 		
 		if(loginUser == null){ //ユーザがログインしてなかった場合。
 			  userId = session.getId().hashCode();
+			  Integer tmpId = userId;
+			  session.setAttribute("tmpId",tmpId);
 		}else {
 			  userId = loginUser.getUser().getId();// ログインユーザid;
 		}
@@ -49,7 +51,6 @@ public class PutItemIntoCartService {
 			order.setUserId(userId);
 			order = orderRepository.save(order);
 		}
-
 		OrderItem orderItem = new OrderItem();
 		orderItem.setItemId(form.getIntValueOfItemId());
 		orderItem.setQuantity(form.getIntValueOfQuantity());

@@ -237,6 +237,13 @@ public class OrderRepository {
 		}
 		return order;
 	}
+	
+	public void updateUserId(Integer userId,Integer tmpUserId) {
+		String sql = "update orders set user_id=:user_id where user_id=:tmpUserId";
+		System.out.println("tmpUser"+tmpUserId);
+		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId).addValue("tmpUserId",tmpUserId);
+		template.update(sql, sqlParam);
+	}
 
 	public Order findByUserIdAndStatus(int userId, int status) {
 		String sql = "select ord.id ord_id ,ord.user_id ord_user_id ,ord.status ord_status "
@@ -267,6 +274,16 @@ public class OrderRepository {
 	}
 	
 	public List<Order> findByUserIdAndStatusForOrderHistory(int userId, int [] status) {
+		String statuses ="";
+		for (int i : status) {
+			if(i==status.length) {
+				statuses += i;
+				System.out.println(statuses);
+			}else {
+				statuses += i + ",";
+				System.out.println(statuses);
+			}
+		}
 		String sql = "select ord.id ord_id ,ord.user_id ord_user_id ,ord.status ord_status "
 				+ ",ord.total_price ord_total_price ,ord.order_date ord_order_date "
 				+ ",ord.destination_name ord_destination_name " + ",ord.destination_email ord_destination_email "
@@ -284,10 +301,12 @@ public class OrderRepository {
 				+ "ord.id = ordI.order_id left outer join items as i on "
 				+ "ordI.item_id = i.id left outer join order_toppings as ot on "
 				+ "ordI.id = ot.order_item_id left outer join toppings as t on "
-				+ "ot.topping_id = t.id where ord.user_id = :user_id and status =:status1 and status=:status2 and status=:status3 order by ord.id;";
+				
+				+ "ot.topping_id = t.id where ord.user_id = :user_id and status in ("+ statuses + ") order by ord.status,ord.id,ord.order_date;";
 
-		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId).addValue("status1",
-				status[0]).addValue("status2", status[1]).addValue("status3", status[2]);
+		
+		System.out.println("最終表示" + statuses);
+		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId);
 
 		List<Order> orderList = template.query(sql, sqlParam, ORDERHISTORY_RESULTSETEXTRACTOR);
 

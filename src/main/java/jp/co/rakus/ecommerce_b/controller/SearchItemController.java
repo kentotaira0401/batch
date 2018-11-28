@@ -3,6 +3,8 @@ package jp.co.rakus.ecommerce_b.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.form.PutItemIntoCartForm;
 import jp.co.rakus.ecommerce_b.service.FindAllToppingService;
 import jp.co.rakus.ecommerce_b.service.ItemService;
+import jp.co.rakus.ecommerce_b.service.OrderService;
 
 @Controller
 @RequestMapping("/SearchItem")
@@ -30,8 +33,14 @@ public class SearchItemController {
 	public PutItemIntoCartForm setUpPutItemIntoCartForm() {
 		return new PutItemIntoCartForm();
 	}
-
-	/**
+	@Autowired
+	public OrderService service;
+	
+	@Autowired
+	public HttpSession session;
+	
+	
+	/*
 	 * 商品一覧を表示
 	 * 
 	 * @param model
@@ -40,7 +49,19 @@ public class SearchItemController {
 	 * @return 商品リスト
 	 */
 	@RequestMapping("/Search")
-	public String Search(Model model) {
+	public String Search(Model model,@AuthenticationPrincipal LoginUser loginUser) {
+		
+		if(loginUser != null) {
+			Integer userId = loginUser.getUser().getId();
+			//Integer tmpUserId = session.getId().hashCode();
+			
+			Integer tmpId = (Integer) session.getAttribute("tmpId");
+			
+			System.out.println("userId"+ userId);
+			System.out.println("tmp"+tmpId);
+			service.updateUserId(userId, tmpId);
+		}
+		
 		List<Item> itemList = itemService.findAll();
 		model.addAttribute("itemList", itemList);
 		return "item-list";
