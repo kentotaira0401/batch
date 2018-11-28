@@ -66,16 +66,17 @@ public class LoginController {
 		return "item-list";
 	}
 
+	//※ログイン認証フィルターが機能し、item-list.jspに遷移するようにしたためいらなくなりました。
 	/**
 	 * ログアウト画面を表示します
 	 * 
 	 * @return ログアウト画面
 	 */
-	@RequestMapping("/logout2")
+/*	@RequestMapping("/logout2")
 	public String logout(Model model) {
 		System.out.println("111");
 		return "logout";
-	}
+	}*/
 	
 	//※ログイン認証フィルターが機能するためいらなくなりました。
 	/**
