@@ -100,7 +100,7 @@
 											<c:out value="${orderItem.item.priceL}" /> &nbsp;&nbsp;
 											</c:otherwise>
 									</c:choose> <c:out value="${orderItem.quantity}" /> &nbsp;&nbsp;
-									&nbsp;&nbsp;<c:out value="${orderItem.quantity}" />
+									
 									&nbsp;&nbsp;</td>
 								<td>
 									<ul>
