@@ -1,9 +1,10 @@
+
 package jp.co.rakus.ecommerce_b.controller;
 
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;//
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -34,10 +35,10 @@ public class SearchItemController {
 		return new PutItemIntoCartForm();
 	}
 	@Autowired
-	public OrderService service;
+	public OrderService service;//
 	
 	@Autowired
-	public HttpSession session;
+	public HttpSession session;//
 	
 	
 	/*
@@ -113,3 +114,6 @@ public class SearchItemController {
 	}
 
 }
+
+
+
