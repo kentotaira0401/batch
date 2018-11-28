@@ -2,8 +2,9 @@ package jp.co.rakus.ecommerce_b.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
 import jp.co.rakus.ecommerce_b.domain.LoginUser;
@@ -24,22 +25,32 @@ public class PutItemIntoCartService {
 	private OrderItemRepository orderItemRepository;
 	@Autowired
 	private OrderToppingRepository orderToppingRepository;
-
+	@Autowired 
+	private HttpSession session;
+	
 	public void putItemIntoCart(PutItemIntoCartForm form, LoginUser loginUser) {
-		int userId = loginUser.getUser().getId();// ログインユーザid;
-		System.out.println("userId" + userId);
-		int status = 0;
 
+		int status = 0;
+		int userId = 0;
+		
+		if(loginUser == null){ //ユーザがログインしてなかった場合。
+			  userId = session.getId().hashCode();
+			  Integer tmpId = userId;
+			  session.setAttribute("tmpId",tmpId);
+		}else {
+			  userId = loginUser.getUser().getId();// ログインユーザid;
+		}
+		
+		System.out.println("tmpUserId"+userId);
+		
 		Order order = orderRepository.findByUserIdAndStatus(userId, status);
 		if (order == null) {
 			order = new Order();
-
-			order.setUserId(userId);
 			order.setStatus(0);
 			order.setTotalPrice(0);
+			order.setUserId(userId);
 			order = orderRepository.save(order);
 		}
-
 		OrderItem orderItem = new OrderItem();
 		orderItem.setItemId(form.getIntValueOfItemId());
 		orderItem.setQuantity(form.getIntValueOfQuantity());

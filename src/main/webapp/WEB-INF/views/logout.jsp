@@ -8,5 +8,6 @@
 <body>
 	ログアウトしました。<br>
 	<a href="${pageContext.request.contextPath}/">ログイン画面へ</a>
+	<a href="${pageContext.request.contextPath}/SearchItem/Search">トップページへ</a>
 </body>
 </html>

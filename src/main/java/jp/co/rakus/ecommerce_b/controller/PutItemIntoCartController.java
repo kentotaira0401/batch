@@ -22,8 +22,6 @@ public class PutItemIntoCartController {
 	private PutItemIntoCartService putItemIntoCartService;
 	
 
-	
-	
 	@RequestMapping("/putItem")
 	public String putItemIntoCart(@Validated PutItemIntoCartForm form, BindingResult result, Model model,@AuthenticationPrincipal LoginUser loginUser) {
 		if (result.hasErrors()) {
@@ -32,4 +30,8 @@ public class PutItemIntoCartController {
 		putItemIntoCartService.putItemIntoCart(form,loginUser);
 		return "redirect:/showCartItem/showCart";
 	}
+	
+	
+	
+	
 }

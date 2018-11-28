@@ -237,6 +237,13 @@ public class OrderRepository {
 		}
 		return order;
 	}
+	
+	public void updateUserId(Integer userId,Integer tmpUserId) {
+		String sql = "update orders set user_id=:user_id where user_id=:tmpUserId";
+		System.out.println("tmpUser"+tmpUserId);
+		SqlParameterSource sqlParam = new MapSqlParameterSource().addValue("user_id", userId).addValue("tmpUserId",tmpUserId);
+		template.update(sql, sqlParam);
+	}
 
 	public Order findByUserIdAndStatus(int userId, int status) {
 		String sql = "select ord.id ord_id ,ord.user_id ord_user_id ,ord.status ord_status "

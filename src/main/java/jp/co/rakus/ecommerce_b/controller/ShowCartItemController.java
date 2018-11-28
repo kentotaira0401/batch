@@ -1,6 +1,6 @@
 package jp.co.rakus.ecommerce_b.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,13 +25,26 @@ public class ShowCartItemController {
 	public OrderForm SetUpForm() {
 		return new OrderForm();
 	}
+	@Autowired 
+	private HttpSession session;
 	
 	@RequestMapping("/showCart")
 	public String showCart(Model model,@AuthenticationPrincipal LoginUser loginUser) {
 		
-		int userId = loginUser.getUser().getId();//ログインユーザid;;
+		int userId = 0;
 		int status = 0;
-		Order order = showCartItemService.findByUserIdAndStatus(userId, status);
+		
+		if(loginUser == null){ //ユーザがログインしてなかった場合。
+			  userId = session.getId().hashCode();
+		}else {
+			  userId = loginUser.getUser().getId();// ログインユーザid;
+		}
+		
+		System.out.println("tmp"+userId);
+		
+		Order order = new Order();
+	    order = showCartItemService.findByUserIdAndStatus(userId, status);
+		
 		model.addAttribute("order",order);
 
 		return "cart_list";

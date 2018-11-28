@@ -33,6 +33,9 @@ public class OrderService {
 		return repository.save(order);
 	}
 
+	public void updateUserId(Integer userId, Integer tmpUserId) {
+		repository.updateUserId(userId, tmpUserId);
+	}
 	
 
 

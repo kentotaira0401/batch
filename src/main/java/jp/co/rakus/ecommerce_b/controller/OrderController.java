@@ -4,10 +4,12 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.domain.Order;
+import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.form.OrderForm;
 import jp.co.rakus.ecommerce_b.service.OrderService;
+import jp.co.rakus.ecommerce_b.service.SendEmailServicec;
 
 /**
  *　最終注文をするためのcontroller.
@@ -34,13 +38,19 @@ public class OrderController {
 	
 	@Autowired
 	public OrderService service;
-	
+	@Autowired
+	public SendEmailServicec emailservice;
 
 	@ModelAttribute
 	public OrderForm setUpForm() {
 		return new OrderForm();
 	}
 
+	@Autowired
+	public HttpSession session;
+	
+	
+	
 
 	/**
 	 * 注文画面を表示.
@@ -120,6 +130,8 @@ public class OrderController {
 		 order.setDeliverlyTime(deliverlyTime);
 		 
 		 service.save(order); // order情報をupdateする
+		 //order.getDestinationEmail();
+		 emailservice.sendMail(order);
 		 return "order_finished";
 	}
 	
