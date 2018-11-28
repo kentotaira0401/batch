@@ -194,11 +194,10 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-12">
-												<label
-													class="control-label" style="color: red" for="inputPeriod">配達日時を入力してください</label>
+												<form:errors path="deliverlyTime" cssStyle="color:red" element="div"/>
 											</div>
 											<div class="col-sm-5">
-												<form:input path="orderDate" type="date" name="name" id="name"
+												<form:input path="deliverlyTime" type="date" name="name" id="name"
 													class="form-control input-sm"/>
 											</div>
 											

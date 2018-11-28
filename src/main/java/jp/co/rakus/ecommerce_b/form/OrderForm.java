@@ -2,6 +2,7 @@ package jp.co.rakus.ecommerce_b.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 /**
  * orderを詰めるためのform.
@@ -71,6 +72,9 @@ public class OrderForm {
 	/**
 	 * 配達時間
 	 */
+	
+	@Pattern(regexp="#\\d{4}-\\d{1,2}-\\d{1,2}#",message="配送希望日を入力してください")
+	
 	private String deliverlyTime;
 
 	/**
