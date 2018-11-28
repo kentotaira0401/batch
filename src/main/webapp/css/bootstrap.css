@@ -6338,14 +6338,15 @@ button.close {
 }
 
 .character-color1 {
-	color: #ff0000;
+	color:#F00;
+	font :bold;
 }
 
 .character-color2 {
-	color: #0000ff;
+	color:#0000ff;
 }
 
 .character-color3 {
-	color: #ff0080;
+	color:#400080;
 }
 /*# sourceMappingURL=bootstrap.css.map */
