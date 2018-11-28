@@ -30,7 +30,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath}/SearchItem/Search" class="navbar-link">トップページへ</a>&nbsp;&nbsp;
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
