@@ -158,7 +158,8 @@
 								</td>
 								<td>
 								<form:errors path="destinationZipcode" cssStyle="color:red" element="div"/>
-									<form:input path="destinationZipcode"/>&nbsp;&nbsp;<button>住所検索</button>
+									<form:input path="destinationZipcode"/>&nbsp;&nbsp;
+									<button type="button" id="btn2">住所検索</button>
 								</td>
 							</tr>
 							<tr>
@@ -318,8 +319,10 @@
 		</form:form>
 	</div>
 	<!-- end container -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/ajax-address.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
+	<script src="/js/jquery-3.3.1.min.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
+	<script src="/js/zip-code.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
 </body>
 </html>

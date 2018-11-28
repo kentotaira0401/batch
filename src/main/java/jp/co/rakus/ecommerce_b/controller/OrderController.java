@@ -24,6 +24,7 @@ import jp.co.rakus.ecommerce_b.domain.Order;
 import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.form.OrderForm;
 import jp.co.rakus.ecommerce_b.service.OrderService;
+import jp.co.rakus.ecommerce_b.service.SendEmailServicec;
 
 /**
  *　最終注文をするためのcontroller.
@@ -37,7 +38,8 @@ public class OrderController {
 	
 	@Autowired
 	public OrderService service;
-	
+	@Autowired
+	public SendEmailServicec emailservice;
 
 	@ModelAttribute
 	public OrderForm setUpForm() {
@@ -128,6 +130,8 @@ public class OrderController {
 		 order.setDeliverlyTime(deliverlyTime);
 		 
 		 service.save(order); // order情報をupdateする
+		 //order.getDestinationEmail();
+		 emailservice.sendMail(order);
 		 return "order_finished";
 	}
 	
