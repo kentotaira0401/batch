@@ -92,20 +92,16 @@ public class OrderController {
 			return "order_confirm2";
 		}
 
-		System.out.println("orderform" + form.toString());
+		
 
 		// formをコピー
 		Order order = new Order();
 		BeanUtils.copyProperties(form, order);
 
-		// ** orderされた日付のstring を date へ変換する処理 **//
-		String date = form.getOrderDate();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date OrderDate = sdf.parse(date);
 
 		// ** string を timestamp へ変換
 		Timestamp deliverlyTime = new Timestamp(new SimpleDateFormat("yyyy-MM-dd hh")
-				.parse(form.getOrderDate() + " " + form.getDeliverlyTime()).getTime());
+				.parse(form.getDeliverlyDate() + " " + form.getDeliverlyTime()).getTime());
 
 		// 注文した日付を取得
 		Date todayDate = new Date();
@@ -129,12 +125,10 @@ public class OrderController {
 
 		order.setOrderDate(todayDate);
 		order.setDeliverlyTime(deliverlyTime);
-		//test
-		System.out.println("注文テストdate"+date);
-		System.out.println("注文テストOrderDate"+OrderDate);
+		
 
 		service.save(order); // order情報をupdateする
-		//emailservice.sendMail(order);
+		emailservice.sendMail(order);
 		return "order_finished";
 
 	}
