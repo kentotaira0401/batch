@@ -38,26 +38,20 @@ public class OrderController {
 
 	@Autowired
 	public OrderService service;
-<<<<<<< HEAD
+
 	@Autowired
 	public SendEmailServicec emailservice;
-=======
->>>>>>> subTotal
+
 
 	@ModelAttribute
 	public OrderForm setUpForm() {
 		return new OrderForm();
 	}
 
-<<<<<<< HEAD
 	@Autowired
 	public HttpSession session;
 	
-	
-	
 
-=======
->>>>>>> subTotal
 	/**
 	 * 注文画面を表示.
 	 * 
@@ -87,52 +81,11 @@ public class OrderController {
 	 * @throws ParseException
 	 */
 	@RequestMapping("/orderConfirm")
-<<<<<<< HEAD
-	public String orderConfirm(OrderForm form,Model model,@AuthenticationPrincipal LoginUser loginUser) throws ParseException {
-	    
-		 System.out.println("orderform"+form.toString());		
-		
-		 //formをコピー
-		 Order order = new Order();
-		 BeanUtils.copyProperties(form, order);
-		 
-		 //**  orderされた日付のstring を　date　へ変換する処理 **//
-		 String date = form.getOrderDate();
-		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		 Date OrderDate = sdf.parse(date);
-		
-		 //** string を　timestamp へ変換
-		 Timestamp deliverlyTime = new Timestamp(new SimpleDateFormat("yyyy-MM-dd hh").parse(form.getOrderDate()+ " " + form.getDeliverlyTime()).getTime() );
-		 
-		 //注文した日付を取得
-		 Date todayDate = new Date();
-		 
-	     Integer loginUserId = loginUser.getUser().getId();//ログインユーザid
-	     Integer paymentNumber = 0;//未入金番号
-		 
-		 Order notPaymentOrder = service.findByUserIdAndStatus(loginUserId,paymentNumber);
-		 order.setId(notPaymentOrder.getId());
-		 order.setUserId(notPaymentOrder.getUserId());
-		 order.setStatus(notPaymentOrder.getStatus());
-		 order.setTotalPrice(notPaymentOrder.getStatus());
-		 
-		 Integer paymentMethod = order.getPaymentMethod();
-		 
-		 if(paymentMethod == 1) {
-			 order.setStatus(1);
-		 }else {
-			 order .setStatus(2);
-		 }
-		 
-		 order.setOrderDate(todayDate);
-		 order.setDeliverlyTime(deliverlyTime);
-		 
-		 service.save(order); // order情報をupdateする
-		 //order.getDestinationEmail();
-		 emailservice.sendMail(order);
-		 return "order_finished";
-=======
-	public String orderConfirm(@Validated OrderForm form, BindingResult result, RedirectAttributes redirectAttributes,
+
+	public String orderConfirm(
+			@Validated OrderForm form,
+			BindingResult result,
+			RedirectAttributes redirectAttributes,
 			@AuthenticationPrincipal LoginUser loginUser) throws ParseException {
 
 		if (result.hasErrors()) {
@@ -181,8 +134,9 @@ public class OrderController {
 		System.out.println("注文テストOrderDate"+OrderDate);
 
 		service.save(order); // order情報をupdateする
+		//emailservice.sendMail(order);
 		return "order_finished";
->>>>>>> subTotal
+
 	}
 
 }
