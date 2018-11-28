@@ -6336,4 +6336,16 @@ button.close {
     display: none !important;
   }
 }
+
+.character-color1 {
+	color: #ff0000;
+}
+
+.character-color2 {
+	color: #0000ff;
+}
+
+.character-color3 {
+	color: #ff0080;
+}
 /*# sourceMappingURL=bootstrap.css.map */
