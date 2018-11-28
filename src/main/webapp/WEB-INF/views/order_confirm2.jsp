@@ -18,7 +18,7 @@
 <body>
 
 	<div class="container">
-		<nav class="navbar navbar-default">
+			<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -29,8 +29,9 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="${pageContext.request.contextPath}/SearchItem/Search"> <!-- 企業ロゴ --> <img
-						alt="main log" src="../../img/header_logo.png" height="35">
+					<a class="navbar-brand"
+						href="${pageContext.request.contextPath}/SearchItem/Search"> <!-- 企業ロゴ -->
+						<img alt="main log" src="../../img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -40,8 +41,9 @@
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/showCartItem/showCart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
-							href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+							href="${pageContext.request.contextPath}/showOrderHistory/showOrderHistory"
+							class="navbar-link">注文履歴</a>&nbsp;&nbsp; <a
+							href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath}/logout"
 							class="navbar-link">ログアウト</a>
 					</p>

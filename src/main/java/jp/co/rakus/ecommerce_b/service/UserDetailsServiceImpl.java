@@ -15,8 +15,6 @@ import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.repository.UserRepository;
 
-
-
 /**
  * ログイン後のメンバー情報に権限情報を付与するサービスクラス.
  * 
