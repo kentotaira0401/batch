@@ -2,6 +2,7 @@ package jp.co.rakus.ecommerce_b.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 /**
  * ユーザー登録用Form
@@ -20,6 +21,7 @@ public class RegisterUserForm {
 	private String email;
 	/** パスワード */
 	@NotEmpty( message = "値を入力してください")
+	@Size(min=8, max=16, message="パスワードは8文字以上16文字以内に設定してください")
 	private String password;
 	/** 郵便番号*/
 	@NotEmpty( message = "値を入力してください")
