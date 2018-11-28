@@ -85,11 +85,12 @@ public class OrderController {
 	public String orderConfirm(
 			@Validated OrderForm form,
 			BindingResult result,
+			Model model,
 			RedirectAttributes redirectAttributes,
 			@AuthenticationPrincipal LoginUser loginUser) throws ParseException {
 
 		if (result.hasErrors()) {
-			return "order_confirm2";
+			return order(model,loginUser);
 		}
 
 		
