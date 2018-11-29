@@ -85,13 +85,13 @@
 							<div class="form-group">
 								<label for="inputPassword">パスワード:</label>
 								<!-- <label class="control-label" style="color: red" for="inputError">パスワードを入力してください</label> -->
-								<form:input type="text" path="password" id="inputPassword" class="form-control" placeholder="Password"/>
+								<form:input type="password" path="password" id="inputPassword" class="form-control" placeholder="Password"/>
 								<form:errors path="password" cssStyle="color:red" />
 							</div>
 							<div class="form-group">
 								<label for="inputConfirmationPassword">確認用パスワード:</label>
 								<!-- <label class="control-label" style="color: red" for="inputError">確認用パスワードを入力してください</label> -->
-								<form:input type="text" path="conformationPassword" id="inputConfirmationPassword" class="form-control" placeholder="Confirmation Password"/>
+								<form:input type="password" path="conformationPassword" id="inputConfirmationPassword" class="form-control" placeholder="Confirmation Password"/>
 								<form:errors path="conformationPassword" cssStyle="color:red" />
 							</div>
 							<div class="form-group">
