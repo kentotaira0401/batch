@@ -123,9 +123,8 @@
 											<span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
 										</label>
 									</div>
-									<div class="col-sm-12">
-
-									<form:checkboxes items="${toppingMap}" path="toppingList" class="toppingList"/>
+									<div class="col-sm-12">																			
+											 <form:checkboxes items="${toppingMap}" path="toppingList" class="toppingList checkbox-inline"/>											
 									</div>
 									<div class="row">
 										<div class="col-xs-offset-2 col-xs-8">
