@@ -53,8 +53,6 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-
-
 		<!-- table -->
 		<div class="row">
 			<div
@@ -77,8 +75,6 @@
 							</th>
 							<th></th>
 						</tr>
-
-
 						<c:forEach var="orderItem" items="${order.orderItemList}">
 							<tr>
 								<td>
@@ -100,19 +96,19 @@
 											<c:out value="${orderItem.item.priceL}" /> &nbsp;&nbsp;
 											</c:otherwise>
 									</c:choose> <c:out value="${orderItem.quantity}" /> &nbsp;&nbsp;
-									&nbsp;&nbsp;<c:out value="${orderItem.quantity}" />
 									&nbsp;&nbsp;</td>
 								<td>
 									<ul>
 										<c:forEach var="ordertopping"
 											items="${orderItem.orderToppingList}">
 											<c:if test="${orderItem.size=='M'.charAt(0)}">
-													<li><c:out value="${ordertopping.topping.name}" /> <c:out
-															value="${topping.priceM}" /></li>
-												</c:if> <c:if test="${orderItem.size=='L'.charAt(0)}">
-													<li><c:out value="${ordertopping.topping.name}" /> <c:out
-															value="${topping.priceL}" /></li>
-												</c:if>
+												<li><c:out value="${ordertopping.topping.name}" /> <c:out
+														value="${topping.priceM}" /></li>
+											</c:if>
+											<c:if test="${orderItem.size=='L'.charAt(0)}">
+												<li><c:out value="${ordertopping.topping.name}" /> <c:out
+														value="${topping.priceL}" /></li>
+											</c:if>
 										</c:forEach>
 									</ul>
 								</td>
@@ -141,10 +137,20 @@
 
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center"></div>
-				<span id="total-price">税<c:out value="${order.tax}" />円
-				</span><br> <span id="total-price"><c:out
-						value="${order.calcTotalPrice}" />円（税込み）</span>
+				<span id="total-price"> <c:choose>
+						<c:when test="${order.orderItemList==null}">
+							<div class="form-group text-center">カートに商品がありません。</div>
+						</c:when>
+						<c:otherwise>
+						<div class="form-group text-center">
+							<span id="total-price">税<c:out value="${order.tax}" />円
+							</span>
+							<c:out value="${order.calcTotalPrice}" />円（税込み)
+							 &nbsp;&nbsp;
+							 </div>
+											</c:otherwise>
+					</c:choose>
+				</span>
 			</div>
 		</div>
 	</div>
