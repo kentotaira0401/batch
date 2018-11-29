@@ -101,20 +101,18 @@
 											<img src="<c:out value="${orderItem.item.imagePath}"/>">
 										</div>
 										<br>
-										<a href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${orderItem.item.id}"/>">
-											<c:out value="${orderItem.item.name}" /><span>の商品情報を見る</span>
-										</a>
+										<c:out value="${orderItem.item.name}" />
 									</div>
 								</td>
 								<td><span class="price">&nbsp;<c:out
 											value="${orderItem.size}" /></span>&nbsp;&nbsp;<c:choose>
 										<c:when test="${orderItem.size == 'M'.charAt(0)}">
-											<c:out value="${orderItem.item.priceM}" />円 &nbsp;&nbsp;
+											<c:out value="${orderItem.item.priceM}" /> &nbsp;&nbsp;
 											</c:when>
 										<c:otherwise>
-											<c:out value="${orderItem.item.priceL}" />円 &nbsp;&nbsp;
+											<c:out value="${orderItem.item.priceL}" /> &nbsp;&nbsp;
 											</c:otherwise>
-									</c:choose> <c:out value="${orderItem.quantity}" />枚 &nbsp;&nbsp;
+									</c:choose> <c:out value="${orderItem.quantity}" /> &nbsp;&nbsp;
 
 									&nbsp;&nbsp;</td>
 								<td>
@@ -134,7 +132,7 @@
 								</td>
 								<td>
 									<div class="text-center">
-										<c:out value="${orderItem.subTotal}" />円
+										<c:out value="${orderItem.subTotal}" />
 									</div>
 								</td>
 								<td><form:form method="post"
