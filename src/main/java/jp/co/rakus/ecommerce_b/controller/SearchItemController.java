@@ -51,15 +51,15 @@ public class SearchItemController {
 	 */
 	@RequestMapping("/Search")
 	public String Search(Model model,@AuthenticationPrincipal LoginUser loginUser) {
+	 
+		
+		session.setAttribute("loginUser",loginUser);
 		
 		if(loginUser != null) {
 			Integer userId = loginUser.getUser().getId();
-			//Integer tmpUserId = session.getId().hashCode();
+			session.setAttribute("userId",userId);
 			
-			Integer tmpId = (Integer) session.getAttribute("tmpId");
-			
-			System.out.println("userId"+ userId);
-			System.out.println("tmp"+tmpId);
+			Integer tmpId = (Integer) session.getAttribute("tmpId");	
 			service.updateUserId(userId, tmpId);
 		}
 		
@@ -77,8 +77,10 @@ public class SearchItemController {
 	 * @return 検索された商品リスト（リストが空の場合は全てのアイテムを表示）
 	 */
 	@RequestMapping("/FuzzySearch")
-	public String FuzzySerch(Model model, String name) {
+	public String FuzzySerch(Model model, String name,@AuthenticationPrincipal LoginUser loginUser) {
 		List<Item> itemList = itemService.findByName(name);
+		
+		session.setAttribute("loginUser",loginUser);
 
 		//System.out.println("1111");
 		if ((itemList.size() == 0) || (name == "")) {
@@ -87,11 +89,9 @@ public class SearchItemController {
 			model.addAttribute("isEmpty", isEmpty);
 			System.out.println("テストisEmpty呼ばれた");
 		}
-
 		model.addAttribute("itemList", itemList);
 
 		return "item-list";
-
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class SearchItemController {
 	 */
 	@RequestMapping("/detailItem")
 	public String detailItem(int id, Model model,@AuthenticationPrincipal LoginUser loginUser) {
-		//System.out.println(loginUser.getUser().getId());
+		session.setAttribute("loginUser",loginUser);
 		Item item = itemService.findById(id);
 		model.addAttribute("item", item);
 		Map<Integer, String> toppingMap = findAllToppingService.findAll();

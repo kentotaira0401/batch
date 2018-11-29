@@ -34,13 +34,13 @@ public class ShowCartItemController {
 		int userId = 0;
 		int status = 0;
 		
+		session.setAttribute("loginUser",loginUser);
+		
 		if(loginUser == null){ //ユーザがログインしてなかった場合。
 			  userId = session.getId().hashCode();
 		}else {
 			  userId = loginUser.getUser().getId();// ログインユーザid;
 		}
-		
-		System.out.println("tmp"+userId);
 		
 		Order order = new Order();
 	    order = showCartItemService.findByUserIdAndStatus(userId, status);
