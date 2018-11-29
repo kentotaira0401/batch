@@ -61,6 +61,8 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
+		
+	
 		<!-- table -->
 		<div class="row">
 			<div
@@ -92,7 +94,9 @@
 											<img src="<c:out value="${orderItem.item.imagePath}"/>">
 										</div>
 										<br>
-										<c:out value="${orderItem.item.name}" />
+										<a href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${orderItem.item.id}"/>">
+											<c:out value="${orderItem.item.name}" /><span>の商品情報を見る</span>
+										</a>
 									</div>
 								</td>
 								<td><span class="price">&nbsp;<c:out
@@ -112,11 +116,11 @@
 											items="${orderItem.orderToppingList}">
 											<c:if test="${orderItem.size=='M'.charAt(0)}">
 												<li><c:out value="${ordertopping.topping.name}" /> <c:out
-														value="${topping.priceM}" /></li>
+														value="${ordertopping.topping.priceM}" />円</li>
 											</c:if>
 											<c:if test="${orderItem.size=='L'.charAt(0)}">
 												<li><c:out value="${ordertopping.topping.name}" /> <c:out
-														value="${topping.priceL}" /></li>
+														value="${ordertopping.topping.priceL}" />円</li>
 											</c:if>
 										</c:forEach>
 									</ul>
@@ -147,7 +151,7 @@
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
 				<span id="total-price"> <c:choose>
-						<c:when test="${order.calcTotalPrice==0||order.orderItemList==null}">
+						<c:when test="${order.calcTotalPrice==0||empty order.orderItemList}">
 							<div class="form-group text-center">カートに商品がありません。</div>
 						</c:when>
 						<c:otherwise>
