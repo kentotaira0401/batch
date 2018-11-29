@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +40,12 @@
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/showOrderHistory/showOrderHistory" class="navbar-link" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp; 
+
+						<a href="order_history.html" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+							 <c:if test="${loginUser == null }">
+							  <a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+							 </c:if>
+
 						<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
 					</p>
 				</div>
