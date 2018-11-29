@@ -129,10 +129,12 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<p>
+					<h3 class="text-center">
 					合計金額
-					<c:out value="${order.calcTotalPrice}" />円
-					</p>
+					<fmt:formatNumber value="${order.calcTotalPrice}" pattern="###,###" />
+					円
+					</h3>
+					<hr>
 				</c:forEach>
 			</div>
 		</div>
