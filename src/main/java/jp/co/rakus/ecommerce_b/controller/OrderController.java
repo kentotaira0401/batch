@@ -90,6 +90,7 @@ public class OrderController {
 			@AuthenticationPrincipal LoginUser loginUser) throws ParseException {
 
 		if (result.hasErrors()) {
+//			return "forward:/order/order";
 			return order(model,loginUser);
 		}
 
@@ -130,7 +131,7 @@ public class OrderController {
 
 		service.save(order); // order情報をupdateする
 		emailservice.sendMail(order);
-		return "order_finished";
+		return "order_finished";//redirect必須
 
 	}
 
