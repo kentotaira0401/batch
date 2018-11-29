@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jp.co.rakus.ecommerce_b.domain.LoginUser;
 import jp.co.rakus.ecommerce_b.domain.Order;
 import jp.co.rakus.ecommerce_b.domain.User;
+import jp.co.rakus.ecommerce_b.form.CouponForm;
 import jp.co.rakus.ecommerce_b.form.OrderForm;
 import jp.co.rakus.ecommerce_b.service.OrderService;
 import jp.co.rakus.ecommerce_b.service.SendEmailServicec;
@@ -47,6 +48,11 @@ public class OrderController {
 	public OrderForm setUpForm() {
 		return new OrderForm();
 	}
+	
+	@ModelAttribute
+	public CouponForm setUpForm2() {
+		return new CouponForm();
+	}
 
 	@Autowired
 	public HttpSession session;
@@ -71,7 +77,12 @@ public class OrderController {
 		Order order = service.findByUserIdAndStatus(loginUserId, paymentNumber);
 
 		model.addAttribute("order", order); // 未入金の order を confirm画面で使用
-
+		
+		//クーポンの金額を引っ張る
+		Integer couponTotalPrice =  (Integer) session.getAttribute("couponTotalPrice");
+		
+		session.setAttribute("couponTotalPrice",couponTotalPrice);
+	
 		return "order_confirm2";
 	}
 
@@ -124,7 +135,7 @@ public class OrderController {
 		order.setId(notPaymentOrder.getId());
 		order.setUserId(notPaymentOrder.getUserId());
 		order.setStatus(notPaymentOrder.getStatus());
-		order.setTotalPrice(notPaymentOrder.getStatus());
+		order.setTotalPrice(notPaymentOrder.getCalcTotalPrice() );
 
 		Integer paymentMethod = order.getPaymentMethod();
 
@@ -136,7 +147,6 @@ public class OrderController {
 
 		order.setOrderDate(todayDate);
 		order.setDeliverlyTime(deliverlyTime);
-		
 
 		service.save(order); // order情報をupdateする
 		emailservice.sendMail(order);

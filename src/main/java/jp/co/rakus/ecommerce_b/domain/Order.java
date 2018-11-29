@@ -83,6 +83,15 @@ public class Order {
 	 */
 	private List<OrderItem> orderItemList;
 
+
+	// 注文のトータルの額から　coupon 文の金額を引いた額を返す
+	public int getCalcCouponPirce(Integer totalPrice,Integer couponPrice) {		
+		Integer couponPriceTotal = totalPrice - couponPrice;
+		return couponPriceTotal;
+	}
+	
+	
+	
 	public int getCalcTotalPrice() {
 		int totalPrice = 0;
 		for (OrderItem orderItem : orderItemList) {

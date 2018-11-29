@@ -86,6 +86,7 @@ public class OrderForm {
 	 */
 
 	private Integer paymentMethod;
+	
 
 	public Integer getId() {
 		return id;
