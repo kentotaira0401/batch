@@ -124,12 +124,53 @@
 
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
-			<span id="total-price">
-					<div class="form-group text-center">
-							<fmt:formatNumber value="${order.calcTotalPrice}" pattern="###,###"/>円(税込み)<br>
-							(税金:<fmt:formatNumber value="${order.tax}" pattern="###,###"/>円)<br>
+			<span id="total-price"> 
+					
+					<c:choose>
+						<c:when test="${couponTotalPrice == null }">
+							<div class="form-group text-center">
+								<fmt:formatNumber value="${order.calcTotalPrice}"
+									pattern="###,###" />
+								円(税込み)<br> (税金:
+								<fmt:formatNumber value="${order.tax}" pattern="###,###" />
+								円)<br>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="form-group text-center">
+								<p class="form-control btn btn-info btn-block">クーポン使用前金額</p>
+								<fmt:formatNumber value="${order.calcTotalPrice}"
+									pattern="###,###" />
+								円(税込み)<br> (税金:
+								<fmt:formatNumber value="${order.tax}" pattern="###,###" />
+								円)<br>
+							</div>
+
+							<div class="form-group text-center">
+							<p class="form-control btn btn-primary btn-block">割引後価格！</p>
+								<c:out value="${cuponPirce}"/>円クーポンが使用されました。<br>
+								<fmt:formatNumber value="${couponTotalPrice}"
+									pattern="###,###" />
+								円(税込み)<br> (税金:
+								<fmt:formatNumber value="${couponTotalPrice * 0.08}" pattern="###,###" />
+								円)<br>
+							</div>
+						</c:otherwise>
+					</c:choose>
+
+				</span>
+				<div class="row">
+					<div class="col-xs-offset-4 col-xs-4">
+						<form:form modelAttribute="couponForm"
+							action="${pageContext.request.contextPath}/coupon/input"
+							method="POST">
+							<form:input path="couponId"/>
+							<input class="form-control btn btn-danger btn-block"
+								type="submit" value="クーポンを使用する。">
+						</form:form>					
 					</div>
-			</span>
+				</div>
+
 			</div>
 		</div>
 	    </div>

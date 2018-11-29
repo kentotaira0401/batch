@@ -45,7 +45,7 @@ public class ShowCartItemController {
 		Order order = new Order();
 	    order = showCartItemService.findByUserIdAndStatus(userId, status);
 		
-		model.addAttribute("order",order);
+		session.setAttribute("order",order);
 
 		return "cart_list";
 	}
