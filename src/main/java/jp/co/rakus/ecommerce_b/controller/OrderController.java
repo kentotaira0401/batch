@@ -76,6 +76,17 @@ public class OrderController {
 	}
 
 	/**
+	 * 注文完了画面を表示.
+	 * 
+	 * @return 注文完了画面に
+	 */
+	@RequestMapping("/finished")
+	public String orderFinished() {
+
+		return "order_finished";
+	}
+	
+	/**
 	 * 注文をDBに保存.
 	 * 
 	 * @return 注文完了画面にreturn.
@@ -129,7 +140,7 @@ public class OrderController {
 
 		service.save(order); // order情報をupdateする
 		emailservice.sendMail(order);
-		return "order_finished";//redirect必須
+		return "redirect:/order/finished";//redirect必須
 
 	}
 
