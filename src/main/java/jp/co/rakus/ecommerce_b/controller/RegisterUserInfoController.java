@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.form.RePasswordForm;
 import jp.co.rakus.ecommerce_b.form.RegisterUserForm;
+import jp.co.rakus.ecommerce_b.form.UpdatePassword;
 import jp.co.rakus.ecommerce_b.service.RegisterUserInfoService;
 import jp.co.rakus.ecommerce_b.service.SendEmailServicec;
 
@@ -42,6 +43,15 @@ public class RegisterUserInfoController {
 	@ModelAttribute
 	public RePasswordForm setUpRePassForm() {
 		return new RePasswordForm();
+	}
+	
+	/**
+	 * フォームを初期化します.
+	 * @return フォーム
+	 */
+	@ModelAttribute
+	public UpdatePassword setUpUpdateForm() {
+		return new UpdatePassword();
 	}
 	
 	/**
@@ -78,6 +88,30 @@ public class RegisterUserInfoController {
 	@RequestMapping("/toFinisheMail")
 	public String toFinishedMail(Model model) {
 		return "finished_send_mail";
+	}
+	
+	/**
+	 * パスワード忘れ、URL送信用の
+	 * メールアドレスを送るフォーム画面を表示します.
+	 * 
+	 * @param model
+	 * @return メールアドレスを送るフォーム画面
+	 */
+	@RequestMapping("/toFinishedUpdate")
+	public String toFinishedUpdate(Model model) {
+		return "finished_update_password";
+	}
+	
+	/**
+	 * パスワード忘れ、URL送信用の
+	 * メールアドレスを送るフォーム画面を表示します.
+	 * 
+	 * @param model
+	 * @return メールアドレスを送るフォーム画面
+	 */
+	@RequestMapping("/toUpdatePass")
+	public String toUpdatePass(Model model) {
+		return "update_password";
 	}
 	
 	/**
@@ -132,6 +166,7 @@ public class RegisterUserInfoController {
 							Model model) {
 
 		if(result.hasErrors()){
+			System.out.println("やっちまったいら");
 			return toRePassword(model);
 		}
 		// メールアドレスが登録されていない場合の処理
@@ -146,8 +181,47 @@ public class RegisterUserInfoController {
 		
 		// メールアドレスが登録されていればそのメールアドレスにメールを送信
 		sendEmailService.sendMailForRePass(valUser2.getEmail());
-		
+		System.out.println("オッケー平");
 		return "redirect:/register/toFinisheMail";
+	}
+	
+	/**
+	 * ユーザー情報を登録します.
+	 * @param form フォーム
+	 * @param result リザルト
+	 * @param model モデル
+	 * @return ログイン画面
+	 */
+	@RequestMapping("/updatePass")
+	public String updatePass(@Validated UpdatePassword form,
+							BindingResult result,
+							Model model) {
+
+		// パスワード確認
+		if(!form.getPassword().equals(form.getConformationPassword())){
+			result.rejectValue("conformationPassword", "", "パスワードを確認してください");
+		}
+
+		// メールアドレスが重複している場合の処理
+		User valUser = registerService.findByEmail(form.getEmail());
+		if(valUser == null){
+			result.rejectValue("email", "", "登録されていないパスワードです");
+		}
+		if(result.hasErrors()){
+			return toRegisterUser(model);
+		}
+
+		// パスワードを暗号化し、formに設定
+		form.setPassword(registerService.encodePassword(form.getPassword()));
+		
+		// フォームの内容をエンティティに格納
+		User user = new User();
+		BeanUtils.copyProperties(form, user);
+		registerService.update(user.getEmail(),user.getPassword());
+		System.out.println(user);
+	
+		
+		return "redirect:/register/toFinishedUpdate";
 	}
 	
 }

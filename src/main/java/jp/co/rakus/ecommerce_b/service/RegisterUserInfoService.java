@@ -64,6 +64,17 @@ public class RegisterUserInfoService {
 	public User insert(User user) {
 		return userRepository.insert(user);
 	}
+	
+	/**
+	 * 入力されたパスワードを更新する.
+	 * 
+	 * @param user
+	 *            入力された登録情報
+	 * @return
+	 */
+	public void update(String email, String rePassword) {
+		 userRepository.update(email, rePassword);
+	}
 
 	public User findByEmail(String email) {
 		return userRepository.findByEmail(email);

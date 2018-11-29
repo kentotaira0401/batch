@@ -9,7 +9,6 @@ public class RePasswordForm {
 	@NotEmpty( message = "メールアドレスを入力してください")
 	@Email( message = "メールアドレスの形式ではありません" )
 	private String email;
-
 	
 	
 	public RePasswordForm() {

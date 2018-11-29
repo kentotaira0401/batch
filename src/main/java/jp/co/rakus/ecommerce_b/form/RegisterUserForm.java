@@ -36,6 +36,7 @@ public class RegisterUserForm {
 	private String telephone;
 	/**　確認用パスワード*/
 	@NotEmpty( message = "確認用パスワードを入力してください")
+	@Size(min=8, max=16, message="パスワードは8文字以上16文字以内に設定してください")
 	private String conformationPassword;
 	
 	public RegisterUserForm() {

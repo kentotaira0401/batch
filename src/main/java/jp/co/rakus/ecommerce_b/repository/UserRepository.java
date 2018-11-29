@@ -112,4 +112,18 @@ public class UserRepository {
 		return user;
 	}
 	
+	/**
+	 * passを更新する.
+	 * 
+	 * @param User
+	 *            更新するユーザー情報
+	 */
+	public void update(String email, String rePassword) {
+		String sql = "update users set password = :password where email = :email;";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password", rePassword);
+		
+			template.update(sql,
+							param);
+		
+	}
 }

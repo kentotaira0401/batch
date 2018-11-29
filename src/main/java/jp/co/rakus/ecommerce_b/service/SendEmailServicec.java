@@ -34,7 +34,7 @@ public class SendEmailServicec {
         msg2.setFrom("kento.taira.0401@gmail.com");
         msg2.setTo(email);
         msg2.setSubject("[ラクラクピザ]パスワード設定用URLのお知らせ"); //タイトルの設定
-        msg2.setText("パス"/*String.valueOf(order.getOrderItemList())*/); //本文の設定
+        msg2.setText("http://localhost:8080/register/toUpdatePass"); //本文の設定
 
         this.sender.send(msg2);
     }
