@@ -1592,6 +1592,7 @@ pre code {
     float: left;
   }
   .col-sm-12 {
+   display: inline-block;
     width: 100%;
   }
   .col-sm-11 {
