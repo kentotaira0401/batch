@@ -25,22 +25,25 @@ public class OrderItem {
 	/** 注文トッピングリスト. */
 	private List<OrderTopping> orderToppingList;
 
-	
 	public int getSubTotal() {
-		int total = 0;
-		System.out.println("total"+total);
-		if('M'== size) {
-			int pizzaPrice = item.getPriceM();
-			total = pizzaPrice + orderToppingList.size() * 200;
-		}else {
-			int pizzaPrice = item.getPriceL();
-			total = pizzaPrice + orderToppingList.size() * 300;
+			int total = 0;
+		if (size == null) {
+
+		} else {
+			if ('M' == size) {
+				int pizzaPrice = item.getPriceM();
+				total = pizzaPrice + orderToppingList.size() * 200;
+			} else {
+				int pizzaPrice = item.getPriceL();
+				total = pizzaPrice + orderToppingList.size() * 300;
+			}
+			total = total * quantity;
+			System.out.println("total" + total);
+			return total;
 		}
-		total = total * quantity;
-		System.out.println("total"+total);
 		return total;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

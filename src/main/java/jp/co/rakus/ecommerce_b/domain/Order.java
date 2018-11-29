@@ -94,6 +94,11 @@ public class Order {
 	
 	public int getCalcTotalPrice() {
 		int totalPrice = 0;
+		
+		if(orderItemList.isEmpty()) {
+			
+		}else {
+			
 		for (OrderItem orderItem : orderItemList) {
 			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
@@ -108,6 +113,7 @@ public class Order {
 			}
 		}
 		
+		}
 		int totalPriceIncludeTax = (int) (totalPrice * 1.08);
 
 		return totalPriceIncludeTax;
