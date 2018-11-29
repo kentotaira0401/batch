@@ -37,7 +37,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ --> <img
-						alt="main log" src="../img/header_logo.png" height="35">
+	 					alt="main log" src="../img/header_logo.png" height="35">
 					</a>
 				</div>
 
