@@ -26,7 +26,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="item_list.html"> <!-- 企業ロゴ --> <img
+					<a class="navbar-brand"
+					 	href="${pageContext.request.contextPath}/SearchItem/Search"> <!-- 企業ロゴ --> <img
 						alt="main log" src="../../img/header_logo.png" height="35">
 					</a>
 				</div>
@@ -64,10 +65,10 @@
 		<div class="row">
 			<div class="col-xs-offset-5 col-xs-2">
 				<div class="form-group">
-					<form action="${pageContext.request.contextPath}/SearchItem/Search">
+					<form:form action="${pageContext.request.contextPath}/SearchItem/Search" method="post">
 						<input class="form-control btn btn-warning btn-block"
 							type="submit" value="トップ画面を表示する">
-					</form>
+					</form:form>
 				</div>
 			</div>
 		</div>

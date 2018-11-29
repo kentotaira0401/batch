@@ -133,22 +133,18 @@
   $( function() {
 
     var availableTags = [];
-    <c:forEach var="item" items="${itemList}" varStatus="status">
+    <c:forEach var="item" items="${itemList}">
     	availableTags.push('<c:out value="${item.name}"/>');
     </c:forEach>
     
-    $("#code").on("click", function() {
-    			auto();
-    	});
-    	  
-    	  function auto() {
+    
     		  $( "#code" ).autocomplete({
     		      source: availableTags,
     		      autoFocus: true,
     		      delay: 500,
     		      minLength: 1
     		    });
-    	  };
+    	  
   } ); 
   </script>
 </body>
