@@ -89,13 +89,16 @@ public class Order {
 			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceM();
+				pizzaPrice  *= orderItem.getQuantity();
 				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 200;
 			} else if (orderItem.getSize() == 'L') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceL();
+				pizzaPrice  *= orderItem.getQuantity();
 				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 300;
 			}
 		}
+		
 		int totalPriceIncludeTax = (int) (totalPrice * 1.08);
 
 		return totalPriceIncludeTax;
@@ -107,10 +110,12 @@ public class Order {
 			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceM();
+				pizzaPrice  *= orderItem.getQuantity();
 				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 200;
 			} else if (orderItem.getSize() == 'L') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceL();
+				pizzaPrice  *= orderItem.getQuantity();
 				totalPrice += pizzaPrice + orderItem.getOrderToppingList().size() * 300;
 			}
 		}
