@@ -94,7 +94,9 @@
 											<img src="<c:out value="${orderItem.item.imagePath}"/>">
 										</div>
 										<br>
-										<c:out value="${orderItem.item.name}" />
+										<a href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${orderItem.item.id}"/>">
+											<c:out value="${orderItem.item.name}" /><span>の商品情報を見る</span>
+										</a>
 									</div>
 								</td>
 								<td><span class="price">&nbsp;<c:out
