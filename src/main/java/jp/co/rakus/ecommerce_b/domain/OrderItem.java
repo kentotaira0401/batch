@@ -36,7 +36,7 @@ public class OrderItem {
 			int pizzaPrice = item.getPriceL();
 			total = pizzaPrice + orderToppingList.size() * 300;
 		}
-
+		total = total * quantity;
 		System.out.println("total"+total);
 		return total;
 	}
