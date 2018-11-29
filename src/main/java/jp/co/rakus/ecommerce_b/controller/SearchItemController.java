@@ -19,6 +19,7 @@ import jp.co.rakus.ecommerce_b.form.PutItemIntoCartForm;
 import jp.co.rakus.ecommerce_b.service.FindAllToppingService;
 import jp.co.rakus.ecommerce_b.service.ItemService;
 import jp.co.rakus.ecommerce_b.service.OrderService;
+import jp.co.rakus.ecommerce_b.service.PopularItemService;
 
 @Controller
 @RequestMapping("/SearchItem")
@@ -30,6 +31,9 @@ public class SearchItemController {
 	@Autowired
 	private FindAllToppingService findAllToppingService;
 
+	@Autowired
+	private PopularItemService popularItemService;
+	
 	@ModelAttribute
 	public PutItemIntoCartForm setUpPutItemIntoCartForm() {
 		return new PutItemIntoCartForm();
@@ -64,7 +68,9 @@ public class SearchItemController {
 		}
 		
 		List<Item> itemList = itemService.findAll();
+		List<Item> popularItemList = popularItemService.findByOrderNum();
 		model.addAttribute("itemList", itemList);
+		model.addAttribute("popularItemList", popularItemList);
 		return "item-list";
 	}
 

@@ -2,7 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -13,7 +14,10 @@
 <title>ピザ屋のネット注文</title>
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/piza.css" rel="stylesheet">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../css/flexslider.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -21,9 +25,9 @@
 </head>
 <body>
 	<div class="container">
-	<sec:authorize access="hasRole('ROLE_USER') and isAuthenticated()">
-	<sec:authentication var="userName" property="principal.user.name" />
-	<c:out value="${userName}" />&nbsp;さん
+		<sec:authorize access="hasRole('ROLE_USER') and isAuthenticated()">
+			<sec:authentication var="userName" property="principal.user.name" />
+			<c:out value="${userName}" />&nbsp;さん
 	</sec:authorize>
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -36,8 +40,8 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ -->
-						<img alt="main log" src="../img/header_logo.png" height="35">
+					<a class="navbar-brand" href="Search"> <!-- 企業ロゴ --> <img
+						alt="main log" src="../img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -45,15 +49,19 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
-						<a href="${pageContext.request.contextPath}/showCartItem/showCart" class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath}/showOrderHistory/showOrderHistory" class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-						
+						<a href="${pageContext.request.contextPath}/showCartItem/showCart"
+							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							href="${pageContext.request.contextPath}/showOrderHistory/showOrderHistory"
+							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+
 						<c:choose>
 							<c:when test="${loginUser == null }">
-							 	<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+								<a href="${pageContext.request.contextPath}/"
+									class="navbar-link">ログイン</a>&nbsp;&nbsp;
 							</c:when>
 							<c:otherwise>
-								<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
+								<a href="${pageContext.request.contextPath}/logout"
+									class="navbar-link">ログアウト</a>
 							</c:otherwise>
 						</c:choose>
 					</p>
@@ -62,7 +70,16 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-
+		<div class="flexslider">
+			<ul class="slides">
+			<c:forEach var="item" items="${popularItemList}" varStatus="status">
+				<li><a href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${item.id}"/>">
+							<img src="<c:out value="${item.imagePath}"/>" /><br>
+							<c:out value="人気NO${status.count}　${item.name}" />	
+							</a></li>
+				</c:forEach>
+			</ul>
+		</div>
 		<!-- search form -->
 		<div class="row">
 			<div
@@ -72,7 +89,9 @@
 						<div class="panel-title">商品を検索する</div>
 					</div>
 					<div class="panel-body">
-						<form:form method="post" action="${pageContext.request.contextPath}/SearchItem/FuzzySearch" class="form-horizontal">
+						<form:form method="post"
+							action="${pageContext.request.contextPath}/SearchItem/FuzzySearch"
+							class="form-horizontal">
 							<div class="form-group">
 								<label for="code" class="control-label col-sm-2">商品名</label>
 								<div class="col-sm-9">
@@ -83,20 +102,19 @@
 							<div class="text-center">
 								<button type="submit" value="検索" class="btn btn-primary">検索</button>
 								<button type="reset" value="クリア" class="btn btn-default">クリア</button>
-								
-							   <c:if test="${isEmpty == true}">
-							　　<label class="control-label"
-										style="color: red" for="inputError">該当する商品はありません</label>　
-							　　 </c:if>
-							
-						
+
+								<c:if test="${isEmpty == true}">
+									<label class="control-label" style="color: red"
+										for="inputError">該当する商品はありません</label>
+								</c:if>
+
+
 							</div>
 						</form:form>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<!-- table -->
 		<div class="row">
 			<div
@@ -108,19 +126,22 @@
 					<tbody>
 						<tr>
 
-                            
+
 							<c:forEach var="item" items="${itemList}" varStatus="status">
-							
-							<c:if test="${status.index % 3 == 0}">
-							</tr><tr>
+
+								<c:if test="${status.index % 3 == 0}">
+						</tr>
+						<tr>
 							</c:if>
-							
-								<th><img src="<c:out value="${item.imagePath}"/>" /><br>
-									<a href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${item.id}"/>">
-										<c:out value="${item.name}" /><br>
-								</a> <span class="price">&nbsp;М&nbsp;</span>
-								 <fmt:formatNumber value="${item.priceM}" pattern="###,###"/>円(税抜き)<br> <span class="price">&nbsp;Ｌ&nbsp;</span>
-									<fmt:formatNumber value="${item.priceL}" pattern="###,###"/>円(税抜き)<br></th>
+
+							<th><img src="<c:out value="${item.imagePath}"/>" /><br>
+								<a
+								href="${pageContext.request.contextPath}/SearchItem/detailItem?id=<c:out value="${item.id}"/>">
+									<c:out value="${item.name}" /><br>
+							</a> <span class="price">&nbsp;М&nbsp;</span> <fmt:formatNumber
+									value="${item.priceM}" pattern="###,###" />円(税抜き)<br> <span
+								class="price">&nbsp;Ｌ&nbsp;</span> <fmt:formatNumber
+									value="${item.priceL}" pattern="###,###" />円(税抜き)<br></th>
 							</c:forEach>
 
 						</tr>
@@ -131,28 +152,33 @@
 		</div>
 	</div>
 	<!-- end container -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
-	<script>
-  $( function() {
+	<script src="/js/slideshow.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="../js/jquery.flexslider.js"></script>
 
-    var availableTags = [];
-    <c:forEach var="item" items="${itemList}">
-    	availableTags.push('<c:out value="${item.name}"/>');
-    </c:forEach>
-    
-    
-    		  $( "#code" ).autocomplete({
-    		      source: availableTags,
-    		      autoFocus: true,
-    		      delay: 500,
-    		      minLength: 1
-    		    });
-    	  
-  } ); 
-  </script>
+	<script>
+		$(function() {
+
+			var availableTags = [];
+			<c:forEach var="item" items="${itemList}">
+			availableTags.push('<c:out value="${item.name}"/>');
+			</c:forEach>
+
+			$("#code").autocomplete({
+				source : availableTags,
+				autoFocus : true,
+				delay : 500,
+				minLength : 1
+			});
+
+		});
+		
+		
+		
+	</script>
 </body>
 </html>

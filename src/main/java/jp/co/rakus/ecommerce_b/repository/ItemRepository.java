@@ -1,5 +1,6 @@
 package jp.co.rakus.ecommerce_b.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import jp.co.rakus.ecommerce_b.domain.Item;
+import jp.co.rakus.ecommerce_b.domain.OrderItem;
 
 @Repository
 public class ItemRepository {
@@ -25,6 +27,15 @@ public class ItemRepository {
 		item.setImagePath(rs.getString("image_path"));
 		item.setDeleted(rs.getBoolean("deleted"));
 
+		return item;
+
+	};
+	
+	private static final RowMapper<Item> popularItemRowMapper = (rs, i) -> {
+		Item item = new Item();
+		item.setId(rs.getInt("ordI_item_id"));
+		item.setName(rs.getString("i_name"));
+		item.setImagePath(rs.getString("i_imagePath"));
 		return item;
 
 	};
@@ -75,4 +86,10 @@ public class ItemRepository {
 		return item;
 	}
 
+	public List<Item> findbyOrdernum() {
+		String sql = "select ordI.item_id ordI_item_id ,i.name i_name , i.image_path i_imagePath ,count(ordI.item_id) from orders as ord inner join order_Items as ordI on ord.id = ordI.order_id inner \r\n" + 
+				"join items as i on ordI.item_id = i.id group by ordI.item_id ,i.name ,i.image_path order by count(ordI.item_id) desc  OFFSET 0 LIMIT 3;";
+		List<Item> itemList = template.query(sql,popularItemRowMapper);
+		return itemList;
+	}
 }
