@@ -61,6 +61,8 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
+		
+	
 		<!-- table -->
 		<div class="row">
 			<div
@@ -112,11 +114,11 @@
 											items="${orderItem.orderToppingList}">
 											<c:if test="${orderItem.size=='M'.charAt(0)}">
 												<li><c:out value="${ordertopping.topping.name}" /> <c:out
-														value="${topping.priceM}" /></li>
+														value="${ordertopping.topping.priceM}" />円</li>
 											</c:if>
 											<c:if test="${orderItem.size=='L'.charAt(0)}">
 												<li><c:out value="${ordertopping.topping.name}" /> <c:out
-														value="${topping.priceL}" /></li>
+														value="${ordertopping.topping.priceL}" />円</li>
 											</c:if>
 										</c:forEach>
 									</ul>
