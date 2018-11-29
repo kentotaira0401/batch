@@ -63,7 +63,8 @@ public class OrderController {
 	public String order(
 
 			Model model, @AuthenticationPrincipal LoginUser loginUser) {
-
+		
+		session.setAttribute("loginUser",loginUser);
 		Integer loginUserId = loginUser.getUser().getId();// ログインユーザid
 
 		Integer paymentNumber = 0;// 未入金番号
@@ -88,13 +89,10 @@ public class OrderController {
 			Model model,
 			RedirectAttributes redirectAttributes,
 			@AuthenticationPrincipal LoginUser loginUser) throws ParseException {
-
+		session.setAttribute("loginUser",loginUser);
 		if (result.hasErrors()) {
 			return order(model,loginUser);
 		}
-
-		
-
 		// formをコピー
 		Order order = new Order();
 		BeanUtils.copyProperties(form, order);
