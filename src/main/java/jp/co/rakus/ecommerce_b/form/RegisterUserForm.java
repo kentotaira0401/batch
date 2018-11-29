@@ -13,27 +13,27 @@ import javax.validation.constraints.Size;
 public class RegisterUserForm {
 
 	/** 名前 */
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "名前を入力してください")
 	private String name;
 	/** Eメール */
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "メールアドレスを入力してください")
 	@Email( message = "メールアドレスの形式ではありません" )
 	private String email;
 	/** パスワード */
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "パスワードを入力してください")
 	@Size(min=8, max=16, message="パスワードは8文字以上16文字以内に設定してください")
 	private String password;
 	/** 郵便番号*/
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "郵便番号を入力してください")
 	private String zipcode;
 	/** 住所*/
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "住所を入力してください")
 	private String address;
 	/** 電話番号*/
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "電話番号を入力してください")
 	private String telephone;
 	/**　確認用パスワード*/
-	@NotEmpty( message = "値を入力してください")
+	@NotEmpty( message = "確認用パスワードを入力してください")
 	private String conformationPassword;
 	
 	public RegisterUserForm() {

@@ -57,7 +57,7 @@
 							</div>
 							<div class="form-group">
 								<label for="inputPassword">パスワード:</label>
-								<input type="text" name="password" id="password" class="form-control" placeholder="Password">
+								<input type="password" name="password" id="password" class="form-control" placeholder="Password">
 								<%-- <form:errors path="password" cssStyle="color:red" /> --%>
 							</div>
 							<div class="form-group">
