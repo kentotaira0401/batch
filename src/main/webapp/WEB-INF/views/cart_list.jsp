@@ -139,7 +139,7 @@
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
 				<span id="total-price"> <c:choose>
-						<c:when test="${order.orderItemList==null}">
+						<c:when test="${order.calcTotalPrice==0}">
 							<div class="form-group text-center">カートに商品がありません。</div>
 						</c:when>
 						<c:otherwise>
