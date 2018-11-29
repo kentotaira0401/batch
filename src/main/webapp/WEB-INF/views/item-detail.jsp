@@ -156,7 +156,10 @@
 										<div class="row">
 											<div class="col-xs-offset-2 col-xs-10">
 												<div class="form-group">
-													<span id="totalPrice"></span>円(税抜き)
+												
+
+							
+													<h2><span id="totalPrice"></span>円(税抜き)</h2>
 												</div>
 											</div>
 										</div>

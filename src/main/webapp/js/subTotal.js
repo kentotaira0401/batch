@@ -1,5 +1,6 @@
 
 $(function(){
+	calc();
 	
 	$('.size').change(function(){
 		calc();

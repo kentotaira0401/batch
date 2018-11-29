@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,10 +124,12 @@
 
 		<div class="row">
 			<div class="col-xs-offset-2 col-xs-8">
-				<div class="form-group text-center"></div>
-				<span id="total-price">税<c:out value="${order.tax}" />円
-				</span><br> <span id="total-price"><c:out
-						value="${order.calcTotalPrice}" />円（税込み）</span>
+			<span id="total-price">
+					<div class="form-group text-center">
+							<fmt:formatNumber value="${order.calcTotalPrice}" pattern="###,###"/>円(税込み)<br>
+							(税金:<fmt:formatNumber value="${order.tax}" pattern="###,###"/>円)<br>
+					</div>
+			</span>
 			</div>
 		</div>
 	    </div>

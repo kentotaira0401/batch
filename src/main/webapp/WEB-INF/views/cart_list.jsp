@@ -41,9 +41,16 @@
 					id="bs-example-navbar-collapse-1">
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/showCartItem/showCart"
-							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
+							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
+						
+						<c:choose>
+						<c:when test="${loginUser != null }">
+								<a
 							href="${pageContext.request.contextPath}/showOrderHistory/showOrderHistory"
 							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
+						</c:when>
+						</c:choose>
+					
 						<c:choose>
 							<c:when test="${loginUser == null }">
 								<a href="${pageContext.request.contextPath}/"
@@ -154,12 +161,10 @@
 						</c:when>
 						<c:otherwise>
 						<div class="form-group text-center">
-							<span id="total-price">税<c:out value="${order.tax}" />円
-							</span>
-							<c:out value="${order.calcTotalPrice}" />円（税込み)
-							 &nbsp;&nbsp;
-							 </div>
-											</c:otherwise>
+							<fmt:formatNumber value="${order.calcTotalPrice}" pattern="###,###"/>円(税込み)<br>
+							(税金:<fmt:formatNumber value="${order.tax}" pattern="###,###"/>円)<br>
+						</div>
+						</c:otherwise>
 					</c:choose>
 				</span>
 			</div>

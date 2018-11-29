@@ -2,6 +2,7 @@ package jp.co.rakus.ecommerce_b.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -31,6 +32,7 @@ public class RegisterUserForm {
 	private String address;
 	/** 電話番号*/
 	@NotEmpty( message = "電話番号を入力してください")
+	@Pattern(regexp="[0-9]*", message="電話番号は数字で入力してください")
 	private String telephone;
 	/**　確認用パスワード*/
 	@NotEmpty( message = "確認用パスワードを入力してください")
