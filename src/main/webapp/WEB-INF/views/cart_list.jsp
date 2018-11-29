@@ -44,11 +44,17 @@
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp; <a
 							href="${pageContext.request.contextPath}/showOrderHistory/showOrderHistory"
 							class="navbar-link">注文履歴</a>&nbsp;&nbsp;
-							　<c:if test="${loginUser == null }">
-							 <a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-							 </c:if>
-						<a href="${pageContext.request.contextPath}/logout"
-							class="navbar-link">ログアウト</a>
+						<c:choose>
+							<c:when test="${loginUser == null }">
+								<a href="${pageContext.request.contextPath}/"
+									class="navbar-link">ログイン</a>&nbsp;&nbsp;
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath}/logout"
+									class="navbar-link">ログアウト</a>
+							</c:otherwise>
+						</c:choose>
+				
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->

@@ -37,12 +37,14 @@
 					<p class="navbar-text navbar-right">
 						<a href="${pageContext.request.contextPath}/showCartItem/showCart"
 							class="navbar-link">ショッピングカート</a>&nbsp;&nbsp;
-							
-							 <c:if test="${loginUser == null }">
-							  <a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
-							 </c:if>	
-						<a href="${pageContext.request.contextPath}/logout"
-							class="navbar-link">ログアウト</a>
+							<c:choose>
+							<c:when test="${loginUser == null }">
+							 	<a href="${pageContext.request.contextPath}/" class="navbar-link">ログイン</a>&nbsp;&nbsp;
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath}/logout" class="navbar-link">ログアウト</a>
+							</c:otherwise>
+						</c:choose>
 					</p>
 				</div>
 				<!-- /.navbar-collapse -->
