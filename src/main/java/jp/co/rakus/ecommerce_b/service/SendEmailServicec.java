@@ -27,6 +27,18 @@ public class SendEmailServicec {
 
         this.sender.send(msg);
     }
+    
+    public void sendMailForRePass(String email) {
+        SimpleMailMessage msg2 = new SimpleMailMessage();
+
+        msg2.setFrom("kento.taira.0401@gmail.com");
+        msg2.setTo(email);
+        msg2.setSubject("[ラクラクピザ]パスワード設定用URLのお知らせ"); //タイトルの設定
+        msg2.setText("パス"/*String.valueOf(order.getOrderItemList())*/); //本文の設定
+
+        this.sender.send(msg2);
+    }
+    
 }
 	
 

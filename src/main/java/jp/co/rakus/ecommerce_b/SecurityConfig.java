@@ -110,7 +110,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//--------------------------------------------------------------------
 		// Exceptionハンドラ
 		 http.exceptionHandling()
-		 	.accessDeniedPage("/403"); // 不正なリクエストを検知しました
+		 	.accessDeniedPage("/"); // 不正なリクエストを検知しました
 		//--------------------------------------------------------------------
 	}
 

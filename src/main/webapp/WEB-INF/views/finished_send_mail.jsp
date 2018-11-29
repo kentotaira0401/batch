@@ -1,15 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
+
+<script>
+// サンプル6 (ダミーフォームを作りボタンを横に並べる)
+$(function(){
+	$("#sample6Button").on("click",function(){ //ボタン押下時
+		// sample6Formというidがつけられたフォームをサブミットする(サーバーへ送る)
+		$("#sample6Form").submit();
+	});
+}); // end ready
+</script>
+
 <body>
-	<div class="container">
+		<div class="container">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -22,7 +33,7 @@
 							class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="${pageContext.request.contextPath}/SearchItem/Search"> <!-- 企業ロゴ --> <img
-						alt="main log" src="img/header_logo.png" height="35">
+						alt="main log" src="/img/header_logo.png" height="35">
 					</a>
 				</div>
 
@@ -42,43 +53,27 @@
 		<div class="row">
 			<div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-10 col-xs-12">
 				<div class="well">
-					<div class="error"><c:out value="${loginError}"  /></div>
-					<form:errors path="loginForm.*" />
-					<form:form  action="${pageContext.request.contextPath}/login">
+					
+					<div class="form-group" style="text-align: center;">
+					<form:form action="${pageContext.request.contextPath}/SearchItem/Search">
 						<fieldset>
 							<legend>
-								ログイン
+								パスワードを忘れた方
 							</legend>
-							<!-- <label class="control-label" style="color: red" for="inputError">メールアドレス、またはパスワードが間違っています</label> -->
-							<div class="form-group">
-								<label for="inputEmail">メールアドレス:</label>
-								<input type="text" name="email" id="email" class="form-control" placeholder="Email">
-								<%-- <form:errors path="email" cssStyle="color:red" /> --%>
-							</div>
-							<div class="form-group">
-								<label for="inputPassword">パスワード:</label>
-								<input type="password" name="password" id="password" class="form-control" placeholder="Password">
-								<%-- <form:errors path="password" cssStyle="color:red" /> --%>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary">ログイン</button>
-							</div>
+							<font color="red">ご入力いただいたメールアドレスに	<br>パスワード変更用URLを記載したメールをお送りいたしました。</font>
+							<br><br>
+								<button type="submit" class="btn btn-primary">トップページ　＞</button>
+								<button type="button" class="btn btn-primary" id="sample6Button">ログイン　＞</button>
 						</fieldset>
 					</form:form>
+					<form:form action="${pageContext.request.contextPath}/" path="sample6Form">
+							
+					</form:form>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="text-center">
-				<!-- <a href="register_user.jsp">ユーザ登録はこちら</a> -->
-				<a href="${pageContext.request.contextPath}/register/registerForm">ユーザ登録はこちら</a>
-			</div>
-			<div class="text-center">
-				<a href="${pageContext.request.contextPath}/register/rePasswordForm">パスワードを忘れてしまった方はこちら</a>
-			</div>
-		</div>
-		
 	</div>
 </body>
 </html>
