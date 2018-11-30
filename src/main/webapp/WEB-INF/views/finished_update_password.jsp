@@ -9,16 +9,6 @@
 <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
 
-<script>
-// サンプル6 (ダミーフォームを作りボタンを横に並べる)
-$(function(){
-	$("#sample6Button").on("click",function(){ //ボタン押下時
-		// sample6Formというidがつけられたフォームをサブミットする(サーバーへ送る)
-		$("#sample6Form").submit();
-	});
-}); // end ready
-</script>
-
 <body>
 		<div class="container">
 		<nav class="navbar navbar-default">
@@ -55,20 +45,18 @@ $(function(){
 				<div class="well">
 					
 					<div class="form-group" style="text-align: center;">
-					<form:form action="${pageContext.request.contextPath}/SearchItem/Search">
+					<form:form action="${pageContext.request.contextPath}/">
 						<fieldset>
 							<legend>
 								パスワード更新
 							</legend>
 							<font color="red">パスワードを更新しました</font>
 							<br><br>
-								<button type="submit" class="btn btn-primary">トップページ　＞</button>
-								<button type="button" class="btn btn-primary" id="sample6Button">ログイン　＞</button>
+							<button type="submit" class="btn btn-primary">ログイン　＞</button>
+								
 						</fieldset>
 					</form:form>
-					<form:form action="${pageContext.request.contextPath}/" path="sample6Form">
-							
-					</form:form>
+					
 					</div>
 				</div>
 			</div>

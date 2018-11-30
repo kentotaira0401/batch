@@ -9,7 +9,7 @@
 <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
 
-<script>
+<!-- <script>
 // サンプル6 (ダミーフォームを作りボタンを横に並べる)
 $(function(){
 	$("#sample6Button").on("click",function(){ //ボタン押下時
@@ -17,7 +17,7 @@ $(function(){
 		$("#sample6Form").submit();
 	});
 }); // end ready
-</script>
+</script> -->
 
 <body>
 		<div class="container">
@@ -63,12 +63,12 @@ $(function(){
 							<font color="red">ご入力いただいたメールアドレスに	<br>パスワード変更用URLを記載したメールをお送りいたしました。</font>
 							<br><br>
 								<button type="submit" class="btn btn-primary">トップページ　＞</button>
-								<button type="button" class="btn btn-primary" id="sample6Button">ログイン　＞</button>
+								<!-- <button type="button" class="btn btn-primary" id="sample6Button">ログイン　＞</button> -->
 						</fieldset>
 					</form:form>
-					<form:form action="${pageContext.request.contextPath}/" path="sample6Form">
+					<%-- <form:form action="${pageContext.request.contextPath}/" path="sample6Form">
 							
-					</form:form>
+					</form:form> --%>
 					</div>
 				</div>
 			</div>

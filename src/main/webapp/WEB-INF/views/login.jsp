@@ -74,11 +74,12 @@
 				<!-- <a href="register_user.jsp">ユーザ登録はこちら</a> -->
 				<a href="${pageContext.request.contextPath}/register/registerForm">ユーザ登録はこちら</a>
 			</div>
+			<br><br>
 			<div class="text-center">
 				<a href="${pageContext.request.contextPath}/register/rePasswordForm">パスワードを忘れてしまった方はこちら</a>
 			</div>
 		</div>
-		
+		<hr>
 	</div>
 </body>
 </html>
