@@ -7,6 +7,7 @@ import jp.co.rakus.ecommerce_b.domain.Coupon;
 import jp.co.rakus.ecommerce_b.repository.CouponRepository;
 
 @Service
+//FIXME:javadoc漏れ
 public class CouponService {
 		
 	@Autowired

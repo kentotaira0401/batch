@@ -23,6 +23,7 @@ import jp.co.rakus.ecommerce_b.service.PopularItemService;
 
 @Controller
 @RequestMapping("/SearchItem")
+//FIXME:javadoc漏れ
 public class SearchItemController {
 
 	@Autowired

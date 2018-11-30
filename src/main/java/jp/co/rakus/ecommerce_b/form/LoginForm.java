@@ -1,7 +1,7 @@
 package jp.co.rakus.ecommerce_b.form;
 
 /*import javax.validation.constraints.NotEmpty;
-
+// FIXME:不要なコメントはpush時は削除しましょう
 *//**
  * ログインフォーム
  * 

@@ -26,7 +26,7 @@ import jp.co.rakus.ecommerce_b.form.CouponForm;
 import jp.co.rakus.ecommerce_b.form.OrderForm;
 import jp.co.rakus.ecommerce_b.service.OrderService;
 import jp.co.rakus.ecommerce_b.service.SendEmailServicec;
-
+// FIXME:インポート文に警告の黄色ラインが出ている。警告は０を目指す！
 /**
  * 最終注文をするためのcontroller.
  * 

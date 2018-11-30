@@ -16,6 +16,7 @@ import jp.co.rakus.ecommerce_b.service.ShowCartItemService;
 
 @Controller
 @RequestMapping("/showCartItem")
+//FIXME:javadoc漏れ
 public class ShowCartItemController {
 
 	@Autowired

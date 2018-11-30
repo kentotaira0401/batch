@@ -33,6 +33,7 @@ public class CouponController {
 		Order order = null;
 		order = (Order) session.getAttribute("order");
 		
+		// FIXME:無駄なインスタンス化 Coupon coupon = repository.findById(couponId);で良い
 		Coupon coupon = new Coupon();
 		coupon = repository.findById(couponId);
 		Integer cuponPirce = coupon.getPrice();

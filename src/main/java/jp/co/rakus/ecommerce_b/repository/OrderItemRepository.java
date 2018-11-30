@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.rakus.ecommerce_b.domain.OrderItem;
 
 @Repository
+//FIXME:javadoc漏れ
 public class OrderItemRepository {
 
 	@Autowired

@@ -17,6 +17,7 @@ import jp.co.rakus.ecommerce_b.service.PutItemIntoCartService;
 
 @Controller
 @RequestMapping("/putItemIntoCart")
+//FIXME:javadoc漏れ
 public class PutItemIntoCartController {
 
 	@Autowired

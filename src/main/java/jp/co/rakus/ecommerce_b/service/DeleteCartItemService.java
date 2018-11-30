@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import jp.co.rakus.ecommerce_b.repository.OrderItemRepository;
 
 @Service
+//FIXME:javadoc漏れ
 public class DeleteCartItemService {
 
 	@Autowired

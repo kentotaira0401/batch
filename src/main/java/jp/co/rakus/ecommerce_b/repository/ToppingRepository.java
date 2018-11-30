@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.rakus.ecommerce_b.domain.Item;
 import jp.co.rakus.ecommerce_b.domain.Topping;
-
+//FIXME:インポート文に警告あり。警告は０を目指しましょう
 @Repository
+//FIXME:javadoc漏れ
 public class ToppingRepository {
 	
+	// FIXME:インデントがおかしい
 	private final RowMapper<Topping> TOPPING_ROWMAPPER = (rs, i) -> {
 	Topping topping = new Topping();
 	
@@ -27,7 +29,7 @@ public class ToppingRepository {
 	private NamedParameterJdbcTemplate template;
 	
 	public List<Topping> findAll(){
-		
+		// FIXME:複数検索の場合はorder byを入れましょう
 		String sql="SELECT id,name,price_m,price_l FROM toppings;";
 		List<Topping> toppingList = template.query(sql, TOPPING_ROWMAPPER);
 		return toppingList;

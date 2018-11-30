@@ -91,7 +91,7 @@ public class Order {
 	}
 	
 	
-	
+	// FIXME:javadoc漏れ
 	public int getCalcTotalPrice() {
 		int totalPrice = 0;
 		
@@ -100,6 +100,7 @@ public class Order {
 		}else {
 			
 		for (OrderItem orderItem : orderItemList) {
+			// FIXME:ifとelse ifの中身がほとんど一緒、alt+shift+mでメソッドに切り出せそう
 			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceM();
@@ -122,6 +123,7 @@ public class Order {
 	public int getTax() {
 		int totalPrice = 0;
 		for (OrderItem orderItem : orderItemList) {
+			// FIXME:ifとelse ifの中身がほとんど一緒、alt+shift+mでメソッドに切り出せそう
 			if (orderItem.getSize() == 'M') {
 				Item item = orderItem.getItem();
 				int pizzaPrice = item.getPriceM();

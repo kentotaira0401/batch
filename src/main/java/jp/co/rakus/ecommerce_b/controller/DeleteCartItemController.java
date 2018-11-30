@@ -9,6 +9,7 @@ import jp.co.rakus.ecommerce_b.service.DeleteCartItemService;
 
 @Controller
 @RequestMapping("/delete")
+//FIXME:javadoc漏れ
 public class DeleteCartItemController {
 
 	@Autowired

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class LoginController {
 
+	// FIXME:不要なコメントはpush時は削除しましょう
 	//※ログイン認証フィルターが機能するためいらなくなりました。
 	/*@Autowired
 	private LoginService userService;

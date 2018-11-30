@@ -9,6 +9,7 @@ import jp.co.rakus.ecommerce_b.domain.Order;
 
 
 @Service
+//FIXME:javadoc漏れ
 public class SendEmailServicec {
 
 
@@ -31,6 +32,7 @@ public class SendEmailServicec {
     }
     
     public void sendMailForRePass(String email) {
+    	// FIXME:2とか3とかというのは極力変数名には入れないようにする。スコープが違うのでここはmsgで問題ない
         SimpleMailMessage msg2 = new SimpleMailMessage();
 
         msg2.setFrom("kento.taira.0401@gmail.com");

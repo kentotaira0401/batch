@@ -16,6 +16,7 @@ import jp.co.rakus.ecommerce_b.service.ShowOrderHistoryService;
 
 @Controller
 @RequestMapping("/showOrderHistory")
+//FIXME:javadoc漏れ
 public class ShowOrderHistoryController {
 
 	
