@@ -21,8 +21,10 @@ public class SendEmailServicec {
 
         msg.setFrom("kento.taira.0401@gmail.com");
         msg.setTo(order.getDestinationEmail());
-        msg.setSubject("要注意！！"); //タイトルの設定
-        msg.setText("注文が完了しました！ありがとうございました！ クーポンが発行されました。次回ご注文時にご使用ください！クーポン番号 :11111"
+        msg.setSubject("[ラクラクピザ]　ご利用ありがとうございました！！"); //タイトルの設定
+        msg.setText("注文が完了しました！ご利用ありがとうございました！\r\n\r\n"
+        		+ " クーポンが発行されました。次回ご注文時にご使用ください！\r\n"
+        		+ "クーポン番号 :11111"
         		/*String.valueOf(order.getOrderItemList())*/); //本文の設定
 
         this.sender.send(msg);
@@ -33,11 +35,11 @@ public class SendEmailServicec {
 
         msg2.setFrom("kento.taira.0401@gmail.com");
         msg2.setTo(email);
-        msg2.setSubject("[ラクラクピザ]パスワード設定用URLのお知らせ"); //タイトルの設定
+        msg2.setSubject("[ラクラクピザ]パスワード再設定用URLのお知らせ"); //タイトルの設定
         msg2.setText("いつもラクラクピザ公式サイトをご利用いただき、ありがとうございます。\r\n" + 
         		"下記URLをクリックして、パスワードを再設定してください。\r\n" + 
         		"\r\n" + 
-        		"▼パスワード設定用ページ▼\r\n" + 
+        		"▼パスワード再設定用ページ▼\r\n" + 
         		"・PC／スマートフォン用\r\n"
         		+ "http://localhost:8080/register/toUpdatePass"); //本文の設定
 

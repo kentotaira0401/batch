@@ -378,5 +378,11 @@
 	<script src="/js/ajax-address.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
 	<script src="/js/jquery-3.3.1.min.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
 	<script src="/js/zip-code.js" charset="UTF-8"></script><!-- ajaxによる住所の自動入力用 -->
+	<!-- <script>
+	$("form").submit(function() {
+    	  $(":submit", this).prop("disabled", true);
+    
+    });
+</script> -->
 </body>
 </html>
