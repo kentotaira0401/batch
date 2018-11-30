@@ -9,6 +9,7 @@ import jp.co.rakus.ecommerce_b.domain.Item;
 import jp.co.rakus.ecommerce_b.repository.ItemRepository;
 
 @Service
+//FIXME:javadoc漏れ
 public class ItemService {
 	
 	@Autowired

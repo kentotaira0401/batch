@@ -7,6 +7,7 @@ import jp.co.rakus.ecommerce_b.domain.Order;
 import jp.co.rakus.ecommerce_b.repository.OrderRepository;
 
 @Service
+//FIXME:javadoc漏れ
 public class ShowCartItemService {
 
 	@Autowired

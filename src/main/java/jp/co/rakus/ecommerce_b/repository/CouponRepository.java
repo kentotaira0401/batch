@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.rakus.ecommerce_b.domain.Coupon;
 
 @Repository
+//FIXME:javadoc漏れ
 public class CouponRepository {
 	
 	private static final RowMapper<Coupon> couponRowMapper = (rs, i) -> {
@@ -25,6 +26,7 @@ public class CouponRepository {
 	
 	
 	@Autowired
+	// FIXME:public???
 	public NamedParameterJdbcTemplate template;
 	
 

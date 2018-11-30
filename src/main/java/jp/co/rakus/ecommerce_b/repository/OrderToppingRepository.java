@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import jp.co.rakus.ecommerce_b.domain.OrderTopping;
 
 @Repository
+//FIXME:javadoc漏れ
 public class OrderToppingRepository {
 
 	@Autowired

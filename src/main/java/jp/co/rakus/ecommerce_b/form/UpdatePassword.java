@@ -3,7 +3,7 @@ package jp.co.rakus.ecommerce_b.form;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
+//FIXME:javadoc漏れ
 public class UpdatePassword {
 
 

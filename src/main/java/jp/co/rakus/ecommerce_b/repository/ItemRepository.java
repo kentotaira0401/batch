@@ -12,8 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.rakus.ecommerce_b.domain.Item;
 import jp.co.rakus.ecommerce_b.domain.OrderItem;
-
+//FIXME:インポート文に警告あり。警告は０を目指しましょう
 @Repository
+//FIXME:javadoc漏れ
 public class ItemRepository {
 
 	private static final RowMapper<Item> itemRowMapper = (rs, i) -> {
@@ -65,7 +66,7 @@ public class ItemRepository {
 	 * @return
 	 */
 	public List<Item> findByName(String name) {
-
+		// FIXME:大文字小文字を区別なく検索する場合は ilike演算子を使います
 		String sql = "SELECT id,name,description,price_m,price_l,image_path,deleted FROM items WHERE name like :name";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("name", "%" + name + "%");
 		List<Item> itemlist = template.query(sql, param, itemRowMapper);
@@ -87,6 +88,7 @@ public class ItemRepository {
 	}
 
 	public List<Item> findbyOrdernum() {
+		// XXX:ページング処理を行う場合はこのようにOFFSET や LIMITを使います
 		String sql = "select ordI.item_id ordI_item_id ,i.name i_name , i.image_path i_imagePath ,count(ordI.item_id) from orders as ord inner join order_Items as ordI on ord.id = ordI.order_id inner \r\n" + 
 				"join items as i on ordI.item_id = i.id group by ordI.item_id ,i.name ,i.image_path order by count(ordI.item_id) desc  OFFSET 0 LIMIT 3;";
 		List<Item> itemList = template.query(sql,popularItemRowMapper);

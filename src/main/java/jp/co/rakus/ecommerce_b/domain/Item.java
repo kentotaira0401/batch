@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 
-
+//FIXME:インポート文に警告あり。警告は０を目指しましょう
 
 /**
  * 商品を表すドメイン.

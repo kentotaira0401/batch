@@ -2,7 +2,7 @@ package jp.co.rakus.ecommerce_b.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
+//FIXME:javadoc漏れ
 public class RePasswordForm {
 
 	/** Eメール */

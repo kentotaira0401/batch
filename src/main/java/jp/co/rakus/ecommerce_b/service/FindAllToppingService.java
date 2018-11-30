@@ -13,6 +13,7 @@ import jp.co.rakus.ecommerce_b.domain.Topping;
 import jp.co.rakus.ecommerce_b.repository.ToppingRepository;
 
 @Service
+//FIXME:javadoc漏れ
 public class FindAllToppingService {
 	
 	@Autowired

@@ -23,6 +23,7 @@ import jp.co.rakus.ecommerce_b.domain.OrderTopping;
 import jp.co.rakus.ecommerce_b.domain.Topping;
 
 @Repository
+//FIXME:javadoc漏れ
 public class OrderRepository {
 
 	@Autowired
@@ -37,6 +38,7 @@ public class OrderRepository {
 		insert = withTableName.usingGeneratedKeyColumns("id");
 	}
 
+	// FIXME:使っていない定数。警告は０を目指しましょう
 	private static final RowMapper<Order> ORDER_ROW_MAPPER = (rs, i) -> {
 		Order order = new Order();
 		order.setId(Integer.parseInt(rs.getString("id")));
@@ -279,6 +281,7 @@ public class OrderRepository {
 		for (int i : status) {
 			if(i==status.length) {
 				statuses += i;
+				// FIXME:デバッグ用のsysoutはpush時は削除しましょう
 				System.out.println(statuses);
 			}else {
 				statuses += i + ",";
@@ -302,7 +305,7 @@ public class OrderRepository {
 				+ "ord.id = ordI.order_id left outer join items as i on "
 				+ "ordI.item_id = i.id left outer join order_toppings as ot on "
 				+ "ordI.id = ot.order_item_id left outer join toppings as t on "
-				
+				// XXX:複数ステータスを条件に検索する場合はこのようにします
 				+ "ot.topping_id = t.id where ord.user_id = :user_id and status in ("+ statuses + ") order by ord.status,ord.id,ord.order_date;";
 
 		

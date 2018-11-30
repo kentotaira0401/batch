@@ -20,6 +20,7 @@ import jp.co.rakus.ecommerce_b.service.SendEmailServicec;
 @Controller
 @Transactional
 @RequestMapping("/register")
+//FIXME:javadoc漏れ
 public class RegisterUserInfoController {
 
 	@Autowired
@@ -147,6 +148,7 @@ public class RegisterUserInfoController {
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 		user = registerService.insert(user);
+		// FIXME:デバッグ用のsysoutはpush時は削除しましょう
 		System.out.println(user);
 		System.out.println("成功");
 		

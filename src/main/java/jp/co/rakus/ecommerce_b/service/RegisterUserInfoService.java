@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.repository.UserRepository;
-
+//FIXME:インポート文に警告あり。警告は０を目指しましょう
 @Service
+//FIXME:javadoc漏れ
 public class RegisterUserInfoService {
 
 	@Autowired
@@ -17,6 +18,7 @@ public class RegisterUserInfoService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	// FIXME:不要なコメントはpush時は削除しましょう
 	//↓SecurityConfig.javaにてすでに設定済み
 	/*@Bean  
 	PasswordEncoder passwordEncoder() {

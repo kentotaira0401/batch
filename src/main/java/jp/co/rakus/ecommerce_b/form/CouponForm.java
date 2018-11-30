@@ -1,5 +1,5 @@
 package jp.co.rakus.ecommerce_b.form;
-
+//FIXME:javadoc漏れ
 public class CouponForm {
 	private Integer couponId;
     private Integer couponPirce;

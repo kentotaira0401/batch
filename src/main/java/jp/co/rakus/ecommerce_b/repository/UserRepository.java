@@ -17,6 +17,7 @@ import jp.co.rakus.ecommerce_b.domain.User;
 
 
 @Repository
+//FIXME:javadoc漏れ
 public class UserRepository {
 
 
@@ -55,6 +56,7 @@ public class UserRepository {
 			SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password", password);
 
 			user = template.queryForObject(sql, param, USER_ROW_MAPPER);
+			// FIXME:不要なコメントはpush時は削除しましょう
 			//System.out.println("a");
 			return user;
 			
@@ -81,7 +83,7 @@ public class UserRepository {
 			return null;
 		}
 		return userList.get(0);
-		
+		// FIXME:不要なコメントはpush時は削除しましょう
 		//		try {
 //			User User = jdbcTemplate.queryForObject(sql, param, User_ROW_MAPPER);
 //

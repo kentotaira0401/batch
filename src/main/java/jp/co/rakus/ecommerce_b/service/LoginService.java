@@ -7,6 +7,7 @@ import jp.co.rakus.ecommerce_b.domain.User;
 import jp.co.rakus.ecommerce_b.repository.UserRepository;
 
 @Service
+//FIXME:javadoc漏れ
 public class LoginService {
 
 	@Autowired

@@ -1,5 +1,5 @@
 package jp.co.rakus.ecommerce_b.domain;
-
+//FIXME:javadoc漏れ
 public class Coupon {
 	private Integer id;
 	private Integer couponId;
