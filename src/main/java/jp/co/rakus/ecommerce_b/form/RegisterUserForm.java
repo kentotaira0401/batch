@@ -23,6 +23,7 @@ public class RegisterUserForm {
 	/** パスワード */
 	@NotEmpty( message = "パスワードを入力してください")
 	@Size(min=8, max=16, message="パスワードは8文字以上16文字以内に設定してください")
+	@Pattern(regexp="[A-Z][a-z][0-9]*", message="暗証番号は半角英字（大文字）、半角英字（小文字）、半角数字をそれぞれ1種類以上含む構成で入力してください")
 	private String password;
 	/** 郵便番号*/
 	@NotEmpty( message = "郵便番号を入力してください")
@@ -37,6 +38,7 @@ public class RegisterUserForm {
 	/**　確認用パスワード*/
 	@NotEmpty( message = "確認用パスワードを入力してください")
 	@Size(min=8, max=16, message="パスワードは8文字以上16文字以内に設定してください")
+	@Pattern(regexp="[A-Z][a-z][0-9]*", message="暗証番号は半角英字（大文字）、半角英字（小文字）、半角数字をそれぞれ1種類以上含む構成で入力してください")
 	private String conformationPassword;
 	
 	public RegisterUserForm() {
